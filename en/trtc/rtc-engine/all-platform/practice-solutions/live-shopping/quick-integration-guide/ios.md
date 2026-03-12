@@ -1,0 +1,545 @@
+# iOS
+
+## Business Process
+
+This section summarizes some common business processes in the e-commerce live streaming scenario, helping you better understand the implementation process of the entire scenario.
+
+Anchor Starting and Ending Live Streaming
+
+Anchor Initiating Cross-Room Mic-Connection PK
+
+RTC Audience Entering the Room for Mic-Connection
+
+Product Management for Merchandising
+
+The following diagram shows the process of an anchor (room owner) local preview, creating a room, entering a room to start live streaming, and leaving the room to end the live streaming.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/9230125f8f0511f0bd05525400454e06.png)
+
+The following diagram shows the process of Anchor A inviting Anchor B for a cross-room PK. During the cross-room PK, the audiences in both rooms can see the PK mic-connection live streaming of the two room owners.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/921c36168f0511f0814e525400bf7822.png)
+
+The following diagram shows the process for RTC live interactive streaming audience to enter the room, apply for the mic-connection, end the mic-connection, and exit the room.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/922fdffa8f0511f0ae9d5254001c06ec.png)
+
+The diagram below shows the process in live streaming merchandising scenarios, where the anchor edits and lists products, while audience browses and purchases products.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/921b385e8f0511f0818a52540099c741.png)
+
+## Integration Preparation
+
+### Step 1. Activating the Services
+
+E-commerce livestreaming scenarios usually require paid PaaS services for construction, including [RTC Engine](https://trtc.io/products/rtc), [Beauty AR](https://trtc.io/products/beauty), and [Player SDK](https://www.tencentcloud.com/document/product/266/7836). RTC Engine provides real-time audio and video interaction capabilities. Beauty AR provides beauty effect capabilities. The player offers live and on-demand playback. You can freely choose to activate these services based on actual business needs.
+
+Activating RTC Engine Service
+
+Activating Beauty AR Service
+
+Activate Player Service
+
+1. First, log in to the [RTC Engine console](https://console.trtc.io/) to create an application. Based on your needs, you can upgrade the RTC Engine application version, such as the Professional Edition, which unlocks more value-added features and services.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/923d57cd8f0511f0814e525400bf7822.png)
+
+> **Note:**It is recommended to create two applications for testing and production environments, respectively. Each Tencent Cloud account (UIN) is given 10,000 minutes of free duration every month for one year.RTC Engine monthly packages are divided into Trial Edition (default), Lite Edition, Standard Edition, and Professional Edition, unlocking different value-added features and services. For details, see [Version Features and Monthly Package Description](https://trtc.io/zh/document/67650?product=pricing).
+
+2. After an application is created, you can see the basic information of the application in the Application Management - Application Overview section. It is important to keep the **SDKAppID** and **SDKSecretKey** safe for later use and to avoid key leakage that could lead to traffic theft.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/921e5fe48f0511f084bd5254007c27c5.png)
+
+1. Log in to the [Beauty AR console > Mobile Terminal License](https://console.trtc.io/beauty/license?start=1), and click **Create Trial License** (the trial license has a free trial period of 14 days and can be renewed once, totaling 28 days). Select Mobile, and enter App Name, Package Name, and Bundle ID based on your actual needs. Check the features you want to try: **All Beauty Features**, **Virtual Background**, **Face Recognition**, **Gesture Recognition**, and **Gift AR**, then click **Confirm**.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/9233e6438f0511f084bd5254007c27c5.png)
+
+2. After activation, you can view your information on the current page and refer to the [integration guide](https://trtc.io/document/60195)at the top for integration. You can see how to use the License Key and License URL in the Integration Guide.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/9264a6788f0511f0ae9d5254001c06ec.png)
+
+1. Log in to  [VOD console](https://console.tencentcloud.com/vod/license) or [CSS console](https://console.tencentcloud.com/live/license) > **License Management** > **Mobile**, and click **Create trial license**.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/923387238f0511f0818a52540099c741.png)
+
+2. Enter App Name, Package Name and Bundle ID according to actual needs, select Player Pro Edition, and click Create.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/9243dd908f0511f0bd05525400454e06.png)
+
+3. After the Trial License is successfully created, the page will display the generated License information. **When initializing the SDK configuration, you need to enter two parameters: License Key and License URL, so carefully save the following information.**
+
+****
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/923c90e78f0511f0974b52540044a08e.png)
+
+> **Note:**The License URL and Key for the same application are unique; after the Trial License is upgraded to the official version, the License URL and Key remain unchanged.
+
+### Step 2: Importing the SDK
+
+The RTC Engine SDK and the Beauty AR SDK have been published to the **CocoaPods** repository. You can configure CocoaPods to download updates automatically.
+
+1. Install CocoaPods by entering the following command in the terminal window (ensure that the Ruby environment is pre-installed on your Mac):
+
+```
+sudo gem install cocoapods
+```
+
+2. Create a Podfile. Navigate to the project directory and enter the following command. A Podfile will then be generated in the project directory.
+
+```
+pod init
+```
+
+3. Edit Podfile. Choose appropriate version for your project needs and edit Podfile:
+
+```
+platform :ios, '8.0'    target 'App' do        # The full feature version of SDK    # Includes features such as RTC Engine, live streaming player (TXLivePlayer), RTMP streaming (TXLivePusher), VOD player (TXVodPlayer), and short video recording and editing (UGSV).    pod 'TXLiteAVSDK_Professional', :podspec => 'https://liteav.sdk.qcloud.com/pod/liteavsdkspec/TXLiteAVSDK_Professional.podspec'        # Tencent Effect SDK example of S1-07 package is as follows:    pod 'TencentEffect_S1-07'end
+```
+
+> **Note:**Implementation of e-commerce live streaming scenarios typically needs the combination of multiple capacities such as RTC Engine and player. **To avoid the symbol conflict issues arising from single integration, integrating the LiteAVSDK_Professional SDK is recommended**.
+
+4. Update and install the SDK.
+
+Enter the following command in a terminal window to update the local repository files and install the SDK:
+
+```
+pod install
+```
+
+Or run this command to update the local repository:
+
+```
+pod update
+```
+
+Upon the completion of pod command execution, a project file suffixed with .xcworkspace and integrated with the SDK will be generated. Double-click to open it.
+
+> **Note:**If the pod search fails, it is recommended to try updating the local repo cache of pod. The update command is as follows:pod setuppod repo updaterm ~/Library/Caches/CocoaPods/search_index.jsonExcept the recommended automatic loading method, you can also choose to download SDK and manually import it. For details, see [Manual Integration of the RTC Engine SDK](https://trtc.io/document/62045?product=rtcengine&menulabel=core%20sdk&platform=ios#31b6b3f0-5363-44b1-95a0-dbabe648e9df) and [Manual Integration of the Beauty AR SDK](https://trtc.io/document/60195?product=beautyar&menulabel=core%20sdk&platform=ios#6d52c803-02a2-475c-9b62-d301b5d0c050).
+
+5. Add beauty resources to actual project engineering.
+  5.1. Download and decompress the corresponding package's [SDK and beauty resources](https://trtc.io/document/60206?platform=ios&product=beautyar&menulabel=core%20sdk#dynamically-downloading-.60assets.60-resources), then add the bundle resources under the resources/motionRes folder to the actual project.
+  5.2. Add `-ObjC` in Other Linker Flags of Build Settings.
+6. Modify the Bundle Identifier to match the applied trial authorization.
+
+### Step 3: Project Configuration
+
+1. Configure the permissions.
+
+For e-commerce live streaming scenarios, LiteAVSDK and Special Effect SDK require the following permissions. Add the following two items to the App's Info.plist, corresponding to the microphone and camera prompts in the system pop-up authorization dialog box.
+
+  - **Privacy - Microphone Usage Description**. Enter a prompt specifying the purpose of microphone use.
+  - **Privacy - Camera Usage Description**. Enter a prompt specifying the purpose of camera use.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/92569f0d8f0511f0814e525400bf7822.png)
+
+2. To allow the App to continue running certain features in the backend, select the current project in XCode, set the setting item Background Modes to ON under Capabilities, and check **Audio, AirPlay and Picture in Picture**, as shown below:
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/924a5d5c8f0511f0818a52540099c741.png)
+
+### Step 4: Authentication and Authorization
+
+RTC Engine Authentication Credential
+
+Beauty AR Authentication Permission
+
+Player Authentication License
+
+UserSig is a security signature designed by Tencent Cloud to prevent attackers from stealing your right of using cloud services. RTC Engine validates this authentication credential upon room entry.
+
+- Debugging Stage: UserSig can be generated through two methods for debugging and testing purposes only: [client sample code](https://trtc.io/document/35166?product=rtcengine&menulabel=core%20sdk&platform=ios) and [console access](https://trtc.io/document/35166?product=rtcengine&menulabel=core%20sdk&platform=ios#console).
+- Formal Operation Stage: It is recommended to use a higher security level server computation for generating UserSig. This is to prevent key leakage due to client reverse engineering.
+
+The specific implementation process is as follows:
+
+1. Before calling the SDK's initialization function, your app must first request UserSig from your server.
+2. Your server computes the UserSig based on the SDKAppID and UserID.
+3. The server returns the computed UserSig to your app.
+4. Your app passes the obtained UserSig into the SDK through a specific API.
+5. The SDK submits the SDKAppID + UserID + UserSig to Tencent Cloud CVM for verification.
+6. Tencent Cloud verifies the UserSig and confirms its validity.
+7. After the verification passes, Tencent Real-Time Communication (TRTC) services will be provided for RTC Engine SDK.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/9258c8ee8f0511f084bd5254007c27c5.jpeg)
+
+> **Note:**The method of generating UserSig locally during the debugging and testing stage is not recommended for the online environment because it may be easily decompiled and reversed, causing key leakage.We provide UserSig server side computation source code in multiple languages (Java/Go/PHP/Node.js/Python/C#/C++). For details, see [Server-Side Calculation of UserSig](https://trtc.io/document/34580?product=chat&menulabel=uikit&platform=react#.E7.AD.BE.E5.90.8D.EF.BC.88usersig.EF.BC.89.E7.94.9F.E6.88.90.E5.B7.A5.E5.85.B7).
+
+Before using Beauty AR, you need to verify the license credential with Tencent Cloud. Configuring License requires License Key and License URL. The example code is as follows.
+
+```
+[TELicenseCheck setTELicense:LicenseURL key:LicenseKey completion:^(NSInteger authresult, NSString * _Nonnull errorMsg) { if (authresult == TELicenseCheckOk) {     NSLog(@"Authentication successful."); } else {     NSLog(@"Authentication failed."); }}];
+```
+
+> **Note:**It is recommended to trigger the authentication permission in the initialization code of related business modules. Ensure to avoid having to download the License temporarily before use. Additionally, during authentication, network permissions must be ensured.The actual application's Bundle ID must match exactly with the Bundle ID associated with the creation of License. Otherwise, it will lead to License verification failure. For details, see [Authentication Error Code](https://trtc.io/document/60195?product=beautyar&menulabel=core%20sdk&platform=android#.E6.AD.A5.E9.AA.A4.E4.B8.80.EF.BC.9A.E9.89.B4.E6.9D.83).
+
+Live streaming and on-demand playback features require player license authorization to achieve playback success, otherwise playback failure (screen going black) will occur. It needs to be set globally only once. If you haven't obtained a license, you can apply for a [free trial license](https://console.tencentcloud.com/vod/license) for normal playing. An official license should be [purchased](https://buy.tencentcloud.com/license). After successfully applying for a license, you will obtain 2 strings, **License URL** and **License Key**.
+
+Before your App calls the SDK-related features (recommended in `- [AppDelegate application:didFinishLaunchingWithOptions:]`), set the following settings:
+
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    NSString * const licenceURL = @"<the obtained licenseUrl>";    NSString * const licenceKey = @"<the obtained key>";    // TXLiveBase is located in the "TXLiveBase.h" header file    [TXLiveBase setLicence:licenceURL key:licenceKey];    [TXLiveBase setObserver:self];    NSLog(@"SDK Version = %@", [TXLiveBase getSDKVersionStr]);    return YES;}#pragma mark - TXLiveBaseDelegate- (void)onLicenceLoaded:(int)result Reason:(NSString *)reason {    NSLog(@"onLicenceLoaded: result:%d reason:%@", result, reason);    // If the result is not 0, it means the setting has failed, and you need to retry    if (result != 0) {       [TXLiveBase setLicence:licenceURL key:licenceKey];    }}@end
+```
+
+After the License is successfully set (you need to wait for a while, the specific time depends on the network conditions), you can use the following method to view the License information:
+
+```
+NSLog(@"%@", [TXLiveBase getLicenceInfo]);
+```
+
+> **Note:**The actual application's Bundle ID must match exactly with the Bundle ID associated with the License creation. Otherwise, it will lead to License verification failure.The License is a strong online verification logic. When the TXLiveBase#setLicence is called after the application is started for the first time, the network must be available. At the first launch of the App, if the network permission is not yet authorized, you need to wait until the permission is granted before calling TXLiveBase#setLicence again.Listen to the loading result of TXLiveBase#setLicence: For onLicenceLoaded API, if it fails, you should retry and guide according to the actual situation. If it fails multiple times, you can limit the frequency and supplement with product pop-ups and other guides to allow users to check the network conditions.TXLiveBase#setLicence can be called multiple times. It is advisable to call TXLiveBase#setLicence in the case of entering the main interface of the App to ensure successful loading.For multi-process Apps, ensure that every process using the player calls TXLiveBase#setLicence when it starts. For example, for Apps on the Android side that use a separate process for video playback, when the process is killed and restarted by the system during background playback, TXLiveBase#setLicence should also be called.
+
+### Step 5: Initializing the SDK
+
+Initializing RTC Engine SDK
+
+Initializing Beauty AR SDK
+
+Initializing Player SDK
+
+```
+// Create an RTC Engine SDK instance (singleton mode)self.trtcCloud = [TRTCCloud sharedInstance];// Set event listeners.self.trtcCloud.delegate = self;// Notifications from various SDK events (e.g., error codes, warning codes, audio and video status parameters, etc.).- (void)onError:(TXLiteAVError)errCode errMsg:(nullable NSString *)errMsg extInfo:(nullable NSDictionary *)extInfo {    NSLog(@"%d: %@", errCode, errMsg);}- (void)onWarning:(TXLiteAVWarning)warningCode warningMsg:(nullable NSString *)warningMsg extInfo:(nullable NSDictionary *)extInfo {    NSLog(@"%d: %@", warningCode, warningMsg);}// Remove event listener.self.trtcCloud.delegate = nil;// Terminate the RTC Engine SDK instance (singleton mode)[TRTCCloud destroySharedIntance];
+```
+
+> **Note:**It is recommended to listen to SDK event notifications. Perform log printing and handling for some common errors. For details, see [Error Code Table](https://trtc.io/document/35130?platform=ios&product=rtcengine&menulabel=core%20sdk#336ef58d7636c75f9aa0c87753e08e7c).
+
+```
+// Load beauty-related resources.NSDictionary *assetsDict = @{@"core_name":@"LightCore.bundle", @"root_path":[[NSBundle mainBundle] bundlePath]};// Initialize the Tencent Effect SDK.self.beautyKit = [[XMagic alloc] initWithRenderSize:previewSize assetsDict:assetsDict];// Release the Tencent Effect SDK.[self.beautyKit deinit];
+```
+
+> **Note:**Before initializing the Beauty AR SDK, resource copying and other preparations are required. For detailed steps, see [Beauty AR SDK Integration Step](https://trtc.io/document/60195?product=beautyar&menulabel=core%20sdk&platform=android).
+
+- On-demand Playback Scenario SDK Initialization.
+
+```
+// 1. Set the SDK Connect Environment// If you serve global users, configure the SDK connect environment for global connect[TXLiveBase setGlobalEnv:"GDPR"];// 2. Create PlayerTXVodPlayer *_txVodPlayer = [[TXVodPlayer alloc] init];// 3. Associate Rendering View[_txVodPlayer setupVideoWidget:_myView insertIndex:0];// 4. Player Parameter ConfigurationTXVodPlayConfig *_config = [[TXVodPlayConfig alloc]init];[_config setEnableAccurateSeek:true];// Set whether to seek accurately. The default value is true[_config setMaxCacheItems:5];            // Set the number of cache files to 5[_config setProgressInterval:200];   // Set the interval for progress callbacks, in milliseconds[_config setMaxBufferSize:50];   // The maximum pre-load size, in MB[_txVodPlayer setConfig:_config];        // Pass config to _txVodPlayer// 5. Player Event Listener- (void)onPlayEvent:(TXVodPlayer *)player event:(int)EvtID withParam:(NSDictionary*)param {    if (EvtID == PLAY_EVT_VOD_PLAY_PREPARED) {// Received event that the player is ready, now you can call pause, resume, getWidth, getSupportedBitrates, etc.    } else if (EvtID == PLAY_EVT_PLAY_BEGIN) {// Received the start playback event    } else if (EvtID == PLAY_EVT_PLAY_END) {// Received the playback end event    }}
+```
+
+- Live Streaming Scenarios SDK initialization.
+
+```
+// 1. Create PlayerV2TXLivePlayer *_txLivePlayer = [[V2TXLivePlayer alloc] init];// 2. Associate Rendering View[_txLivePlayer setRenderView:_myView];// 3. Player Event Listener[_txLivePlayer setObserver:self];- (void)onVideoLoading:(id<V2TXLivePlayer>)player extraInfo:(NSDictionary *)extraInfo {    // Video loading event.}- (void)onVideoPlaying:(id<V2TXLivePlayer>)player firstPlay:(BOOL)firstPlay extraInfo:(NSDictionary *)extraInfo {    // Video playback event.}
+```
+
+## Integration Process
+
+### API Sequence Diagram
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/923aba118f0511f0814e525400bf7822.svg)
+
+### Step 1: the Anchor Enters the Room to Push Streams
+
+1. The anchor activates local video preview and audio capture before entering the room.
+
+```
+// Obtain the video rendering control for displaying the anchor's local video preview.@property (nonatomic, strong) UIView *anchorPreviewView;@property (nonatomic, strong) TRTCCloud *trtcCloud;- (void)setupTRTC {    self.trtcCloud = [TRTCCloud sharedInstance];    self.trtcCloud.delegate = self;    // Set video encoding parameters to determine the picture quality seen by remote users.    TRTCVideoEncParam *encParam = [[TRTCVideoEncParam alloc] init];    encParam.videoResolution = TRTCVideoResolution_960_540;    encParam.videoFps = 15;    encParam.videoBitrate = 1300;    encParam.resMode = TRTCVideoResolutionModePortrait;    [self.trtcCloud setVideoEncoderParam:encParam];        // isFrontCamera can specify the use of front/rear camera for video capture    [self.trtcCloud startLocalPreview:self.isFrontCamera view:self.anchorPreviewView];    // Here you can specify the audio quality, from low to high as SPEECH/DEFAULT/MUSIC.    [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];}
+```
+
+> **Note:**You can set the video encoding parameters [TRTCVideoEncParam](https://trtc.io/document/35153?product=rtcengine&menulabel=core%20sdk&platform=ios#trtcvideoencparam) according to business needs. For the best combinations of resolutions and bitrates for each tier, see [Resolution and Bitrate Reference Table](https://trtc.io/document/35153?product=rtcengine&menulabel=core%20sdk&platform=ios#.E5.88.86.E8.BE.A8.E7.8E.87.E7.A0.81.E7.8E.87.E5.8F.82.E7.85.A7.E8.A1.A8).Call the above API before `enterRoom`. The SDK will only start the camera preview and audio capture, and wait until you call `enterRoom` to start streaming.Call the above API after `enterRoom`. The SDK will start the camera preview and audio capture and automatically start streaming.
+
+2. The anchor sets rendering parameters for the local video, and the encoder output video mode (optional).
+
+```
+- (void)setupRenderParams {    TRTCRenderParams *params = [[TRTCRenderParams alloc] init];    // Video mirror mode    params.mirrorType = TRTCVideoMirrorTypeAuto;    // Video fill mode    params.fillMode = TRTCVideoFillMode_Fill;    // Video rotation angle    params.rotation = TRTCVideoRotation_0;    // Set the rendering parameters for the local video.    [self.trtcCloud setLocalRenderParams:params];    // Set the video mirror mode for the encoder output.    [self.trtcCloud setVideoEncoderMirror:YES];    // Set the rotation of the video encoder output.    [self.trtcCloud setVideoEncoderRotation:TRTCVideoRotation_0];}
+```
+
+> **Note:**Setting local video rendering parameters only affects the rendering effect of the local video.Setting encoder output mode affects the viewing effect for other users in the room (and the cloud recording files).
+
+3. The anchor starts the live streaming, entering the room and start streaming.
+
+```
+- (void)enterRoomByAnchorWithUserId:(NSString *)userId roomId:(NSString *)roomId {    TRTCParams *params = [[TRTCParams alloc] init];    // Take the room ID string as an example.    params.strRoomId = roomId;    params.userId = userId;    // UserSig obtained from the business backend.    params.userSig = @"userSig";    // Replace with your SDKAppID.    params.sdkAppId = 0;    // Specify the anchor role.    params.role = TRTCRoleAnchor;    // Enter the room in an interactive live streaming scenario.    [self.trtcCloud enterRoom:params appScene:TRTCAppSceneLIVE];}// Event callback for the result of entering the room.- (void)onEnterRoom:(NSInteger)result {    if (result > 0) {        // result indicates the time taken (in milliseconds) to join the room.        NSLog(@"Enter room succeed!");    } else {        // result indicates the error code when you fail to enter the room.        NSLog(@"Enter room failed!");    }}
+```
+
+> **Note:**RTC Engine room IDs are divided into integer type `roomId` and string type `strRoomId`. Rooms of different types are not interconnected. It is advisable to unify the room ID type.RTC Engine user roles include anchor and audience. Only hosts have permission to streaming. The user role should be specified upon room entry. If it's not specified, the default role is anchor.In the e-commerce live streaming scenario, it is recommended to choose `TRTCAppSceneLIVE` as the room entry mode.
+
+### Step 2: the Audience Enters the Room to Pull Streams
+
+1. Audience enters the RTC Engine room.
+
+```
+- (void)enterRoomByAudienceWithUserId:(NSString *)userId roomId:(NSString *)roomId {    TRTCParams *params = [[TRTCParams alloc] init];    // Take the room ID string as an example.    params.strRoomId = roomId;    params.userId = userId;    // UserSig obtained from the business backend.    params.userSig = @"userSig";    // Replace with your SDKAppID.    params.sdkAppId = 0;    // Specify the audience role.    params.role = TRTCRoleAudience;    // Enter the room in an interactive live streaming scenario.    [self.trtcCloud enterRoom:params appScene:TRTCAppSceneLIVE];}// Event callback for the result of entering the room.- (void)onEnterRoom:(NSInteger)result {    if (result > 0) {        // result indicates the time taken (in milliseconds) to join the room.        NSLog(@"Enter room succeed!");    } else {        // result indicates the error code when you fail to enter the room.        NSLog(@"Enter room failed!");    }}
+```
+
+2. Audience subscribes to the anchor's audio and video streams.
+
+```
+- (void)onUserAudioAvailable:(NSString *)userId available:(BOOL)available {    // The remote user publishes/unpublishes their audio.    // Under the automatic subscription mode, you do not need to do anything. The SDK will automatically play the remote user's audio.}- (void)onUserVideoAvailable:(NSString *)userId available:(BOOL)available {    // The remote user publishes/unpublishes the primary video.    if (available) {        // Subscribe to the remote user's video stream and bind the video rendering control.        [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeBig view:self.remoteView];    } else {        // Unsubscribe to the remote user's video stream and release the rendering control.        [self.trtcCloud stopRemoteView:userId streamType:TRTCVideoStreamTypeBig];    }}
+```
+
+3. Audience sets the rendering mode for the remote video (optional).
+
+```
+- (void)setupRemoteRenderParams {    TRTCRenderParams *params = [[TRTCRenderParams alloc] init];    // Video mirror mode    params.mirrorType = TRTCVideoMirrorTypeAuto;    // Video fill mode    params.fillMode = TRTCVideoFillMode_Fill;    // Video rotation angle    params.rotation = TRTCVideoRotation_0;    // Set the rendering mode for the remote video.    [self.trtcCloud setRemoteRenderParams:@"userId" streamType:TRTCVideoStreamTypeBig params:params];}
+```
+
+### Step 3: the Audience Interacts via Mic
+
+1. The audience is switched to the anchor role.
+
+```
+- (void)switchToAnchor {    // Switched to the anchor role.    [self.trtcCloud switchRole:TRTCRoleAnchor];}// Event callback for switching the role.- (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {    if (errCode == ERR_NULL) {        // Role switched successfully.    }}
+```
+
+2. Audience start local audio and video capture and streaming.
+
+```
+- (void)setupTRTC {    // Set video encoding parameters to determine the picture quality seen by remote users.    TRTCVideoEncParam *encParam = [[TRTCVideoEncParam alloc] init];    encParam.videoResolution = TRTCVideoResolution_480_270;    encParam.videoFps = 15;    encParam.videoBitrate = 550;    encParam.resMode = TRTCVideoResolutionModePortrait;    [self.trtcCloud setVideoEncoderParam:encParam];     // isFrontCamera can specify the use of front/rear camera for video capture    [self.trtcCloud startLocalPreview:self.isFrontCamera view:self.audiencePreviewView];    // Here you can specify the audio quality, from low to high as SPEECH/DEFAULT/MUSIC.    [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];}
+```
+
+> **Note:**You can set the video encoding parameters [TRTCVideoEncParam](https://trtc.io/document/35153?product=rtcengine&menulabel=core%20sdk&platform=ios#trtcvideoencparam) according to business needs. For the best combinations of resolutions and bitrates for each tier, see [Resolution and Bitrate Reference Table](https://trtc.io/document/35153?product=rtcengine&menulabel=core%20sdk&platform=ios#.E5.88.86.E8.BE.A8.E7.8E.87.E7.A0.81.E7.8E.87.E5.8F.82.E7.85.A7.E8.A1.A8).
+
+3. The audience leaves the seat and stops streaming.
+
+```
+- (void)switchToAudience {    // Switched to the audience role.    [self.trtcCloud switchRole:TRTCRoleAudience];}// Event callback for switching the role.- (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {    if (errCode == ERR_NULL) {        // Stop camera capture and streaming.        [self.trtcCloud stopLocalPreview];        // Stop microphone capture and streaming.        [self.trtcCloud stopLocalAudio];    }}
+```
+
+### Step 4: Exiting and Dissolving the Room
+
+1. Exit the room.
+
+```
+- (void)exitRoom {    [self.trtcCloud stopLocalAudio];    [self.trtcCloud stopLocalPreview];    [self.trtcCloud exitRoom];}// Event callback for exiting the room.- (void)onExitRoom:(NSInteger)reason {    if (reason == 0) {        NSLog(@"Proactively call exitRoom to exit the room");    } else if (reason == 1) {        NSLog(@"Removed from the current room by the server");    } else if (reason == 2) {        NSLog(@"The current room is dissolved");    }}
+```
+
+> **Note:**After all resources occupied by the SDK are released, the SDK will throw the `onExitRoom` callback notification to inform you.If you wish to call `enterRoom` again or switch to another audio and video SDK, wait for the `onExitRoom` callback before proceeding. Otherwise, you may encounter various exceptional issues such as the camera, microphone device being forcibly occupied.
+
+2. Dissolve the room.
+  - **Server dissolves the room.**
+
+RTC Engine provides the server side numeric type room dissolving API [`DismissRoom`](https://trtc.io/document/34269?product=rtcengine&menulabel=core%20sdk&platform=ios) and the string type room dissolving API [DismissRoomByStrRoomId](https://trtc.io/document/39631?product=rtcengine&menulabel=core%20sdk&platform=ios). You can call the server side numeric type room dissolving API to remove all users from the room and dissolve the room.
+
+  - **Client dissolves the room.**
+
+The clients have no API for directly dissolve a room, and each is required to call [exitRoom](https://trtc.io/document/50762?product=rtcengine&menulabel=core%20sdk&platform=ios#4651ae2c9ff5aa99442102e0d77a8606) to exit the room. After all anchors and audiences exit the room, the room will be automatically dissolved according to RTC Engine room lifecycle rules. For details, see [RTC Engine > Exit the Room](https://trtc.io/document/62045?product=rtcengine&menulabel=core%20sdk&platform=ios#5055ad66-53b1-4539-88ec-6992d45bb0fd).
+
+> **Note:**It is recommended that after the end of live streaming, you call the room dissolvement API on the server to ensure the room is dissolved. This will prevent audiences from accidentally entering the room and incurring unexpected charges.
+
+## Advanced Features
+
+### Product Information Pop-Up
+
+The product information pop-up window feature can be implemented through Chat [Custom Message](#68e894f0-b443-48c9-974b-18a8afa4e0bb) or through [SEI Information](#742cb382-d825-4d72-b802-62dadf597932). The 2 implementation methods are introduced as follows.
+
+#### Custom Messages
+
+Custom messages rely on Tencent Cloud [Chat](https://trtc.io/products/chat) capability. You should activate the service in advance and import the Chat SDK. For detailed directions, see [Voice Room Integration Guide - Integration Preparation](https://www.tencentcloud.com/document/product/647/73429#55808226-ebdb-430b-bacb-f058ea0058b8).
+
+1. Send custom messages.
+  - Method 1: The anchor sends product pop-up related custom group messages on the client.
+
+```
+// Construct product pop-up message bodyNSDictionary *msgDict = @{    @"itemNumber": @1,   // Item number    @"itemPrice": @199.0,// Item price    @"itemTitle": @"xxx",// Item title    @"itemUrl": @"xxx" // Item URL};NSDictionary *dataDict = @{    @"cmd": @"item_popup_msg",    @"msg": msgDict};NSError *error;NSData *data = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&error];// Send custom group messages (it is recommended that product pop-up messages should be set to high priority)[[V2TIMManager sharedInstance] sendGroupCustomMessage:data to:groupID priority:V2TIM_PRIORITY_HIGH succ:^{    // Successfully sent product pop-up message    // Locally rendering of product pop-up effect} fail:^(int code, NSString *desc) {    // Failed to send product pop-up message}];
+```
+
+  - Method 2: The backend operators sends product pop-up related custom group messages on the server.
+
+Request URL sample:
+
+```
+https://xxxxxx/v4/group_open_http_svc/send_group_msg?sdkappid=88888888&identifier=admin&usersig=xxx&random=99999999&contenttype=json
+```
+
+Request packet body sample:
+
+```
+{    "GroupId": "@TGS#12DEVUDHQ",    "Random": 2784275388,    "MsgPriority": "High",  // The priority of the message. It is recommended to set product pop-up messages to high priority    "MsgBody": [        {            "MsgType": "TIMCustomElem",             "MsgContent": {                // itemNumber: item number; itemPrice: item price; itemTitle: item title; itemUrl: item URL                "Data": "{\\"cmd\\": \\"item_popup_msg\\", \\"msg\\": {\\"itemNumber\\": 1, \\"itemPrice\\": 199.0, \\"itemTitle\\": \\"xxx\\", \\"itemUrl\\": \\"xxx\\"}}"            }        }    ]}
+```
+
+2. Receive custom messages.
+
+Other users in the room receive callback for custom group messages, then proceed with message parsing and product pop-up effect rendering.
+
+```
+// Custom group messages received.[[V2TIMManager sharedInstance] addSimpleMsgListener:self];- (void)onRecvGroupCustomMessage:(NSString *)msgID groupID:(NSString *)groupID sender:(V2TIMGroupMemberInfo *)info customData:(NSData *)data {    if (data.length > 0) {        NSError *error;        NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];        if (!error) {            NSString *command = dataDict[@"cmd"];            NSDictionary *msgDict = dataDict[@"msg"];            if ([command isEqualToString:@"item_popup_msg"]) {                NSNumber *itemNumber = msgDict[@"itemNumber"];// Item number                NSNumber *itemPrice = msgDict[@"itemPrice"];  // Item price                NSString *itemTitle = msgDict[@"itemTitle"];  // Item title                NSString *itemUrl = msgDict[@"itemUrl"];  // Item URL                // Render product pop-up effect based on item number, item price, item title, and item URL            }        } else {            NSLog(@"Parsing error: %@", error.localizedDescription);        }    }}
+```
+
+#### SEI Information
+
+SEI information will be inserted into the anchor's video stream for transmission, achieving precise sync between the product information pop-up and the anchor's live streaming.
+
+1. Send SEI information. The anchor sends SEI messages related to product pop-up windows in the RTC Engine client.
+
+```
+// Construct product pop-up message bodyNSDictionary *msgDict = @{    @"itemNumber": @1,   // Item number    @"itemPrice": @199.0,// Item price    @"itemTitle": @"xxx",// Item title    @"itemUrl": @"xxx" // Item URL};NSDictionary *dataDict = @{    @"cmd": @"item_popup_msg",    @"msg": msgDict};NSError *error;NSData *data = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&error];// Send SEI information[self.trtcCloud sendSEIMsg:data repeatCount:1];
+```
+
+2. Receive SEI information.
+
+The audience receives SEI messages in the RTC Engine client, then conducts message parsing and product pop-up window effect rendering.
+
+```
+// Set TRTC event listenerself.trtcCloud.delegate = self;// Receive SEI messages- (void)onRecvSEIMsg:(NSString *)userId message:(NSData *)message {    if (message.length > 0) {        NSError *error;        NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:message options:0 error:&error];        if (!error) {            NSString *command = dataDict[@"cmd"];            NSDictionary *msgDict = dataDict[@"msg"];            if ([command isEqualToString:@"item_popup_msg"]) {                NSNumber *itemNumber = msgDict[@"itemNumber"];// Item number                NSNumber *itemPrice = msgDict[@"itemPrice"];  // Item price                NSString *itemTitle = msgDict[@"itemTitle"];  // Item title                NSString *itemUrl = msgDict[@"itemUrl"];  // Item URL                // Render product pop-up effect based on item number, item price, item title, and item URL            }        } else {            NSLog(@"Parsing error: %@", error.localizedDescription);        }    }}
+```
+
+### Product Explanation Replay
+
+By playing pre-recorded product explanation videos, the product explanation replay feature is implemented.
+
+First, it is necessary to [initialize the player](https://www.tencentcloud.com/document/product/1228/60248#da6ac569-2069-461a-b1b3-fcf22705d466), then start playing the recorded video. TXVodPlayer supports two playback modes, which you can choose according to your needs:
+
+Using the URL Method
+
+Using the FileId Method
+
+```
+// Play URL video resourceNSString* url = @"http://1252463788.vod2.myqcloud.com/xxxxx/v.f20.mp4";[_txVodPlayer startVodPlay:url];// Play sandbox local video resources// Obtain the Documents pathNSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];// Obtain the local video pathNSString *videoPath = [NSString stringWithFormat:@"%@/video1.m3u8",documentPath];[_txVodPlayer startVodPlay:videoPath];
+```
+
+```
+TXPlayerAuthParams *p = [TXPlayerAuthParams new];p.appId = 1252463788;p.fileId = @"4564972819220421305";// The psign means player signature. For more information about the signature and how to generate it, see: https://cloud.tencent.com/document/product/266/42436p.sign = @"psignxxxx"; // Player signature[_txVodPlayer startVodPlayWithParams:p];
+```
+
+Playback control: adjust the progress, pause playback, resume playback, and end playback.
+
+```
+// Adjust the progress (seconds)[_txVodPlayer seek:time];// Pause playback[_txVodPlayer pause];// Resume playback[_txVodPlayer resume];// End playback[_txVodPlayer stopPlay];
+```
+
+> **Note:**When stopping playback, remember to use `removeVideoWidget` to Destroy the view control before exiting the current UI interface. Otherwise, it may cause a memory leak or screen flash.// Destroy the view control[_txVodPlayer removeVideoWidget];
+
+### Cross-Room Mic-Connection PK
+
+1. Either party initiates the cross-room competition.
+
+```
+- (void)connectOtherRoom:(NSString *)roomId {    NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];    ? ? // The digit room ID is roomId.    [jsonDict setObject:roomId forKey:@"strRoomId"];    [jsonDict setObject:self.userId forKey:@"userId"];    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];    [self.trtcCloud connectOtherRoom:jsonString];}// Result callback for requesting cross-room mic-connection.- (void)onConnectOtherRoom:(NSString *)userId errCode:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {    // The user ID of the anchor in the other room you want to initiate the cross-room link-up.    // Error code. ERR_NULL indicates the request is successful.    // Error message.}
+```
+
+> **Note:**Both local and remote users participating in the cross-room mic-connection must be in the anchor role and must have audio/video uplink capabilities.Cross-room mic-connection PK with multiple room anchors can be achieved by calling `ConnectOtherRoom()` multiple times. Currently, a room can connect with up to three other room anchors at most, and up to 10 anchors in a room can conduct cross-room mic-connection competition with anchors in other rooms.
+
+2. All users in both rooms will receive a callback indicating that the audio and video streams from the PK anchor in the other room are available.
+
+```
+- (void)onUserAudioAvailable:(NSString *)userId available:(BOOL)available {    // The remote user publishes/unpublishes their audio.    // Under the automatic subscription mode, you do not need to do anything. The SDK will automatically play the remote user's audio.}- (void)onUserVideoAvailable:(NSString *)userId available:(BOOL)available {    // The remote user publishes/unpublishes the primary video.    if (available) {        // Subscribe to the remote user's video stream and bind the video rendering control.        [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeBig view:self.remoteView];    } else {        // Unsubscribe to the remote user's video stream and release the rendering control.        [self.trtcCloud stopRemoteView:userId streamType:TRTCVideoStreamTypeBig];    }}
+```
+
+3. Either party exits the cross-room competition.
+
+```
+// Exit the cross-room mic-connection.[self.trtcCloud disconnectOtherRoom];// Result callback for exiting cross-room mic-connection.- (void)onDisconnectOtherRoom:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {}
+```
+
+> **Note:**After calling `DisconnectOtherRoom()`, you may exit the cross-room competition with all other room anchors.Either the initiator or the receiver can call `DisconnectOtherRoom()` to exit the cross-room competition.
+
+### Integrating Third-Party Beauty Features
+
+RTC Engine supports integrating third-party beauty effect products. The example of Beauty AR is used next to demonstrate the process of integrating the third-party beauty effects.
+
+1. Integrate the Beauty AR SDK, and apply for authorization License. For details, see the [Access Preparation](#8b6b50a0-939d-48a1-aac1-58c6009e4b78) step for implementation.
+2. Set the SDK material resource path (if any).
+
+```
+NSString *beautyConfigPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];beautyConfigPath = [beautyConfigPath stringByAppendingPathComponent:@"beauty_config.json"];NSFileManager *localFileManager=[[NSFileManager alloc] init];BOOL isDir = YES;NSDictionary * beautyConfigJson = @{};if ([localFileManager fileExistsAtPath:beautyConfigPath isDirectory:&isDir] && !isDir) {    NSString *beautyConfigJsonStr = [NSString stringWithContentsOfFile:beautyConfigPath encoding:NSUTF8StringEncoding error:nil];    NSError *jsonError;    NSData *objectData = [beautyConfigJsonStr dataUsingEncoding:NSUTF8StringEncoding];    beautyConfigJson = [NSJSONSerialization JSONObjectWithData:objectData                                            options:NSJSONReadingMutableContainers                                            error:&jsonError];}NSDictionary *assetsDict = @{@"core_name":@"LightCore.bundle",                            @"root_path":[[NSBundle mainBundle] bundlePath],                            @"tnn_"                            @"beauty_config":beautyConfigJson};// Initialize the SDK: Width and height are the width and height of the texture, respectively.self.xMagicKit = [[XMagic alloc] initWithRenderSize:CGSizeMake(width,height) assetsDict:assetsDict];
+```
+
+3. Set video data callback for third-party beauty effects by passing the results of the beauty effect SDK processing each frame of data into the RTC Engine SDK for rendering processing.
+
+```
+// RTC Engine SDK sets video data callback for third-party beauty effects[self.trtcCloud setLocalVideoProcessDelegete:self pixelFormat:TRTCVideoPixelFormat_Texture_2D bufferType:TRTCVideoBufferType_Texture];#pragma mark - TRTCVideoFrameDelegate// Construct the YTProcessInput and pass it into the SDK for rendering processing.- (uint32_t)onProcessVideoFrame:(TRTCVideoFrame *_Nonnull)srcFrame dstFrame:(TRTCVideoFrame *_Nonnull)dstFrame {    if (!self.xMagicKit) {        [self buildBeautySDK:srcFrame.width and:srcFrame.height texture:srcFrame.textureId];// Initialize the XMagic SDK.        self.heightF = srcFrame.height;        self.widthF = srcFrame.width;    }    if(self.xMagicKit!=nil && (self.heightF!=srcFrame.height || self.widthF!=srcFrame.width)){       self.heightF = srcFrame.height;       self.widthF = srcFrame.width;       [self.xMagicKit setRenderSize:CGSizeMake(srcFrame.width, srcFrame.height)];    }    YTProcessInput *input = [[YTProcessInput alloc] init];    input.textureData = [[YTTextureData alloc] init];    input.textureData.texture = srcFrame.textureId;    input.textureData.textureWidth = srcFrame.width;    input.textureData.textureHeight = srcFrame.height;    input.dataType = kYTTextureData;    YTProcessOutput *output = [self.xMagicKit process:input withOrigin:YtLightImageOriginTopLeft withOrientation:YtLightCameraRotation0];    dstFrame.textureId = output.textureData.texture;    return 0;}
+```
+
+> **Note:**Step 1 and Step 2 vary depending on differing implementation methods of third-party beauty effect products, and **Step 3** is **a universal and important step** for RTC Engine's integration with third-party beauty effects.
+
+### Dual-Stream Encoding Mode
+
+When the dual-stream encoding mode is enabled, the current user's encoder outputs two video streams, a high-definition large screen and a low-definition small screen, at the same time (but only one audio stream). In this way, other users in the room can choose to subscribe to the high-definition large screen or low-definition small screen based on their network conditions or screen sizes.
+
+1. Enable large-and-small-screen dual-stream encoding mode.
+
+```
+- (void)enableDualStreamMode:(BOOL)enable {    // Video encoding parameters for the small-screen stream (customizable).    TRTCVideoEncParam *smallVideoEncParam = [[TRTCVideoEncParam alloc] init];    smallVideoEncParam.videoResolution = TRTCVideoResolution_480_270;    smallVideoEncParam.videoFps = 15;    smallVideoEncParam.videoBitrate = 550;    smallVideoEncParam.resMode = TRTCVideoResolutionModePortrait;    [self.trtcCloud enableEncSmallVideoStream:enable withQuality:smallVideoEncParam];}
+```
+
+> **Note:**When the dual-stream encoding mode is enabled, it will consume more CPU and network bandwidth. Therefore, it may be considered for use on Mac, Windows, or high-performance Pads. It is not recommended for mobile devices.
+
+2. Choose the type of remote user's video stream to pull.
+
+```
+// Optional video stream types when subscribing to a remote user's video stream.[self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeBig view:view];// You can switch the size of the specified remote user's screen at any time.[self.trtcCloud setRemoteVideoStreamType:userId type:TRTCVideoStreamTypeSmall];
+```
+
+> **Note:**When the dual-stream encoding mode is enabled, you can specify the video stream type as `TRTCVideoStreamTypeSmall` with `streamType` to pull a low-quality small video for viewing.
+
+### View Rendering Control
+
+If your business is involved in interaction scenarios that require switching display areas, you can use the RTC Engine SDK to update the local preview screen and the remote user's video rendering control feature.
+
+```
+// Update local preview screen rendering control.[self.trtcCloud updateLocalView:view];// Update the remote user's video rendering control.[self.trtcCloud updateRemoteView:view streamType:TRTCVideoStreamTypeBig forUser:userId];
+```
+
+> **Note:**The parameter `view` refers to the target video rendering control. And `streamType` only supports `TRTCVideoStreamTypeBig` and `TRTCVideoStreamTypeSub`.
+
+## Exception Handling
+
+### Exception Handling
+
+When the RTC Engine SDK encounters an unrecoverable error, the error is thrown in the `onError` callback. For details, see [Error Code Table](https://trtc.io/document/35130?product=rtcengine&menulabel=core%20sdk&platform=ios#336ef58d7636c75f9aa0c87753e08e7c).
+
+1. UserSig related errors.
+
+UserSig verification failure leads to room-entering failure. You can use the [UserSig tool](https://console.trtc.io/usersig) for verification.
+
+| Enumeration | Value | Description |
+| --- | --- | --- |
+| ERR_TRTC_INVALID_USER_SIG | -3320 | Room entry parameter userSig is incorrect. Check if `TRTCParams.userSig` is empty. |
+| ERR_TRTC_USER_SIG_CHECK_FAILED | -100018 | UserSig verification failed. Check if the parameter `TRTCParams.userSig` is filled in correctly or has expired. |
+
+2. Room entry or exit related errors.
+
+If entering room is failed, you should first verify the correctness of the room entry parameters. It is essential that the room entry and exit APIs are called in a paired manner. This means that, even in the event of a failed room entry, the room exit API must still be called.
+
+| Enumeration | Value | Description |
+| --- | --- | --- |
+| ERR_TRTC_CONNECT_SERVER_TIMEOUT | -3308 | Room entry request timed out. Check if your internet connection is lost or if a VPN is enabled. You may also attempt to switch to 4G for testing. |
+| ERR_TRTC_INVALID_SDK_APPID | -3317 | Room entry parameter sdkAppId is incorrect. Check if `TRTCParams.sdkAppId` is empty. |
+| ERR_TRTC_INVALID_ROOM_ID | -3318 | Room entry parameter roomId is incorrect. Check if `TRTCParams.roomId` or `TRTCParams.strRoomId` is empty. Note that roomId and strRoomId cannot be used interchangeably. |
+| ERR_TRTC_INVALID_USER_ID | -3319 | Room entry parameter userId is incorrect. Check if `TRTCParams.userId` is empty. |
+| ERR_TRTC_ENTER_ROOM_REFUSED | -3340 | Room entry request is denied. Check if `enterRoom` is called consecutively to enter rooms with the same ID. |
+
+3. Devices related errors.
+
+Exceptions for related monitoring devices. Users are prompted via UI in case of relevant errors.
+
+| Enumeration | Value | Description |
+| --- | --- | --- |
+| ERR_CAMERA_START_FAIL | -1301 | Failed to open the camera. For example, if there is an exception for the camera's configuration program (driver) on a Windows or macOS device, you should try disabling then re-enabling the device, restarting the machine, or updating the configuration program. |
+| ERR_MIC_START_FAIL | -1302 | Failed to open the mic. For example, if there is an exception for the mic's configuration program (driver) on a Windows or macOS device, you should try disabling then re-enabling the device, restarting the machine, or updating the configuration program. |
+| ERR_CAMERA_NOT_AUTHORIZED | -1314 | The device of camera is unauthorized. This typically occurs on mobile devices and may be due to the user having denied the permission. |
+| ERR_MIC_NOT_AUTHORIZED | -1317 | The device of mic is unauthorized. This typically occurs on mobile devices and may be due to the user having denied the permission. |
+| ERR_CAMERA_OCCUPY | -1316 | The camera is occupied. Try a different camera. |
+| ERR_MIC_OCCUPY | -1319 | The mic is occupied. This occurs when, for example, the user is currently having a call on the mobile device. |
+
+### Remote Mirror Mode Not Functioning Properly
+
+In RTC Engine, video mirrors are set to be divided into local preview mirror `setLocalRenderParams` and video encoding mirror `setVideoEncoderMirror`. These mirrors separately affect the mirror effect of the local preview video and that of the video encoding output video (the mirror mode for remote audiences and on-cloud recordings). If you expect the mirror effect seen in the local preview to also take effect on the remote audiences' end, follow the following encoding procedures.
+
+```
+// Set the rendering parameters for the local video.TRTCRenderParams *params = [[TRTCRenderParams alloc] init];params.mirrorType = TRTCVideoMirrorTypeEnable; // Video mirror modeparams.fillMode = TRTCVideoFillMode_Fill; // Video fill modeparams.rotation = TRTCVideoRotation_0; // Video rotation angle[self.trtcCloud setLocalRenderParams:params];// Set the video mirror mode for the encoder output.[self.trtcCloud setVideoEncoderMirror:YES];
+```
+
+### Adjustment of Camera Scale, Focus, and Switch
+
+In e-commerce livestreaming scenarios, the anchor may need custom adjustment of the camera. The RTC Engine SDK's device management class provides APIs for such needs.
+
+1. Query and set the zoom factor for the camera.
+
+```
+// Get the maximum zoom factor for the camera (only for mobile devices).CGFloat zoomRatio = [[self.trtcCloud getDeviceManager] getCameraZoomMaxRatio];// Set the zoom factor for the camera (only for mobile devices).// Value range is 1 - 5. 1 means the furthest field of view (normal lens), and 5 means the closest field of view (zoom lens). The maximum recommended value is 5, exceeding this may result in blurry video.[[self.trtcCloud getDeviceManager] setCameraZoomRatio:zoomRatio];
+```
+
+2. Set the focus feature and position of the camera.
+
+```
+// Enable or disable the camera's autofocus feature (only for mobile devices).[[self.trtcCloud getDeviceManager] enableCameraAutoFocus:NO];// Set the focus position of the camera (only for mobile devices).// The precondition for using this API is to first disable the autofocus feature using enableCameraAutoFocus.[[self.trtcCloud getDeviceManager] setCameraFocusPosition:CGPointMake(x, y)];
+```
+
+3. Determine and switch to front or rear cameras.
+
+```
+// Determine if the current camera is the front camera (only for mobile devices).BOOL isFrontCamera = [[self.trtcCloud getDeviceManager] isFrontCamera];// Switch to front or rear cameras (only for mobile devices).// Passing true means switching to front, and passing false means switching to rear.[[self.trtcCloud getDeviceManager] switchCamera:!isFrontCamera];
+```
+
+
+---
+*Source: [https://trtc.io/document/73433](https://trtc.io/document/73433)*

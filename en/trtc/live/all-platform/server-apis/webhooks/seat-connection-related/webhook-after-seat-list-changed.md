@@ -1,0 +1,86 @@
+# Webhook After Seat List Changed
+
+## Feature Overview
+
+The app backend can view microphone position list change messages in real-time through this webhook.
+
+## Notes
+
+- To enable the webhook, a webhook URL must be configured and the switch corresponding to this webhook protocol activated. For configuration methods, see [Third-party Webhook Configuration](https://www.tencentcloud.com/document/product/647/64412#) document.
+- During this webhook, the Live backend initiates an HTTP POST request to the app backend.
+- After receiving the webhook request, the app backend must check whether the SDKAppID contained in the request URL is consistent with its own SDKAppID.
+
+## Scenarios that may trigger this Webhook
+
+- App user mutes/unmutes microphone.
+- Operate microphone position lock.
+
+## Webhook Trigger Time
+
+After microphone position information changes.
+
+## API description
+
+### Sample request URL
+
+In the following example, the webhook URL configured in the app is `https://www.example.com`.
+**Example:**
+
+```
+https://www.example.com?SdkAppid=$SDKAppID&CallbackCommand=$CallbackCommand&contenttype=json&ClientIP=$ClientIP&OptPlatform=$OptPlatform
+```
+
+### Request parameters
+
+| Parameter | Description |
+| --- | --- |
+| https | The request protocol is HTTPS, and the request method is POST |
+| www.example.com | Webhook URL |
+| SdkAppid | SDKAppID assigned by the Chat console when an application is created |
+| CallbackCommand | Fixed to Mic.CallbackAfterSeatInfoChanged |
+| contenttype | Fixed value: JSON |
+| ClientIP | Client IP, such as 127.0.0.1 |
+| OptPlatform | Client platform, refer to [Webhook Overview: Webhook Protocol](https://www.tencentcloud.com/document/product/647/64412#) for the meaning of OptPlatform parameters |
+
+### Sample request packets
+
+```
+{    "CallbackCommand":"Mic.CallbackAfterSeatInfoChanged",    "RoomId":"rid-123",    "SeatList":[        {            // Seat Number            "Index": 1,                 // If the current microphone position is occupied, the corresponding user's ID will be returned. Otherwise, this field will not be set            "Member_Account": 144115233775727695,              // false: Mic access allowed true: Mic access prohibited             "IsTakenDisabled": false,             // false: Pushing video stream allowed true: Pushing video stream prohibited              "IsVideoDisabled": false,              // false: Allow audio stream push true: Prohibit audio stream push             "IsAudioDisabled": false         }    ]    "EventTime":1670574414123// Millisecond level, event trigger timestamp}
+```
+
+### Request packet fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| CallbackCommand | String | Webhook command |
+| RoomId | String | Room ID |
+| SeatList | Array | Microphone Position List |
+| Index | Integer | Microphone Position Number |
+| Member_Account | String | The user ID on the microphone position. If not available, this field will not be set |
+| IsTakenDisabled | Bool | Lock Microphone Position |
+| IsVideoDisabled | Bool | Prohibit microphone video stream |
+| IsAudioDisabled | Bool | Prohibit microphone audio stream |
+
+### Response packet example
+
+A webhook response packet is sent after the app backend synchronizes the data.
+
+```
+{    "ActionStatus": "OK",    "ErrorInfo": "",    "ErrorCode": 0 // Ignore webhook result}
+```
+
+### Response Packet Field Description
+
+| Field | Type | Attribute | Description |
+| --- | --- | --- | --- |
+| ActionStatus | String | Mandatory | The result of the request process: OK indicates success; FAIL indicates failure |
+| ErrorCode | Integer | Mandatory | Error Code, here 0 means to ignore the response result |
+| ErrorInfo | String | Mandatory | Error message |
+
+## Reference
+
+- [Webhook Overview](https://www.tencentcloud.com/document/product/647/64412#)
+
+
+---
+*Source: [https://trtc.io/document/64425](https://trtc.io/document/64425)*

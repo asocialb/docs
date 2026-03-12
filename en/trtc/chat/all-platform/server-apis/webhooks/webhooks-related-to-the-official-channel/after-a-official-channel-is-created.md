@@ -1,0 +1,85 @@
+# After a Official Channel Is Created
+
+## Feature Overview
+
+This webhook event allows the app backend to view information related to the creation of official channels by users in real time, including notifying the app backend of the successful creation of an official channel, allowing for data synchronization and other operations.
+
+## Notes
+
+- To enable the webhook, you must configure the webhook URL and enable the corresponding switch for this webhook. For more information on the configuration method, see [Webhook Configuration](https://www.tencentcloud.com/document/product/1047/34520).
+- During this webhook, the Chat Server initiates an HTTP POST request to the app backend.
+- After receiving the webhook request, the app server must check whether the SDKAppID contained in the request URL is the SDKAppID of the app.
+- For additional safety-related concerns, please refer to the [Webhook Overview: Security Considerations](https://www.tencentcloud.com/document/product/1047/34354) document.
+
+## Webhook Triggering Scenarios
+
+The app administrator creates a Official Account through the REST API.
+
+## Webhook Triggering Timing
+
+After the Official Account Is Successfully Created.
+
+## API Calling Description
+
+### Sample request URL
+
+In the subsequent example, the webhook URL configured within the app is `https://www.example.com`.
+**Example:**
+
+```
+https://www.example.com?SdkAppid=$SDKAppID&CallbackCommand=$CallbackCommand&contenttype=json&ClientIP=$ClientIP&OptPlatform=$OptPlatform
+```
+
+### Request parameters
+
+| Parameter | Description |
+| --- | --- |
+| https | The request protocol is HTTPS, and the request method is POST. |
+| www.example.com | Callback URL. |
+| SdkAppid | SDKAppID assigned by the Chat console when an app is created. |
+| CallbackCommand | Fixed to: OfficialAccount.CallbackAfterCreateOfficialAccount. |
+| contenttype | Fixed value: JSON. |
+| ClientIP | Client IP, such as: 127.0.0.1. |
+| OptPlatform | Client Platform, for values please refer to [Webhook Overview: Callback Protocol](https://www.tencentcloud.com/document/product/1047/34354) for the meaning of the OptPlatform parameter. |
+
+### Sample request packets
+
+```
+ {    "CallbackCommand": "OfficialAccount.CallbackAfterCreateOfficialAccount", // Callback command    "Official_Account" : "@TOA#_test_OA_for_penn",    "Operator_Account": "107867", // Operator    "Owner_Account": "107867", // Creator    "Name": "TestOfficialAccount", // Name of the official channel    "EventTime": 1670574414123// Millisecond level, event trigger timestamp		}
+```
+
+### Request packet fields
+
+| Object | Features | Feature |
+| --- | --- | --- |
+| CallbackCommand | String | Webhook command. |
+| Operator_Account | String | UserID of the operator who initiates the create request. |
+| Official_Account | String | Official account User ID created. |
+| Owner_Account | String | The creator of the official channel, who is also the owner of the official channel. |
+| Name | String | Name of the official channel to be created. |
+| EventTime | Integer | Event trigger timestamp in milliseconds. |
+
+### Sample response
+
+Following data synchronization, the app backend dispatches a webhook response packet.
+
+```
+{    "ActionStatus": "OK",    "ErrorInfo": "",    "ErrorCode": 0 }
+```
+
+### Response fields
+
+| Field | Type | Attribute | Description |
+| --- | --- | --- | --- |
+| ActionStatus | String | Mandatory | Processed Request Result:OK: Indicates successful processingFAIL: Indicates failure |
+| ErrorCode | Integer | Mandatory | Error Code, a 0 here means to ignore the response. |
+| ErrorInfo | String | Mandatory | Error message. |
+
+## References
+
+- [Webhook Overview](https://www.tencentcloud.com/document/product/1047/34354)
+- REST API:[Create a official channel](https://www.tencentcloud.com/document/product/1047/60755)
+
+
+---
+*Source: [https://trtc.io/document/60796](https://trtc.io/document/60796)*

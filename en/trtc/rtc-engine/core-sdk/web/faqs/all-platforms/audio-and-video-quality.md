@@ -1,0 +1,124 @@
+# Audio and Video Quality
+
+## 1. Video
+
+### How do I remove the black bars in a TRTC video image?
+
+- TRTCVideoFillMode_Fill: The image fills the entire screen, and the excess parts are cropped. The image may not be displayed in whole.
+- TRTCVideoFillMode_Fit: The image is stretched as large as the long side can go, and the blank area is filled with black bars. The image is displayed in whole.
+
+### How do I fix stutter?
+
+- Check the send and receive statistics from the recipientâs perspective.
+- Check the send and receive packet loss. High packet loss suggest that the stutter may be caused by unstable network connections.
+- Check the frame rate and CPU usage. Both low frame rates and high CPU usage can cause stutter.
+
+### How do I fix low-quality, blurry and pixelated videos?
+
+- With its on-cloud QoS control policy, TRTC dynamically adjusts bitrate and resolution based on network conditions. It reduces the bitrate in case of poor network connections, which leads to decreased resolution.
+- Check whether the `VideoCall` or `Live` mode is used during room entry. Because the `VideoCall` mode is designed for calls and features low latency and smoothness, it tends to sacrifice video quality for smoothness when network connections are poor. We recommend that you use the `Live` mode for application scenarios with high requirements on video quality.
+
+### Why are the local preview and image seen by remote users horizontally reversed?
+
+### Why doesnât my orientation setting for encoded video take effect?
+
+### Upstream data transfer is normal, but why canât I pull data from CDNs and why canât remote users see an image?
+
+### What should I do if preview/playback images are rotated?
+
+  - Update the TRTC SDK to the latest version.
+  - If you use special devices, you can call the local preview rotation API `setLocalViewRotation`, remote image rotation API `setRemoteViewRotation`, and encoded image rotation API `setVideoEncoderRotation` to adjust the rotation. For detailed directions, see [Video Rotation](https://intl.cloud.tencent.com/document/product/647/35154).
+- **If you capture video data by yourself**:
+  - Update the TRTC SDK to the latest version.
+  - Check the original rotation of the video you capture.
+  - Send the video data to the TRTC SDK and check whether a rotation angle is specified for `TRTCCloudDef.TRTCVideoFrame`.
+  - If you use special devices, you can call the local preview rotation API `setLocalViewRotation`, remote image rotation API `setRemoteViewRotation`, and encoded image rotation API `setVideoEncoderRotation` to adjust the rotation. For detailed directions, see [Video Rotation](https://intl.cloud.tencent.com/document/product/647/35154).
+
+### Why are videos mirrored?
+
+### How do I publish streams in landscape mode?
+
+### What are the causes of black screen during live streaming?
+
+- Metadata issue. For example, the metadata contains only audio stream information, but there is also video in the actual data or there is only audio at the beginning but video is added later. If this is the case, we recommend you modify the metadata of the source stream.
+- There are only frames such as SEI but no image information in encoded video data. As a result, there are no images to decode, hence the black screen. This usually occurs with custom video data.
+
+### What are the causes of blurry or green screen during live streaming?
+
+- Change of metadata. Most players parse metadata only before decoding to configure decoding parameters. In case of video changes, for example, if the resolution changes, but the player doesnât update the decoding parameters, the blurry or green screen issue may occur. The best solution to this issue is keeping encoding parameters unchanged during live streaming so that the metadata does not change.
+- Compatibility issues of hardware encoders/decoders. This problem is usually found on Android devices. The hardware encoders/decoders of some Android devices are not well implemented and has poor compatibility. If this is the case, we recommend you switch to software encoders/decoders.
+- Use of different color formats for publishing and playback. For example, if NV12 is used for publishing and I420 is used for playback, the issue of blurry or green screen may occur during decoding. To solve this, make sure the same color format is used for publishing and playback.
+
+## 2. Audio
+
+### What should I do if the audio volume is low when I use TXVodPlayer to play videos during a TRTC call?
+
+Call the `setSystemVolumeTyp` API to set the system volume type used during the call to `TRTCSystemVolumeTypeMedia` (media volume mode).
+
+### How do I select the media or call volume type?
+
+- TRTCAudioVolumeTypeAuto (default): The call volume type is used when the mic is on and the media volume type is used when the mic is off.
+- TRTCAudioVolumeTypeVOIP: The call volume type is always used.
+- TRTCAudioVolumeTypeMedia: The media volume type is always used.
+
+### What should I do if the audio volume is low?
+
+  - Check whether `volume` is set to lower than 50 in the [setCurrentDeviceVolume](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__ITXDeviceManager__csharp.html#ae07615c5d80ac1f7f32a07c41654a5b0) API for Windows and macOS or the [setAudioCaptureVolume](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__TRTCCloud__cplusplus.html#a8677a812326511ef92f963bbe049d42e) API for all platforms. If so, set it to a larger value.
+  - Check whether automatic gain control (AGC) is enabled.
+  - Check whether the use of Bluetooth earphones caused the problem.
+- If **the volume is low for only some users**, then it is a downstream issue.
+  - Check whether `volume` is set to lower than 50 in the [setAudioPlayoutVolume](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__TRTCCloud__cplusplus.html#a338984f5503d59ae06d67f55bd8f0766) or [setCurrentDeviceVolume](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__TXDeviceManager__cplusplus.html#ae06c4a3c51e1a6e9db48219f996c0177) API. If so, set it to a larger value.
+  - On mobile phones, check whether the `setAudioRoute` API was called to switch to the receiver for playback.
+
+### What should I do if audio stutters?
+
+- In **Device Status**, if the CPU usage of the receiver and sender exceeds 90%, close other processes running in the background.
+- If there are marked upstream and downstream packet loss and major fluctuations in RTT, it indicates poor network conditions. Change to a different network.
+
+### Why do I hear echo?
+
+The echo issue is common if the call participants are close to each other. Please ensure a certain distance between call participants when testing. Also, check whether you have unintentionally disabled acoustic echo cancellation (AEC).
+
+### What should I do if audio is of low quality and the volume keeps changing?
+
+This problem occurs if you use an external sound card and enable in-ear monitoring at the same time. This is because sound cards are often built in with in-ear monitoring. Please disable in-ear monitoring when you use an external sound card.
+
+### What should I do if there is echo or noise during a call or the volume of a call is small?
+
+- `echoCancellation`: echo cancellation
+- `noiseSuppression`: noise suppression
+- `autoGainControl`: automatic gain control
+
+If you use the [TRTC.createStream](https://web.sdk.qcloud.com/trtc/webrtc/doc/zh-cn/TRTC.html#createStream) API for capturing, you donât need to set the 3A parameters manually. The TRTC SDK enables 3A by default.
+
+## 3. Others
+
+### How do I monitor network status and display signal strength in TRTC?
+
+You can use `onNetworkQuality()` to monitor the current upstream and downstream network quality. To display signal strength, on Android, for example, refer to [TRTC-API-Example](https://github.com/LiteAVSDK/TRTC_Android/tree/main/TRTC-API-Example/Advanced/SpeedTest).
+
+### Why is my camera or mic occupied?
+
+When the `exitRoom()` API is called, logic such as the release of audio/video devices and codecs will be executed. Releasing devices is an async operation. After the release, the SDK will use the `onExitRoom()` callback in `TRTCCloudListener` to notify the upper layer. Please wait until you receive the `onExitRoom()` callback before you call `enterRoom()` again or switch to another audio/video SDK.
+
+### How do I know whether the camera is enabled successfully?
+
+If the `onCameraDidReady` callback is received, the camera is ready.
+
+### How do I know whether the mic is enabled successfully?
+
+If the `onMicDidReady` callback is received, the mic is ready.
+
+### What should I do if the camera fails to be turned on?
+
+- The TRTC SDK supports external cameras, which are required if you use TVs or set-top boxes. Check whether the external camera is properly connected to your device.
+
+### What technical metrics does TRTC use?
+
+> **notice**The following applies to iOS, macOS, Android, and Windows.
+
+The TRTC SDK offers the `onStatistics (TRTCStatistics statics)` callback. Every 2 seconds, the callback returns statistics on technical metrics including `appCpu` (app CPU usage), `systemCpu` (system CPU usage), `rtt` (latency), `upLoss` (upstream packet loss), `downLoss` (downstream packet loss), and audio/video statistics of the local user and remote users. For details, see [TRTCStatistics](https://liteav.sdk.qcloud.com/doc/api/zh-cn/group__TRTCStatisic__ios.html#interfaceTRTCStatistics).
+
+
+---
+*Source: [https://trtc.io/document/43094](https://trtc.io/document/43094)*

@@ -1,0 +1,42 @@
+# Troubleshooting High Latency
+
+If you push streams via RTMP and play streams via HTTP-FLV, the latency is generally about 2-3 seconds. If you experience high latency, follow the steps below to troubleshoot the problem.
+
+### Step 1. Check your playback protocol
+
+The latency tends to be high if you use HLS (M3U8) for playback. HLS is a streaming protocol developed by Apple. It works by breaking streams into (usually 3 or 4) TS segments of 5 seconds or longer, which results in an overall latency of 10-30 seconds.
+
+Therefore, if you have to use HLS (M3U8) for playback, you can reduce latency by cutting the number of segments or the length of each segment, but this may increase stuttering. You can [submit a ticket](https://console.tencentcloud.com/workorder/category) or contact our technical support engineers for help.
+
+For specific configuration methods, please refer to [troubleshooting high latency.](https://www.tencentcloud.com/document/product/267/48376)
+
+### Step 2. Check player settings
+
+The player of the MLVB SDK supports three latency control modes: Speedy, Smooth, and Auto，For specific settings, please refer to [Latency Control](https://www.tencentcloud.com/document/product/1071/38160#latency-control):
+
+**Speedy:** this mode keeps latency at 2-3 seconds or lower in most application scenarios and is suitable for live showroom.
+**Smooth:** this mode keeps latency at 5 seconds or lower in most application scenarios and is suitable for application scenarios that require smooth playback but are not sensitive to latency, such as game streaming.
+
+### Step 3. Watermark videos on the client side
+
+Tencent Cloud allows you to watermark videos in the cloud, but this will increase latency by 1-2 seconds. Therefore, if you use the MLVB SDK, we recommend you watermark videos at the host end instead of in the cloud to reduce latency.
+
+### Step 4. Check third-party pushers
+
+We guarantee superior streaming experience via our integrated solution, but if you use third-party software to push streams, we recommend that you compare your pusher with Tencent Cloud Live Streaming Console's [Web Push](https://console.intl.cloud.tencent.com/live/tools/webpush), to see if your pusher is the cause of high latency. Many third-party pushers tend to keep increasing the buffer size to mitigate the problem of low upstream bandwidth.
+
+### Step 5. Check OBS settings
+
+If you use OBS to push streams and experience high latency, check your configuration against [Push via OBS](https://intl.cloud.tencent.com/document/product/267/31569). Make sure you set the keyframe interval to 1 or 2 seconds.
+
+### Step 6. Use LEB
+
+If none of the above solves your problem, you can try using Tencent Cloud’s LEB service, which features lower latency than LVB and offers streaming with millisecond latency. For details, please see [LEB](https://intl.cloud.tencent.com/document/product/267/41030).
+
+### Step 7. Submit a Ticket
+
+Since live streaming uses the caching mechanism of audio and video to cache data, using pure audio for pushing and pulling streams may result in higher data latency. You can [submit a ticket](https://console.tencentcloud.com/workorder/category) to resolve the latency issue through configuration.
+
+
+---
+*Source: [https://www.tencentcloud.com/document/product/267/7971](https://www.tencentcloud.com/document/product/267/7971)*

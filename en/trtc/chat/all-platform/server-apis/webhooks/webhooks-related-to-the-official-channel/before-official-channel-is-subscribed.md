@@ -1,0 +1,96 @@
+# Before Official Channel Is Subscribed
+
+## Feature Overview
+
+This webhook event allows the app backend to check user subscription requests to the Official Channel in real time, including the capability for the backend to intercept such requests.
+
+## Notes
+
+- To enable the webhook, you must configure the Webhook URL and toggle on the corresponding protocol. For more information on the configuration method, see [Webhook Configuration](https://www.tencentcloud.com/document/product/1047/34520).
+- During this webhook, the Chat backend initiates an HTTP POST request to the app backend.
+- After receiving the webhook request, the app backend must check whether the SDKAppID contained in the request URL is the `SDKAppID` of the app.
+- For additional safety-related concerns, please refer to the [Webhook Overview: Security Considerations](https://www.tencentcloud.com/document/product/1047/34354) document.
+
+## Webhook Triggering Scenarios
+
+- App users subscribe to the Official Channel through the client.
+- The app admin adds subscribers via the REST API.
+
+## Webhook Triggering Timing
+
+Before a user subscribes to the Official Channel.
+
+## API Calling Description
+
+### Sample request URL
+
+In the subsequent example, the webhook URL configured within the app is `https://www.example.com`.
+**Example:**
+
+```
+https://www.example.com?SdkAppid=$SDKAppID&CallbackCommand=$CallbackCommand&contenttype=json&ClientIP=$ClientIP&OptPlatform=$OptPlatform
+```
+
+### Request parameters
+
+| Parameter | Description |
+| --- | --- |
+| https | The request protocol is HTTPS, and the request method is POST. |
+| www.example.com | Webhook URL. |
+| SdkAppid | SDKAppID assigned by the Chat console when an app is created. |
+| CallbackCommand | Fixed to: OfficialAccount.CallbackBeforeAddSubscriber. |
+| contenttype | Fixed value: JSON. |
+| ClientIP | Client IP, such as: 127.0.0.1. |
+| OptPlatform | Client Platform, for values please refer to [Webhook Overview: Webhook Protocol](https://www.tencentcloud.com/document/product/1047/34354) for the meaning of the OptPlatform parameter. |
+
+### Sample request
+
+```
+ {    "CallbackCommand": "OfficialAccount.CallbackBeforeAddSubscriber",    "Official_Account": "@TOA#_test_for_penn",    "Operator_Account": "107867",    "SubscribeAccountList": [        {            "Subscriber_Account": "jared"        },        {            "Subscriber_Account": "leckie"        }    ],    "EventTime": 1670574414123// Millisecond level, event trigger timestamp		}
+```
+
+### Request fields
+
+| Object | Features | Feature |
+| --- | --- | --- |
+| CallbackCommand | String | Webhook command. |
+| Official_Account | String | Official Channel user ID of the subscription. |
+| Operator_Account | String | Operator UserID who initiated the request. |
+| SubscribeAccountList | Array | List of subscribers added. |
+| EventTime | Integer | Event trigger timestamp in milliseconds. |
+
+### Sample response
+
+#### Allow all users to follow the Official Channel
+
+The App backend agrees to let all users in all requests follow the Official Channel.
+
+```
+{    "ActionStatus": "OK",    "ErrorInfo": "",    "ErrorCode": 0 }
+```
+
+#### Block certain users from subscribing to the Official Channel
+
+The App backend rejects some users in the request from subscribing to the Official Channel and returns these Identifiers in RefusedMembers_Account.
+
+```
+{    "ActionStatus": "OK",    "ErrorInfo": "",    "ErrorCode": 0,    "RefusedSubscribers_Account": [ // List of users who were denied subscription        "jared"    ]}
+```
+
+### Response fields
+
+| Field | Type | Attribute | Description |
+| --- | --- | --- | --- |
+| ActionStatus | String | Mandatory | Processed Request Result:OK: Indicates successful processingFAIL: Indicates failure |
+| ErrorCode | Integer | Mandatory | Error Code, 0 allows continuing to add requests (including allowing some users to be added); 1 rejects the request. |
+| ErrorInfo | String | Mandatory | Error message. |
+| RefusedSubscribers_Account | Array | Optional | Collection of user IDs denied addition. |
+
+## References
+
+- [Webhook Overview](https://www.tencentcloud.com/document/product/1047/34354)
+- REST API:[Adding Subscribers](https://www.tencentcloud.com/document/product/1047/60760#)
+
+
+---
+*Source: [https://trtc.io/document/60799](https://trtc.io/document/60799)*

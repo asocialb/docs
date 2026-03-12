@@ -1,0 +1,249 @@
+# TUIRoomEngine Defines
+
+Introduction to Key Type Definition of TUIRoomEnigne Electron side.
+
+## Enumeration Value
+
+### TUIRole
+
+User Role, TUIRoomEngine provides three user roles, which are Host, Administrator, and Regular User.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kRoomOwner | number | Host Role |
+| kAdministrator | number | Administrator Role |
+| kGeneralUser | number | Regular User Role |
+
+### TUIVideoQuality
+
+Video Resolution
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kVideoQuality_360p | number | Low Quality, Resolution is 640 * 360 |
+| kVideoQuality_540p | number | SD, Resolution is 960 * 540 |
+| kVideoQuality_720p | number | HD, Resolution is 1280 * 720 |
+| kVideoQuality_1080p | number | Ultra HD, Resolution is 1920 * 1080 |
+
+### TUIAudioProfile
+
+Audio Resolution
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kAudioProfileSpeech | number | Voice Mode |
+| kAudioProfileDefault | number | Standard Mode (Default Mode) |
+| kAudioProfileMusic | number | Music Mode |
+
+### TUIVideoStreamType
+
+Streams Type
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kCameraStream | number | Camera Streams |
+| kScreenStream | number | Screen Sharing Streams |
+| kCameraStreamLow | number | Low Resolution Camera Streams |
+
+### TUINetworkQuality
+
+Network Status
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kQualityUnknown | number | Network Condition Unknown |
+| kQualityExcellent | number | Network Condition Excellent |
+| kQualityGood | number | Network Condition Good |
+| kQualityPoor | number | Network Condition Fair |
+| kQualityBad | number | Network Condition Poor |
+| kQualityVeryBad | number | Network Condition Very Poor |
+| kQualityDown | number | Network Connection Disconnected |
+
+### TUIRoomType
+
+Room Type
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kGroup | number | Group Type Room, suitable for conference and educational scene, the microphone position in this room is unordered and has no quantity limit |
+| kOpen | number | Open Type Room, suitable for live streaming scene, the microphone position in this room is ordered and has a quantity limit |
+
+### TUISpeechMode
+
+Speech Type
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kFreeToSpeak | number | Free Speech Mode |
+| kApplyToSpeak | number | Hand-raising Speech Mode |
+| kSpeakAfterTakingSeat | number | Speak After Sitting (Grab Microphone Position) |
+
+### TUICaptureSourceType
+
+Screen Sharing Type
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kWindow | number | Sharing Target is a specific Windows or Mac window todo (only for electron) |
+| kScreen | number | Sharing Target is the entire Windows desktop or Mac desktop |
+
+### TUIChangeReason
+
+Change Reason (Audio and Video Status Change Operation Reason: Self-initiated modification or modified by room owner/administrator)
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kChangedBySelf | number | Self-operation |
+| kChangedByAdmin | number | Room Owner or Administrator Operation |
+
+### TUIMediaDevice
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kMicrophone | number | Mic |
+| kCamera | number | Camera |
+| kScreen | number | Screen Sharing |
+
+### TUIRequestAction
+
+Room Type
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kInvalidAction | number | Invalid Operation |
+| kRequestToOpenRemoteCamera | number | Request Remote Camera On |
+| kRequestToOpenRemoteMicrophone | number | Request Remote Mic On |
+| kRequestToConnectOtherRoom | number | Request Remote Cross-room Streaming, web side temporarily unsupported |
+| kRequestToTakeSeat | number | Request Go Live |
+| kRequestRemoteUserOnSeat | number | Request Remote Go Live |
+
+### TUIRequestCallbackType
+
+Request Type
+
+| Field | Type | Description |
+| --- | --- | --- |
+| kRequestAccepted | number | Peer Accepted |
+| kRequestRejected | number | Peer Rejected |
+| kRequestCancelled | number | Request Canceled |
+| kRequestTimeout | number | Request Timeout |
+| kRequestError | number | Request Error |
+
+## Type Definition
+
+### TUILoginUserInfo
+
+Current Logged-in User Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| userId | string | Login User's ID |
+| userName | string | Login User's Name |
+| avatarUrl | string | Login User's Avatar |
+
+### TUIRoomInfo
+
+Room data, user can use roomEngine.getRoomInfo to get room data.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| roomId | string | Room Number, String Type Room Number |
+| roomType | [TUIRoomType](https://www.tencentcloud.com/document/product/647/54886#TUIRoomType) | Room Type |
+| owner | string | Host's userId |
+| name | string | Room ID |
+| createTime | string | Creation time |
+| roomMemberCount | number | Current total number of people in the room |
+| maxSeatCount | number | Maximum number of microphone positions in the room |
+| enableVideo | boolean | Allow users to join and turn on Audio |
+| enableAudio | boolean | Allow users to join and turn on Video |
+| enableMessage | boolean | Allow users to join and send messages |
+| enableSeatControl | boolean | Enable microphone position control |
+
+### TUIUserInfo
+
+User Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| userId | string | User Id |
+| userName | string | User Name |
+| avatarUrl | string | User Avatar |
+| userRole | [TUIRole](https://www.tencentcloud.com/document/product/647/54886#TUIRole) | User Role |
+| hasAudioStream | boolean | Whether there are Audio streams |
+| hasVideoStream | boolean | Whether there are Video streams |
+| hasScreenStream | boolean | Whether there is Screen Sharing stream |
+
+### TUIMessage
+
+Message Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| messageId | string | Message Id |
+| message | string | Message |
+| timestamp | number | Timestamp information, accurate to seconds |
+| userId | string | User Id |
+| userName | string | User name |
+| avatarUrl | string | User Avatar |
+
+### TUIRequest
+
+Request Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| requestAction | [TUIRequestAction](https://www.tencentcloud.com/document/product/647/54886#e2746642-b1ff-453c-bb41-ca4c64c75566) | Request Type |
+| timestamp | number | Request Initiation Time |
+| requestId | string | Request Id v1.0.2 and above versions requestId type is string; v1.0.0 and v1.0.1 versions requestId type is number; |
+| userId | string | Initiate Request's User Id |
+| content | string | Other Content |
+
+### TUIRequestCallback
+
+Request Callback Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| requestCallbackType | [TUIRequestCallbackType](https://www.tencentcloud.com/document/product/647/54886#a0211e22-30e2-4b3a-bc89-1cf1aa816695) | Request Callback Type, Accept/Reject/Cancel/Timeout/Error |
+| requestId | string | Request Id v1.0.2 and above versions requestId type is string; v1.0.0 and v1.0.1 versions requestId type is number; |
+| userId | string | User Id |
+| code | number | Request Response Code |
+| message | string | Request Status Supplemental Description |
+
+### TUISeatInfo
+
+Microphone Position Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| index | number | Microphone Position Number |
+| userId | string | Microphone Position Correspondence's User Id |
+| locked | boolean | Whether the current microphone position is locked |
+| videoMuted | boolean | Whether the current microphone position prohibits Video |
+| audioMuted | boolean | Whether the current microphone position prohibits Audio |
+
+### TUISeatLockParams
+
+Microphone Lock Status
+
+| Field | Type | Description |
+| --- | --- | --- |
+| lockSeat | boolean | Lock Microphone Position |
+| lockVideo | boolean | Lock Microphone Position Video |
+| lockAudio | boolean | Lock Microphone Position Audio |
+
+### TUINetwork
+
+Network Information
+
+| Field | Type | Description |
+| --- | --- | --- |
+| userId | string | User ID |
+| quality | TUINetworkQuality | Network Quality |
+| upLoss | number | Upstream Packet Loss Rate, Unit (%) The smaller the value, the better, currently only local users have this information |
+| downLoss | number | Downstream Packet Loss Rate, Unit (%) The smaller the value, the better, currently only local users have this information |
+| delay | number | Network Latency, Unit ms, currently only local users have this information |
+
+
+---
+*Source: [https://trtc.io/document/54886](https://trtc.io/document/54886)*

@@ -1,0 +1,88 @@
+# Callback After Sending an Official Channel Message
+
+## Feature Overview
+
+The app backend can use this webhook to check the broadcast messages of the official channel in real time, including notifications that the app backend has successfully sent a official channel message, allowing the app to perform the necessary data synchronization.
+
+## Notes
+
+- To enable the webhook, you must configure the Webhook URL and enable the corresponding switch for this webhook. For more information on the configuration method, see [Webhook Configuration](https://www.tencentcloud.com/document/product/1047/34520).
+- During this webhook event, the Chat backend initiates an HTTP POST request to the app backend.
+- After receiving the webhook request, the app backend must check whether the SDKAppID contained in the request URL is the `SDKAppID` of the app.
+- For more security considerations, please refer to the [Webhook Overview: Security Considerations](https://www.tencentcloud.com/document/product/1047/34354) document.
+
+## Webhook Triggering Scenarios
+
+- An app user sends a Official Account Message via the client.
+- The app administrator sends a Official Account Message via RESTful APIs.
+
+## Webhook Triggering Timing
+
+The webhook is triggered after the Chat backend delivers the official channel message to subscribers.
+
+## API Calling Description
+
+### Sample request URL
+
+In the subsequent example, the webhook URL configured within the app is `https://www.example.com`.
+**Example:**
+
+```
+https://www.example.com?SdkAppid=$SDKAppID&CallbackCommand=$CallbackCommand&contenttype=json&ClientIP=$ClientIP&OptPlatform=$OptPlatform
+```
+
+### Request parameters
+
+| Parameter | Description |
+| --- | --- |
+| https | The request protocol is HTTPS, and the request method is POST. |
+| www.example.com | Webhook URL. |
+| SdkAppid | SDKAppID assigned by the Chat console when an app is created. |
+| CallbackCommand | Set to OfficialAccount.CallbackAfterSendMsg. |
+| contenttype | Fixed value: JSON. |
+| ClientIP | Client IP, such as: 127.0.0.1. |
+| OptPlatform | Client Platform, for values please refer to [Webhook Overview: Webhook Protocol](https://www.tencentcloud.com/document/product/1047/34354) for the meaning of the OptPlatform parameter. |
+
+### Sample request
+
+```
+{    "CallbackCommand": "OfficialAccount.CallbackAfterSendMsg", // Webhook command    "Official_Account": "@TOA#_2J4SZEAEL", // Official account ID    "MsgKey": "71_1_1698741698", // Unique identifier of the message, can be used to revoke Official Account messages through the REST API    "MsgTime": 1490686222, // Time of the message    "OnlineOnlyFlag": 1, // The value is `1` if it is an online message and `0` if it's not    "MsgBody": [ // Message body, refer to TIMMessage object        {            "MsgType": "TIMTextElem", // Text            "MsgContent": {                "Text": "red packet"            }        }    ],    "CloudCustomData": "your cloud custom data",    "EventTime": 1670574414123 // Millisecond level, event trigger timestamp		}
+```
+
+### Request fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| CallbackCommand | String | Webhook command. |
+| Official_Account | String | Official Account User ID. |
+| MsgKey | String | The unique identifier of this message, which can be used to [revoke Official Account messages](https://www.tencentcloud.com/document/product/1047/60811). |
+| MsgTime | Integer | Timestamp of the message, corresponding to the server time. |
+| OnlineOnlyFlag | Integer | Online message, `1` if true, otherwise `0`. |
+| MsgBody | Array | Message body, see [Message Format Description](https://www.tencentcloud.com/document/product/1047/33527) for details. |
+| CloudCustomData | String | Custom message data (stored in the cloud, will be sent to the peer, and can be retrieved even after the app is uninstalled and reinstalled). |
+| EventTime | Integer | Event trigger timestamp in milliseconds. |
+
+### Sample response
+
+Following data synchronization, the app backend dispatches a webhook response packet.
+
+```
+{    "ActionStatus": "OK",    "ErrorInfo": "",    "ErrorCode": 0 // Ignore the webhook result}
+```
+
+### Response fields
+
+| Field | Type | Attribute | Description |
+| --- | --- | --- | --- |
+| ActionStatus | String | Mandatory | Processed Request Result:OK: Indicates successful processingFAIL: Indicates failure |
+| ErrorCode | Integer | Mandatory | Error Code, a 0 here means to ignore the response. |
+| ErrorInfo | String | Mandatory | Error message. |
+
+## References
+
+- [Webhook Overview](https://www.tencentcloud.com/document/product/1047/34354)
+- RESTful API: [Sending Messages in a Official Account](https://www.tencentcloud.com/document/product/1047/60810)
+
+
+---
+*Source: [https://trtc.io/document/60804](https://trtc.io/document/60804)*

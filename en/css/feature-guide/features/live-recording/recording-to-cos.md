@@ -1,0 +1,200 @@
+# Recording to COS
+
+Live recording is a service that stores the original live streaming files, which have undergone audio and video encapsulation (without modifying audio, video data, and corresponding timestamps, etc.) to the Cloud Object Storage (COS) platform.
+
+## Notes
+
+- To record to COS, you can [create a recording task](https://intl.cloud.tencent.com/document/product/267/37309) or [create a recording template](https://intl.cloud.tencent.com/document/product/267/34223). If you create both a recording template and a recording task for the same live stream, it will be recorded repeatedly.
+- Because there is a short delay in starting a recording task after a stream is pushed, a very short stream cannot generate a recording file. It is recommended that the duration of each push for recording be longer than 10 seconds.
+
+## Recording Storage
+
+Because live recording stores files in [COS](https://www.tencentcloud.com/products/cos?lang=en&pg=), you must first activate COS before you can use live recording. To manage the storage duration of recorded files, you can [configure a lifecycle](https://www.tencentcloud.com/document/product/436/14605?lang=en&pg=) for files stored in COS.
+
+## Supported Formats for Recording
+
+Supported formats for recorded files: FLV/HLS/MP4/AAC, with AAC being audio-only recording.
+
+**The live streaming of certain audio and video codecs is not supported for recording. The support status of different audio and video encoding methods for recording features is as follows** :
+
+| Encoding Method | Recording Format |  |  |
+| --- | --- | --- | --- |
+|  | FLV | HLS | MP4 |
+| H.264 | Supported | Supported | Supported |
+| H.265 | Extended support | Supported | Supported |
+| H.266 | Extended support | Supported | Supported |
+| AV1 | Extended support | Not supported | Supported |
+| AAC | Supported | Supported | Supported |
+| MP3 | Supported | Supported | Supported |
+| OPUS | Extended support | Supported | Supported |
+
+> **Note:**"Extended support" refers to a private extension for live streaming (both the player and the ffmpeg tool require customization), and it is different from the ffmpeg implementation method.It is recommended to adjust any encoding method to H.264 or H.265 transcoding streams if the encoding method does not support or only has extended support for the recording format.
+
+## Recording Use Cases
+
+| Use Case | Description |
+| --- | --- |
+| Multi-level recording by push domain name and stream name | You can configure whether to record a stream at the push domain name and stream name level. |
+| Recording within a specified time period | You can call APIs to set the start time and end time to record a stream within the specified time period. |
+| Real-time recording | You can call APIs to record any part of a stream in real time. |
+| Pure audio recording | You can use .aac format to record pure audio streams. |
+
+## Enabling Recording for All Live Streams Under a Specified Push Domain Name
+
+Recording parameters are managed by templates. You can create recording templates for different scenarios and flexibly manage the recording configurations by binding the templates with different push domain names and stream names.
+After activating COS, if you need to record live streams under a specific push domain, you can use the following methods:
+
+### CSS console
+
+1. Go to **Feature Configuration** > [Live Recording](https://console.tencentcloud.com/live/config/record), click on [Save to COS](https://console.intl.cloud.tencent.com/live/config/record/cos), and then add a recording configuration template.
+2. Go to [Domain Management](https://console.tencentcloud.com/live/domainmanage) to add a domain name, and click **Manage**to bind it with the recording template. For more information, see [Recording Configuration](https://intl.cloud.tencent.com/document/product/267/34224).
+
+### APIs
+
+1. Call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/30845) API to set at least one recording format, such as `FlvParam`.
+2. Call the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/30846) API to set `DomainName` (push domain name) and `TemplateId` (returned in step 1). You can leave `AppName` and `StreamName` empty to record all streams under the domain name. Upon successful processing, the settings will take effect within about 5 to 10 minutes.
+
+You can also specify a stream to record.
+
+A template can be bound to different push domain names, applications, and streams, but the same push domain name, application, or stream cannot be bound with multiple templates. If you bind the same stream with multiple templates (in rare cases), only the one with the highest priority will take effect. The priority of a template is determined as follows.
+
+| Priority | DomainName | AppName | StreamName |
+| --- | --- | --- | --- |
+| 1 | ✓ | ✓ | ✓ |
+| 2 | ✓ | × | ✓ |
+| 3 | ✓ | ✓ | × |
+| 4 | ✓ | × | × |
+
+✓ means the value of the parameter is not empty, and × means it is empty.
+
+## Disabling Recording for Specific Streams Under a Push Domain Name
+
+If you have already configured recording for a push domain but do not need to record some streams under the domain, you can take the following steps:
+
+1. Call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/30845) API without specifying any recording format.
+
+```
+https://live.tencentcloudapi.com/?Action=CreateLiveRecordTemplate&TemplateName=norecord&Description=test&<Common request parameters>
+```
+
+2. Go to the [CSS console](https://intl.cloud.tencent.com/document/product/267/34223#conect) or use the [CreateLiveRecordRule](https://intl.cloud.tencent.com/document/product/267/30846) API to bind the above recording template with specific `DomainName` and `StreamName`.
+
+> **Note:**This method is applicable to scenarios where only a few streams do not need to be recorded. If there are too many streams, you’re advised to use another push domain name to manage them, because:The allowed maximum number of recording templates or recording rules is 50.Management by push domain name is more flexible as recording templates and recording rules won't be affected even when your business changes.
+
+## Recording Within a Specified Time Period
+
+You can use APIs to specify the start time, end time and other parameters of recording for some streams. That is different from using a preset recording template with specified parameters. Usually, APIs are used when no recording template is created.
+
+### APIs
+
+Call the [CreateRecordTask](https://intl.cloud.tencent.com/document/product/267/37309) API.
+
+### Recording sample
+
+- In simple scenarios, you need to specify only `StreamName`, `DomainName`, `AppName`, and `EndTime`.
+The following sample code creates a video recording task in .flv format for 8 AM to 10 AM, August 10, 2020, with 30-minute segments, and the recording files will be retained permanently.
+**Sample input code:**
+
+```
+https://live.tencentcloudapi.com/?Action=CreateRecordTask&AppName=live&DomainName=mytest.live.push.com&StreamName=livetest&StartTime=1597017600&EndTime=1597024800&TemplateId=0&<Common request parameters>
+```
+
+- You can also specify the recording format, recording type, and storage parameters.
+The following sample code creates a recording task in .mp4 format for 8 AM to 10 AM, August 10, 2020, with 1-hour segments, and the recording files will be retained permanently.
+  1.1. Call the [CreateLiveRecordTemplate](https://intl.cloud.tencent.com/document/product/267/30845) API to create a recording template.
+**Sample input code:**
+
+```
+https://live.tencentcloudapi.com/?Action=CreateLiveRecordTemplate&TemplateName=templat&Description=test&Mp4Param.Enable=1&Mp4Param.RecordInterval=3600&<Common request parameters>
+```
+
+**Sample output code:**
+
+```
+{"Response": {  "RequestId": "839d12da-95a9-43b2-a9a0-03366d01b532",  "TemplateId": 17016}}
+```
+
+  1.2. Call the [CreateRecordTask](https://intl.cloud.tencent.com/document/product/267/37309) API to create a recording task.
+**Sample input code:**
+
+```
+https://live.tencentcloudapi.com/?Action=CreateRecordTask&StreamName=livetest&AppName=live&DomainName=mytest.live.push.com&StartTime=1597017600&EndTime=1597024800&TemplateId=17016&<Common request parameters>
+```
+
+> **Note:**For a single live stream, scheduled tasks and other types of recording tasks will not conflict with each other. In other words, the time periods of multiple scheduled tasks can overlap, and you can call APIs to create a recording task in addition to enabling a recording configuration.We recommend you create a recording task beforehand (for example, 1 hour in advance or early in the morning if your event takes place during the day), and set the task start time to slightly earlier than the event start time.
+
+## Real-Time Recording
+
+If you want to record parts of a live stream in real time to generate highlight clips, you can call APIs to enable real-time recording.
+
+```
+https://live.tencentcloudapi.com/?Action=CreateRecordTask&StreamName=test&AppName=live&DomainName=mytest.live.push.com&EndTime=1597024800&<Common request parameters>
+```
+
+Notes on real-time recording:
+
+- Make sure that the push is ongoing when you create a recording task.
+- You can call the [StopRecordTask](https://intl.cloud.tencent.com/document/product/267/37307) API to stop a task in advance.
+- This is also supported for streams outside the Chinese mainland.
+
+## Mixed Stream Recording
+
+When using the mixed stream recording feature, refer to [Live Stream Mixing](https://www.tencentcloud.com/document/product/267/37665) to get to know the relevant concepts and operations of the stream mixing service.
+
+For scenarios using CSS on-cloud stream mixing, the recording side classifies the mixed streams into two categories based on the `OutputStreamType `parameter:
+
+- If `OutputStreamType` is set to `0`, the output stream is in the input stream list, meaning that no new stream will be generated.
+- If `OutputStreamType` is set to `1`, the output stream is not in the input stream list, meaning that a new stream will be generated.
+
+Assume the pushed streams are A and B, and the mixed stream is the output stream C:
+
+- For the case where `OutputStreamType` is `0`, if stream C is stream A (with the same stream name but a mixed stream image), enabling the recording configuration will generate recording files for stream A (mixed stream image) and stream B by default. Since the same stream ID is reused, the original push of stream A will not generate a recording. For the case where `OutputStreamType` is `1`, enabling the recording configuration will generate recording files for streams A, B, and C (mixed stream image) by default.
+- If you only want to record the mixed stream, you can call the [CreateRecordTask](https://intl.cloud.tencent.com/document/product/267/37309) API. Please note that if `OutputStreamType` is set to `1`, the `StreamType` parameter should be set to `1` when this API is called.
+
+> **Note:**Mixed stream recording does not support mixing streams in and outside the Chinese mainland, as recording file errors will occur and affect normal playback.
+
+## Auto-Spliced Recording (Multi-Push Recording)
+
+To address the issue of sudden interruptions in stream pushing caused by network jitter and other factors at the streaming end, the live recording service provides an auto-splicing feature, in which multiple interrupted push streams are recorded into a single file, making it convenient for live stream playback.
+
+This feature segments audio and video data by **#EXT-X-DISCONTINUITY** tags in HLS recording. Due to stream interruptions, timestamps of audio and video data, video codec, audio codec and sample rates before and after tagging may be different. The player needs to refresh the decoder to achieve seamless playback. To use this feature, the player must support the **#EXT-X-DISCONTINUITY** tag. Currently, the tag is supported on the native player and Safari on iOS, ExoPlayer on Android, and HLS.js player on web, but not supported on VLC player.
+
+After this feature is enabled, you need to set the auto-splicing timeout period. This period is up to 30 minutes, meaning that when there are interruptions of up to 30 minutes during a recorded live stream, the recording files will be spliced into one HLS file after the last push ends.
+
+Currently, auto-spliced recording is supported only for HLS format. You can set the auto-splicing timeout period in [Live Recording](https://intl.cloud.tencent.com/document/product/267/34223).
+
+> **Note:**This mode does not support live streams with no audio data.The `ComposeMedia` API of VOD can be used to compose video files. For more information, please see [ComposeMedia](https://intl.cloud.tencent.com/document/product/266/34127).After HLS recording resumption is enabled, a callback will be triggered only when a recording file is generated, not when the stream is interrupted.
+
+## Obtaining Recording Files
+
+Recording files are automatically saved in COS after they are generated and can be found using the following methods:
+
+### In the COS console
+
+Log in to the [COS Console](https://console.intl.cloud.tencent.com/cos/bucket), and click a **bucket name** from the list to browse and search for all the files generated by the recording.
+
+![](https://staticintl.cloudcachetci.com/cms/backend-cms/efa9ff7856e011ee84f2525400494e51.png)
+
+![](https://staticintl.cloudcachetci.com/cms/backend-cms/f505f6e056e011ee84f2525400494e51.png)
+
+### Querying the COS API
+
+You can call the [List Objects](https://www.tencentcloud.com/document/product/436/30614?lang=en&pg=) API of COS to filter and query recording files.
+
+### Using the Recording Event Notification
+
+The recording callback address can be set in the console or through API calls. A notification will be sent to the callback address after the recording files are generated. After that, you can refer to the recording [Recording Event Notification](https://www.tencentcloud.com/document/product/267/38082?lang=en&pg=) to take your next step.
+
+We recommend using event notification callbacks to get recording files because they are efficient, reliable, and sent in real time.
+
+## Notes on Modifying Configuration
+
+If you modify a live recording configuration, we recommend you restart the push and verify the recording configuration. The configuration takes effect by the following rules:
+
+- By default, the configuration takes effect in 10 minutes.
+- The configuration is effective upon the start of the live push and will not be updated when recording is already in progress.
+- In scenarios where the push lasts for a long time (surveillance recording for example), you need to interrupt and restart the push for the configuration to take effect.
+
+
+---
+*Source: [https://www.tencentcloud.com/document/product/267/57044](https://www.tencentcloud.com/document/product/267/57044)*

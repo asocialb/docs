@@ -1,0 +1,44 @@
+# Gift System Configuration Guide
+
+## Gift System Overview
+
+Gift-related information consists of gift, gift categorization, gift-category relationship, and language information. The information follows:
+
+- **Gift**: includes GiftId, default name, default description, severity, virtual currency price, icon, and custom extension information. Among them, GiftId is the unique identifier of the gift in the system and the object for subsequent operations. The virtual currency price of the gift is used for the "pricing" in gift display. The correspondence between virtual currency and actual payment amount requires additional self-definition by the business.
+- **Gift categorization**: including CategoryId, default name, default description, and custom extension information. Same as GiftId, CategoryId is the unique identifier of gift categorization in the system and the object of subsequent operations.
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/36136f47cd9c11f0afdc52540044a08e.png)
+
+> **Note:**Gift classification information does not include the gift-category relationship. It only includes the gift category ID, category name, category description, and extended information. See [Add Gift Category](https://www.tencentcloud.com/document/product/647/72848) for detail
+
+- **Gift category relationship**: for description of which gifts are under a category
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/7e9f0096cd9c11f0afdc52540044a08e.png)
+
+- **Language information**: The names and descriptions of gifts and gift categories support internationalization. Language information is used to record translations of gift descriptions in different languages.
+
+> **Note:**Note: When using SDK to get the gift list, if the gift or gift category does not have a name and description in the specified language, return the default gift name and description set when creating the gift.
+
+## Gift System Configuration Process
+
+The gift function in the component requires the corresponding application (SDKAppID) to be [TUILiveKit trial version or large-scale live stream version](https://www.tencentcloud.com/document/product/647/60033#ce1a5d1e-44c2-4801-afd5-183cd9e306b0) to be usable. After activation, add gift-related information in an ordered manner. Below are the gift configuration order:
+
+1. Add gifts and gift categories
+
+First add gifts and gift categories. After addition, you will get several GiftIDs and CategoryIds. Use these Ids to continue subsequent operations. For the add method, see [Add Gift](https://www.tencentcloud.com/document/product/647/72845) and [Add Gift Category](https://www.tencentcloud.com/document/product/647/72848).
+
+2. Add gift categories and gift relationships
+
+Use the GiftId and CategoryId obtained in the previous step to set the corresponding relationship. For instructions, see [Add Gift Category Relationships](https://www.tencentcloud.com/document/product/647/72851).
+
+3. Add language info for gifts and gift categories
+
+This step is not required. If there is a need for internationalization, you can configure it. For instructions, see [Add Gift Language Information](https://www.tencentcloud.com/document/product/647/72854) and [Add Gift Category Language Infomation](https://www.tencentcloud.com/document/product/647/72857).
+
+The configuration order is as follows:
+
+![](https://cloudcache.intl.tencent-cloud.com/cms/backend-cms/7b398a497e3a11f0914f52540099c741.png)
+
+
+---
+*Source: [https://trtc.io/document/72844](https://trtc.io/document/72844)*

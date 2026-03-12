@@ -1,0 +1,80 @@
+# After a User Is Unfollowed
+
+## Feature Description
+
+The App backend can view user unfollow situations in real time through this webhook.
+
+## Notes
+
+- To enable this webhook, you must configure the webhook URL and enable the corresponding switch for this webhook. For more information on the configuration method, see [Webhook Configuration](https://www.tencentcloud.com/document/product/647/74157).
+- During this webhook, the Chat backend initiates an HTTP POST request to the app backend.
+- After receiving the webhook request, the app backend must check whether the SDKAppID contained in the request URL is the SDKAppID of the app.
+- For more security considerations, see the **Security Considerations** section in [Webhook Overview](https://www.tencentcloud.com/document/product/647/64412#security-considerations).
+
+## Webhook Trigger Scenarios
+
+- An app user sends an unfollow request through the client.
+- The app admin sends an unfollow request via REST API.
+
+## Webhook Trigger Timing
+
+Trigger upon unfollow success.
+
+## API Calling Description
+
+### Sample Request URL
+
+In the following example, the webhook URL configured for the App is `https://www.example.com`. **Example:**
+
+```
+https://www.example.com?SdkAppid=$SDKAppID&CallbackCommand=$CallbackCommand&contenttype=json&ClientIP=$ClientIP&OptPlatform=$OptPlatform
+```
+
+### Request Parameters
+
+| Parameter | Description |
+| --- | --- |
+| https | The request protocol is HTTPS, and the request method is POST. |
+| www.example.com | Webhook URL. |
+| SdkAppid | SDKAppID assigned to an application when the application is created in the Chat console. |
+| CallbackCommand | Fixed as: Follow.CallbackAfterFollowDelete. |
+| contenttype | The fixed value is: `json`. |
+| ClientIP | Client IP address. For example, 127.0.0.1. |
+| OptPlatform | Client platform. For valid values, see the description of `OptPlatform` in the **Webhook Protocols** section of [Webhook Overview](https://www.tencentcloud.com/document/product/647/64412#d8e83f91-15ef-46e9-b370-9ba6c93a6ada). |
+
+### Sample Requests
+
+```
+{  "CallbackCommand": "Follow.CallbackAfterFollowDelete",  "From_Account": "UserID_001",  "To_Account": [    "UserID_002",    "UserID_003"  ],  "EventTime": 1702018343678}
+```
+
+### Request Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| CallbackCommand | String | Webhook command. |
+| From_Account | String | UserID of the user who initiated the unfollow operation. |
+| To_Account | Array | Array of user objects who successfully unfollowed. |
+| EventTime | Integer | Event trigger timestamp, in milliseconds. |
+
+### Sample Response
+
+```
+{    "ActionStatus": "OK",    "ErrorCode": 0,    "ErrorInfo": ""}
+```
+
+### Response Fields
+
+| Field | Type | Attribute | Description |
+| --- | --- | --- | --- |
+| ActionStatus | String | Required | Request processing result:OK: processing successful.FAIL: processing failure. |
+| ErrorCode | Integer | Required | Error Code:0: processing successful.Non-zero: processing failure. |
+| ErrorInfo | String | Required | Error message. |
+
+## References
+
+[Webhook Overview](https://www.tencentcloud.com/document/product/1047/34354)
+
+
+---
+*Source: [https://trtc.io/document/74357](https://trtc.io/document/74357)*

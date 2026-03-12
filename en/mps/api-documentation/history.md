@@ -1,0 +1,2802 @@
+# History
+
+## Release 60
+
+Release time: 2026-02-25 15:13:48
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+SyncDubbing
+
+Modified APIs:
+
+CreateAigcVideoTask
+New input parameters:VideoInfos
+CreateBlindWatermarkTemplate
+New input parameters:Strength
+CreateProcessImageTemplate
+New input parameters:StdExtInfo
+ModifyBlindWatermarkTemplate
+New input parameters:Strength
+ParseLiveStreamProcessNotification
+New output parameters:AiSmartSubtitleResultInfo
+ProcessImage
+New input parameters:StdExtInfo
+ProcessLiveStream
+New input parameters:SmartSubtitlesTask
+
+New data structures:
+
+AigcVideoReferenceVideoInfo
+LiveSmartSubtitleResult
+LiveSmartSubtitlesTaskInput
+LiveStreamAiSmartSubtitleResultInfo
+VideoComprehensionResultItem
+
+Modified data structures:
+
+AiAnalysisTaskReelOutput
+New members:VideoPaths
+AiAnalysisTaskVideoComprehensionOutput
+New members:VideoComprehensionExtInfo, VideoComprehensionResultList
+BlindWatermarkTemplate
+New members:Strength
+ScheduleQualityControlTaskResult
+New members:Progress
+SubtitleTemplate
+New members:FontFileInput, BoardWidthUnit, BoardHeightUnit, OutlineWidthUnit, ShadowWidthUnit, LineSpacingUnit
+
+## Release 59
+
+Release time: 2026-02-02 11:45:53
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+RecognizeAudio
+
+Modified APIs:
+
+CreateAigcVideoTask
+New input parameters:SceneType
+CreateSmartSubtitleTemplate
+New input parameters:SelectingSubtitleAreasConfig
+ModifySmartSubtitleTemplate
+New input parameters:SelectingSubtitleAreasConfig
+
+New data structures:
+
+AiAnalysisTaskCutoutInput
+AiAnalysisTaskCutoutOutput
+AiAnalysisTaskCutoutResult
+AiAnalysisTaskReelInput
+AiAnalysisTaskReelOutput
+AiAnalysisTaskReelResult
+RecognizeAudioSentence
+
+Modified data structures:
+
+AdvancedSuperResolutionConfig
+New members:LongSide, ShortSide
+AiAnalysisResult
+New members:CutoutTask, ReelTask
+AiAnalysisTaskDubbingOutput
+New members:VoiceId
+AigcVideoExtraParam
+New members:LogoAdd, EnableAudio, OffPeak
+ImageProcessTaskOutput
+New members:Content
+SmartSubtitleTaskAsrFullTextSegmentItem
+New members:SpeakerId
+SmartSubtitleTemplateItem
+New members:SelectingSubtitleAreasConfig
+
+## Release 58
+
+Release time: 2026-01-08 15:02:34
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateAigcImageTask
+CreateAigcVideoTask
+DescribeAigcImageTask
+DescribeAigcVideoTask
+
+New data structures:
+
+AigcImageExtraParam
+AigcImageInfo
+AigcStoreCosParam
+AigcVideoExtraParam
+AigcVideoReferenceImageInfo
+
+## Release 57
+
+Release time: 2025-12-30 17:49:48
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+TextTranslation
+
+New data structures:
+
+SelectingSubtitleAreasConfig
+SmartSubtitleTaskFullTextResult
+SmartSubtitleTaskTextResultOutput
+SubtitleResult
+
+Modified data structures:
+
+RawSmartSubtitleParameter
+New members:SelectingSubtitleAreasConfig
+SmartSubtitlesResult
+New members:OcrFullTextTask
+
+## Release 56
+
+Release time: 2025-12-16 15:41:29
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+DescribeUsageData
+
+New data structures:
+
+SpecificationDataItem
+TaskStatData
+TaskStatDataItem
+
+Modified data structures:
+
+MediaAiAnalysisDescriptionItem
+New members:MindMapPath, SubtitlePath, OutputStorage
+
+## Release 55
+
+Release time: 2025-12-02 14:25:01
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateBlindWatermarkTemplate
+CreateProcessImageTemplate
+DeleteBlindWatermarkTemplate
+DeleteProcessImageTemplate
+DescribeBlindWatermarkTemplates
+DescribeProcessImageTemplates
+ExtractBlindWatermark
+ModifyBlindWatermarkTemplate
+ModifyProcessImageTemplate
+
+Modified APIs:
+
+DescribeSmartEraseTemplates
+New input parameters:EraseType
+ParseNotification
+New output parameters:ExtractBlindWatermarkTask
+ProcessImage
+New input parameters:Definition, ResourceId
+
+New data structures:
+
+BlindWatermarkInput
+BlindWatermarkTemplate
+LiveAiAnalysisDescriptionItem
+LiveAiParagraphInfo
+ProcessImageTemplate
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+New members:BlindWatermark
+ImageAreaBoxInfo
+New members:BoundingBoxUnitType
+LiveStreamAiAnalysisResultInfo
+Modified members:
+ResultSet
+LiveStreamAiAnalysisResultItem
+New members:DescriptionResult
+TranscodeTaskInput
+New members:BlindWatermark
+
+## Release 54
+
+Release time: 2025-11-13 11:59:51
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateSmartSubtitleTemplate
+New input parameters:ProcessType
+DescribeImageTaskDetail
+New output parameters:ErrCode, ErrMsg, Message
+DescribeSmartSubtitleTemplates
+New input parameters:ProcessType
+DescribeTranscodeTemplates
+New input parameters:EnhanceSceneType, EnhanceTranscodeType, EnhanceType
+ModifySmartSubtitleTemplate
+New input parameters:ProcessType
+
+New data structures:
+
+AdvancedSuperResolutionConfig
+AiAnalysisTaskVideoComprehensionInput
+AiAnalysisTaskVideoComprehensionOutput
+AiAnalysisTaskVideoComprehensionResult
+DiffusionEnhanceConfig
+FrameRateWithDenConfig
+OverrideEraseParameter
+PureSubtitleTransResult
+PureSubtitleTransResultOutput
+SubtitleTransResultItem
+UpdateSmartErasePrivacyConfig
+UpdateSmartEraseSubtitleConfig
+UpdateSmartEraseWatermarkConfig
+
+Modified data structures:
+
+AiAnalysisResult
+New members:VideoComprehensionTask
+ImageEnhanceConfig
+New members:AdvancedSuperResolutionConfig
+ImageProcessTaskResult
+New members:ErrMsg
+RawSmartSubtitleParameter
+New members:ProcessType
+SmartEraseTaskInput
+New members:OverrideParameter
+SmartSubtitleTaskAsrFullTextResultOutput
+New members:Path
+SmartSubtitleTaskTransTextResultOutput
+New members:Path, SubtitleResults
+SmartSubtitleTemplateItem
+New members:ProcessType
+SmartSubtitlesResult
+New members:PureSubtitleTransTask
+VideoEnhanceConfig
+New members:EnhanceSceneType, DiffusionEnhance, FrameRateWithDen
+
+## Release 53
+
+Release time: 2025-11-12 16:04:25
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+New members:KeyPTSList
+VideoEnhanceConfig
+Deleted members:
+SharpEnhance, FaceEnhance
+
+## Release 52
+
+Release time: 2025-10-13 10:32:30
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+DescribeTasks
+New input parameters:SubTaskHasFailed
+ParseNotification
+New output parameters:BatchTaskEvent
+
+New data structures:
+
+AiAnalysisTaskVideoRemakeInput
+AiAnalysisTaskVideoRemakeOutput
+AiAnalysisTaskVideoRemakeResult
+
+Modified data structures:
+
+AddOnSubtitle
+New members:OutputFormat, DefaultTrack
+AiAnalysisResult
+New members:VideoRemakeTask
+
+## Release 51
+
+Release time: 2025-09-29 11:47:20
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateSmartEraseTemplate
+DeleteSmartEraseTemplate
+DescribeSmartEraseTemplates
+ModifySmartEraseTemplate
+
+New data structures:
+
+SmartEraseTemplateItem
+
+## Release 50
+
+Release time: 2025-09-24 14:57:53
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+ProcessImage
+New input parameters:OutputPath
+
+## Release 49
+
+Release time: 2025-09-19 15:38:37
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+DescribeTaskDetail
+New output parameters:ExtractBlindWatermarkTask
+ProcessMedia
+New input parameters:SmartEraseTask
+
+New data structures:
+
+AiAnalysisTaskDubbingInput
+AiAnalysisTaskDubbingOutput
+AiAnalysisTaskDubbingResult
+EraseArea
+EraseTimeArea
+ExtractBlindWatermarkTask
+ExtractBlindWatermarkTaskConfig
+RawSmartEraseParameter
+SmartErasePrivacyConfig
+SmartEraseSubtitleConfig
+SmartEraseTaskInput
+SmartEraseTaskResult
+SmartEraseWatermarkConfig
+VODInputInfo
+VODOutputStorage
+
+Modified data structures:
+
+ActivityPara
+New members:SmartEraseTask
+ActivityResItem
+New members:SmartEraseTask
+AiAnalysisResult
+New members:DubbingTask
+AiAnalysisTaskDelLogoOutput
+New members:VoiceClonedVideo, VoiceClonedMarkFile
+MediaInputInfo
+New members:VODInputInfo
+SmartSubtitleTaskAsrFullTextResultOutput
+New members:OutputStorage
+SmartSubtitleTaskTransTextResultOutput
+New members:OutputStorage
+TaskOutputStorage
+New members:VODOutputStorage
+WorkflowTask
+New members:SmartEraseTaskResult
+
+## Release 48
+
+Release time: 2025-08-26 19:44:12
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateLiveRecordTemplate
+New input parameters:RecordType
+ModifyLiveRecordTemplate
+New input parameters:RecordType
+
+Modified data structures:
+
+HighlightSegmentItem
+New members:Title, Summary
+LiveRecordTemplate
+New members:RecordType
+LiveStreamAiAnalysisResultItem
+New members:HighlightResultSet
+MediaAiAnalysisHighlightItem
+New members:HighlightUrl, CovImgUrl
+RawTranscodeParameter
+New members:SubtitleTemplate
+SubtitleTemplate
+New members:SubtitleFileInput, OutlineWidth, OutlineColor, OutlineAlpha, ShadowWidth, ShadowColor, ShadowAlpha, LineSpacing, Alignment
+
+## Release 47
+
+Release time: 2025-08-04 17:36:22
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateQualityControlTemplate
+New input parameters:Strategy
+DescribeTasks
+New input parameters:StartTime, EndTime
+ModifyQualityControlTemplate
+New input parameters:Strategy
+
+New data structures:
+
+ExecRuleTaskData
+ExecRulesTask
+QualityControlStrategy
+RuleConditionItem
+Rules
+ScheduleExecRuleTaskResult
+SubtitlePosition
+TimeSpotCheck
+
+Modified data structures:
+
+ActivityPara
+New members:ExecRulesTask
+ActivityResItem
+New members:ExecRuleTask
+AiAnalysisTaskDelLogoOutput
+New members:SubtitlePos
+MediaAiAnalysisTagItem
+New members:SpecialInfo
+QualityControlTemplate
+New members:Strategy
+ScheduleAnalysisTaskResult
+New members:BeginProcessTime, FinishTime
+SmartSubtitlesTaskInput
+New members:OutputStorage, OutputObjectPath
+
+## Release 46
+
+Release time: 2025-07-30 16:07:32
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+New members:StdExtInfo
+ScheduleTask
+Modified members:
+ErrCode, Message
+
+## Release 45
+
+Release time: 2025-07-23 14:31:19
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+Modified members:
+SubtitleTemplate
+
+## Release 44
+
+Release time: 2025-07-22 14:47:39
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+New members:SubtitleTemplate
+
+## Release 43
+
+Release time: 2025-07-22 14:39:50
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateQualityControlTemplate
+New input parameters:RecordFormat
+ModifyQualityControlTemplate
+New input parameters:RecordFormat
+
+Modified data structures:
+
+LiveStreamAsrFullTextRecognitionResult
+New members:StartTime, EndTime, SteadyState, UserId
+LiveStreamTransTextRecognitionResult
+New members:StartTime, EndTime, SteadyState, UserId
+MediaAiAnalysisDescriptionItem
+New members:MindMapUrl
+MediaProcessTaskImageSpriteResult
+New members:BeginProcessTime, FinishTime
+ScheduleRecognitionTaskResult
+New members:BeginProcessTime, FinishTime
+SubtitleTemplate
+New members:YPos, BoardY, BoardWidth, BoardHeight, BoardColor, BoardAlpha
+
+## Release 42
+
+Release time: 2025-06-23 15:42:21
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+MediaProcessTaskSampleSnapshotResult
+New members:BeginProcessTime, FinishTime
+MediaProcessTaskSnapshotByTimeOffsetResult
+New members:BeginProcessTime, FinishTime
+
+## Release 41
+
+Release time: 2025-06-12 19:42:40
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+BatchProcessMedia
+DescribeBatchTaskDetail
+DescribeImageTaskDetail
+
+New data structures:
+
+BatchSmartSubtitlesResult
+BatchSubTaskResult
+ImageDenoiseConfig
+ImageProcessTaskOutput
+ImageProcessTaskResult
+SmartSubtitleTaskBatchOutput
+
+Modified data structures:
+
+ImageEnhanceConfig
+New members:Denoise, ImageQualityEnhance, LowLightEnhance
+RawTranscodeParameter
+New members:StdExtInfo, EnhanceConfig
+
+## Release 40
+
+Release time: 2025-05-24 19:19:43
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateLiveRecordTemplate
+New input parameters:MP4Configure
+Modified input parameters:
+HLSConfigure
+CreateTranscodeTemplate
+New input parameters:StdExtInfo
+ModifyLiveRecordTemplate
+New input parameters:MP4Configure
+
+New data structures:
+
+ImageAreaBoxInfo
+ImageEraseConfig
+ImageEraseLogoConfig
+MP4ConfigureInfo
+
+Modified data structures:
+
+ImageTaskInput
+New members:EraseConfig
+LiveRecordTemplate
+New members:MP4Configure
+QualityControlData
+New members:QualityEvaluationMeanOpinionScore
+WordResult
+New members:Trans
+
+## Release 39
+
+Release time: 2025-04-14 17:49:13
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AiAnalysisTaskHeadTailOutput
+Modified members:
+TailTimeOffset
+
+## Release 38
+
+Release time: 2025-04-02 19:39:18
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateAIAnalysisTemplate
+CreateAIRecognitionTemplate
+CreateAdaptiveDynamicStreamingTemplate
+CreateAnimatedGraphicsTemplate
+CreateAsrHotwords
+CreateContentReviewTemplate
+CreateImageSpriteTemplate
+CreateLiveRecordTemplate
+CreatePersonSample
+CreateQualityControlTemplate
+CreateSampleSnapshotTemplate
+CreateSchedule
+CreateSmartSubtitleTemplate
+CreateSnapshotByTimeOffsetTemplate
+CreateTranscodeTemplate
+CreateWatermarkTemplate
+CreateWordSamples
+CreateWorkflow
+DeleteAIAnalysisTemplate
+DeleteAIRecognitionTemplate
+DeleteAdaptiveDynamicStreamingTemplate
+DeleteAnimatedGraphicsTemplate
+DeleteAsrHotwords
+DeleteContentReviewTemplate
+DeleteImageSpriteTemplate
+DeleteLiveRecordTemplate
+DeletePersonSample
+DeleteQualityControlTemplate
+DeleteSampleSnapshotTemplate
+DeleteSchedule
+DeleteSmartSubtitleTemplate
+DeleteSnapshotByTimeOffsetTemplate
+DeleteTranscodeTemplate
+DeleteWatermarkTemplate
+DeleteWordSamples
+DeleteWorkflow
+DescribeAIAnalysisTemplates
+DescribeAIRecognitionTemplates
+DescribeAdaptiveDynamicStreamingTemplates
+DescribeAnimatedGraphicsTemplates
+DescribeAsrHotwords
+DescribeAsrHotwordsList
+DescribeContentReviewTemplates
+DescribeImageSpriteTemplates
+DescribeLiveRecordTemplates
+DescribeMediaMetaData
+DescribePersonSamples
+DescribeQualityControlTemplates
+DescribeSampleSnapshotTemplates
+DescribeSchedules
+DescribeSmartSubtitleTemplates
+DescribeSnapshotByTimeOffsetTemplates
+DescribeStreamLinkSecurityGroup
+DescribeTaskDetail
+DescribeTasks
+DescribeTranscodeTemplates
+DescribeWatermarkTemplates
+DescribeWordSamples
+DescribeWorkflows
+DisableSchedule
+DisableWorkflow
+EditMedia
+EnableSchedule
+EnableWorkflow
+ExecuteFunction
+ManageTask
+ModifyAIAnalysisTemplate
+ModifyAIRecognitionTemplate
+ModifyAdaptiveDynamicStreamingTemplate
+ModifyAnimatedGraphicsTemplate
+ModifyAsrHotwords
+ModifyContentReviewTemplate
+ModifyImageSpriteTemplate
+ModifyLiveRecordTemplate
+ModifyPersonSample
+ModifyQualityControlTemplate
+ModifySampleSnapshotTemplate
+ModifySchedule
+ModifySmartSubtitleTemplate
+ModifySnapshotByTimeOffsetTemplate
+ModifyTranscodeTemplate
+ModifyWatermarkTemplate
+ModifyWordSample
+ParseLiveStreamProcessNotification
+ParseNotification
+ProcessImage
+ProcessLiveStream
+ResetWorkflow
+
+New data structures:
+
+AIAnalysisTemplateItem
+AIRecognitionTemplateItem
+Activity
+ActivityPara
+ActivityResItem
+ActivityResult
+AdaptiveDynamicStreamingInfoItem
+AdaptiveDynamicStreamingTemplate
+AdaptiveStreamTemplate
+AiAnalysisResult
+AiAnalysisTaskClassificationInput
+AiAnalysisTaskClassificationOutput
+AiAnalysisTaskClassificationResult
+AiAnalysisTaskCoverInput
+AiAnalysisTaskCoverOutput
+AiAnalysisTaskCoverResult
+AiAnalysisTaskDelLogoInput
+AiAnalysisTaskDelLogoOutput
+AiAnalysisTaskDelLogoResult
+AiAnalysisTaskDescriptionInput
+AiAnalysisTaskDescriptionOutput
+AiAnalysisTaskDescriptionResult
+AiAnalysisTaskFrameTagInput
+AiAnalysisTaskFrameTagOutput
+AiAnalysisTaskFrameTagResult
+AiAnalysisTaskHeadTailInput
+AiAnalysisTaskHeadTailOutput
+AiAnalysisTaskHeadTailResult
+AiAnalysisTaskHighlightInput
+AiAnalysisTaskHighlightOutput
+AiAnalysisTaskHighlightResult
+AiAnalysisTaskHorizontalToVerticalInput
+AiAnalysisTaskHorizontalToVerticalOutput
+AiAnalysisTaskHorizontalToVerticalResult
+AiAnalysisTaskSegmentInput
+AiAnalysisTaskSegmentOutput
+AiAnalysisTaskSegmentResult
+AiAnalysisTaskTagInput
+AiAnalysisTaskTagOutput
+AiAnalysisTaskTagResult
+AiContentReviewResult
+AiParagraphInfo
+AiRecognitionResult
+AiRecognitionTaskAsrFullTextResult
+AiRecognitionTaskAsrFullTextResultInput
+AiRecognitionTaskAsrFullTextResultOutput
+AiRecognitionTaskAsrFullTextSegmentItem
+AiRecognitionTaskAsrWordsResult
+AiRecognitionTaskAsrWordsResultInput
+AiRecognitionTaskAsrWordsResultItem
+AiRecognitionTaskAsrWordsResultOutput
+AiRecognitionTaskAsrWordsSegmentItem
+AiRecognitionTaskFaceResult
+AiRecognitionTaskFaceResultInput
+AiRecognitionTaskFaceResultItem
+AiRecognitionTaskFaceResultOutput
+AiRecognitionTaskFaceSegmentItem
+AiRecognitionTaskObjectResult
+AiRecognitionTaskObjectResultInput
+AiRecognitionTaskObjectResultItem
+AiRecognitionTaskObjectResultOutput
+AiRecognitionTaskObjectSeqmentItem
+AiRecognitionTaskOcrFullTextResult
+AiRecognitionTaskOcrFullTextResultInput
+AiRecognitionTaskOcrFullTextResultOutput
+AiRecognitionTaskOcrFullTextSegmentItem
+AiRecognitionTaskOcrFullTextSegmentTextItem
+AiRecognitionTaskOcrWordsResult
+AiRecognitionTaskOcrWordsResultInput
+AiRecognitionTaskOcrWordsResultItem
+AiRecognitionTaskOcrWordsResultOutput
+AiRecognitionTaskOcrWordsSegmentItem
+AiRecognitionTaskTransTextResult
+AiRecognitionTaskTransTextResultInput
+AiRecognitionTaskTransTextResultOutput
+AiRecognitionTaskTransTextSegmentItem
+AiReviewPoliticalAsrTaskInput
+AiReviewPoliticalAsrTaskOutput
+AiReviewPoliticalOcrTaskInput
+AiReviewPoliticalOcrTaskOutput
+AiReviewPoliticalTaskInput
+AiReviewPoliticalTaskOutput
+AiReviewPornAsrTaskInput
+AiReviewPornAsrTaskOutput
+AiReviewPornOcrTaskInput
+AiReviewPornOcrTaskOutput
+AiReviewPornTaskInput
+AiReviewPornTaskOutput
+AiReviewProhibitedAsrTaskInput
+AiReviewProhibitedAsrTaskOutput
+AiReviewProhibitedOcrTaskInput
+AiReviewProhibitedOcrTaskOutput
+AiReviewTaskPoliticalAsrResult
+AiReviewTaskPoliticalOcrResult
+AiReviewTaskPoliticalResult
+AiReviewTaskPornAsrResult
+AiReviewTaskPornOcrResult
+AiReviewTaskPornResult
+AiReviewTaskProhibitedAsrResult
+AiReviewTaskProhibitedOcrResult
+AiReviewTaskTerrorismOcrResult
+AiReviewTaskTerrorismResult
+AiReviewTerrorismOcrTaskInput
+AiReviewTerrorismOcrTaskOutput
+AiReviewTerrorismTaskInput
+AiReviewTerrorismTaskOutput
+AiSampleFaceInfo
+AiSampleFaceOperation
+AiSampleFailFaceInfo
+AiSamplePerson
+AiSampleTagOperation
+AiSampleWord
+AiSampleWordInfo
+AnimatedGraphicsTemplate
+ArtifactRepairConfig
+AsrFullTextConfigureInfo
+AsrFullTextConfigureInfoForUpdate
+AsrHotwordsSet
+AsrHotwordsSetItem
+AsrWordsConfigureInfo
+AsrWordsConfigureInfoForUpdate
+AudioBeautifyConfig
+AudioDenoiseConfig
+AudioEnhanceConfig
+AudioSeparateConfig
+AwsS3FileUploadTrigger
+ClassificationConfigureInfo
+ClassificationConfigureInfoForUpdate
+ColorEnhanceConfig
+ComposeAudioItem
+ComposeAudioOperation
+ComposeAudioStream
+ComposeCanvas
+ComposeEmptyItem
+ComposeImageItem
+ComposeImageOperation
+ComposeMediaConfig
+ComposeMediaItem
+ComposeMediaTrack
+ComposeSourceMedia
+ComposeStyles
+ComposeSubtitleItem
+ComposeSubtitleStyle
+ComposeTargetInfo
+ComposeTrackTime
+ComposeTransitionItem
+ComposeTransitionOperation
+ComposeVideoItem
+ComposeVideoStream
+ContainerDiagnoseResultItem
+ContentReviewTemplateItem
+CosFileUploadTrigger
+CoverConfigureInfo
+CoverConfigureInfoForUpdate
+DiagnoseResult
+EditMediaFileInfo
+EditMediaOutputConfig
+EditMediaTask
+EditMediaTaskInput
+EditMediaTaskOutput
+EnhanceConfig
+FaceConfigureInfo
+FaceConfigureInfoForUpdate
+FaceEnhanceConfig
+FrameRateConfig
+FrameTagConfigureInfo
+FrameTagConfigureInfoForUpdate
+HLSConfigureInfo
+HdrConfig
+HighlightSegmentItem
+ImageEncodeConfig
+ImageEnhanceConfig
+ImageQualityEnhanceConfig
+ImageSpriteTemplate
+ImageTaskInput
+ImageWatermarkInput
+ImageWatermarkInputForUpdate
+ImageWatermarkTemplate
+LiveActivityResItem
+LiveActivityResult
+LiveRecordFile
+LiveRecordResult
+LiveRecordTaskInput
+LiveRecordTemplate
+LiveScheduleLiveRecordTaskResult
+LiveScheduleTask
+LiveStreamAiAnalysisResultInfo
+LiveStreamAiAnalysisResultItem
+LiveStreamAiQualityControlResultInfo
+LiveStreamAiRecognitionResultInfo
+LiveStreamAiRecognitionResultItem
+LiveStreamAiReviewImagePoliticalResult
+LiveStreamAiReviewImagePornResult
+LiveStreamAiReviewImageTerrorismResult
+LiveStreamAiReviewResultInfo
+LiveStreamAiReviewResultItem
+LiveStreamAiReviewVoicePornResult
+LiveStreamAsrFullTextRecognitionResult
+LiveStreamAsrWordsRecognitionResult
+LiveStreamFaceRecognitionResult
+LiveStreamObjectRecognitionResult
+LiveStreamOcrFullTextRecognitionResult
+LiveStreamOcrWordsRecognitionResult
+LiveStreamProcessErrorInfo
+LiveStreamProcessTask
+LiveStreamRecordResultInfo
+LiveStreamTagRecognitionResult
+LiveStreamTaskNotifyConfig
+LiveStreamTransTextRecognitionResult
+LowLightEnhanceConfig
+MediaAiAnalysisClassificationItem
+MediaAiAnalysisCoverItem
+MediaAiAnalysisDescriptionItem
+MediaAiAnalysisFrameTagItem
+MediaAiAnalysisFrameTagSegmentItem
+MediaAiAnalysisHighlightItem
+MediaAiAnalysisTagItem
+MediaAnimatedGraphicsItem
+MediaAudioStreamItem
+MediaContentReviewAsrTextSegmentItem
+MediaContentReviewOcrTextSegmentItem
+MediaContentReviewPoliticalSegmentItem
+MediaContentReviewSegmentItem
+MediaImageSpriteItem
+MediaMetaData
+MediaProcessTaskAdaptiveDynamicStreamingResult
+MediaProcessTaskAnimatedGraphicResult
+MediaProcessTaskImageSpriteResult
+MediaProcessTaskResult
+MediaProcessTaskSampleSnapshotResult
+MediaProcessTaskSnapshotByTimeOffsetResult
+MediaProcessTaskTranscodeResult
+MediaSampleSnapshotItem
+MediaSnapshotByTimeOffsetItem
+MediaSnapshotByTimePicInfoItem
+MediaTranscodeItem
+MediaVideoStreamItem
+OcrFullTextConfigureInfo
+OcrFullTextConfigureInfoForUpdate
+OcrWordsConfigureInfo
+OcrWordsConfigureInfoForUpdate
+PoliticalAsrReviewTemplateInfo
+PoliticalAsrReviewTemplateInfoForUpdate
+PoliticalConfigureInfo
+PoliticalConfigureInfoForUpdate
+PoliticalImgReviewTemplateInfo
+PoliticalImgReviewTemplateInfoForUpdate
+PoliticalOcrReviewTemplateInfo
+PoliticalOcrReviewTemplateInfoForUpdate
+PornAsrReviewTemplateInfo
+PornAsrReviewTemplateInfoForUpdate
+PornConfigureInfo
+PornConfigureInfoForUpdate
+PornImgReviewTemplateInfo
+PornImgReviewTemplateInfoForUpdate
+PornOcrReviewTemplateInfo
+PornOcrReviewTemplateInfoForUpdate
+ProhibitedAsrReviewTemplateInfo
+ProhibitedAsrReviewTemplateInfoForUpdate
+ProhibitedConfigureInfo
+ProhibitedConfigureInfoForUpdate
+ProhibitedOcrReviewTemplateInfo
+ProhibitedOcrReviewTemplateInfoForUpdate
+QualityControlData
+QualityControlItem
+QualityControlItemConfig
+QualityControlResult
+QualityControlTemplate
+SampleSnapshotTemplate
+ScheduleAnalysisTaskResult
+ScheduleQualityControlTaskResult
+ScheduleRecognitionTaskResult
+ScheduleReviewTaskResult
+ScheduleSmartSubtitleTaskResult
+ScheduleTask
+SchedulesInfo
+ScratchRepairConfig
+SecurityGroupInfo
+SegmentRecognitionItem
+SharpEnhanceConfig
+SmartSubtitleTaskAsrFullTextResult
+SmartSubtitleTaskAsrFullTextResultOutput
+SmartSubtitleTaskAsrFullTextSegmentItem
+SmartSubtitleTaskResultInput
+SmartSubtitleTaskTransTextResult
+SmartSubtitleTaskTransTextResultOutput
+SmartSubtitleTaskTransTextSegmentItem
+SmartSubtitleTemplateItem
+SmartSubtitlesResult
+SnapshotByTimeOffsetTemplate
+SuperResolutionConfig
+SvgWatermarkInput
+SvgWatermarkInputForUpdate
+TagConfigureInfo
+TagConfigureInfoForUpdate
+TaskSimpleInfo
+TerrorismConfigureInfo
+TerrorismConfigureInfoForUpdate
+TerrorismImgReviewTemplateInfo
+TerrorismImgReviewTemplateInfoForUpdate
+TerrorismOcrReviewTemplateInfo
+TerrorismOcrReviewTemplateInfoForUpdate
+TextWatermarkTemplateInput
+TextWatermarkTemplateInputForUpdate
+TranscodeTemplate
+TranslateConfigureInfo
+UserDefineAsrTextReviewTemplateInfo
+UserDefineAsrTextReviewTemplateInfoForUpdate
+UserDefineConfigureInfo
+UserDefineConfigureInfoForUpdate
+UserDefineFaceReviewTemplateInfo
+UserDefineFaceReviewTemplateInfoForUpdate
+UserDefineOcrTextReviewTemplateInfo
+UserDefineOcrTextReviewTemplateInfoForUpdate
+VideoDenoiseConfig
+VideoEnhanceConfig
+VolumeBalanceConfig
+WatermarkTemplate
+WordResult
+WorkflowInfo
+WorkflowTask
+WorkflowTrigger
+
+## Release 37
+
+Release time: 2025-04-02 17:20:05
+
+Release updates:
+
+Improvement to existing documentation.
+
+**Deleted APIs:**
+
+CreateAIAnalysisTemplate
+CreateAIRecognitionTemplate
+CreateAdaptiveDynamicStreamingTemplate
+CreateAnimatedGraphicsTemplate
+CreateAsrHotwords
+CreateContentReviewTemplate
+CreateImageSpriteTemplate
+CreateLiveRecordTemplate
+CreatePersonSample
+CreateQualityControlTemplate
+CreateSampleSnapshotTemplate
+CreateSchedule
+CreateSmartSubtitleTemplate
+CreateSnapshotByTimeOffsetTemplate
+CreateTranscodeTemplate
+CreateWatermarkTemplate
+CreateWordSamples
+CreateWorkflow
+DeleteAIAnalysisTemplate
+DeleteAIRecognitionTemplate
+DeleteAdaptiveDynamicStreamingTemplate
+DeleteAnimatedGraphicsTemplate
+DeleteAsrHotwords
+DeleteContentReviewTemplate
+DeleteImageSpriteTemplate
+DeleteLiveRecordTemplate
+DeletePersonSample
+DeleteQualityControlTemplate
+DeleteSampleSnapshotTemplate
+DeleteSchedule
+DeleteSmartSubtitleTemplate
+DeleteSnapshotByTimeOffsetTemplate
+DeleteTranscodeTemplate
+DeleteWatermarkTemplate
+DeleteWordSamples
+DeleteWorkflow
+DescribeAIAnalysisTemplates
+DescribeAIRecognitionTemplates
+DescribeAdaptiveDynamicStreamingTemplates
+DescribeAnimatedGraphicsTemplates
+DescribeAsrHotwords
+DescribeAsrHotwordsList
+DescribeContentReviewTemplates
+DescribeImageSpriteTemplates
+DescribeLiveRecordTemplates
+DescribeMediaMetaData
+DescribePersonSamples
+DescribeQualityControlTemplates
+DescribeSampleSnapshotTemplates
+DescribeSchedules
+DescribeSmartSubtitleTemplates
+DescribeSnapshotByTimeOffsetTemplates
+DescribeStreamLinkSecurityGroup
+DescribeTaskDetail
+DescribeTasks
+DescribeTranscodeTemplates
+DescribeWatermarkTemplates
+DescribeWordSamples
+DescribeWorkflows
+DisableSchedule
+DisableWorkflow
+EditMedia
+EnableSchedule
+EnableWorkflow
+ExecuteFunction
+ManageTask
+ModifyAIAnalysisTemplate
+ModifyAIRecognitionTemplate
+ModifyAdaptiveDynamicStreamingTemplate
+ModifyAnimatedGraphicsTemplate
+ModifyAsrHotwords
+ModifyContentReviewTemplate
+ModifyImageSpriteTemplate
+ModifyLiveRecordTemplate
+ModifyPersonSample
+ModifyQualityControlTemplate
+ModifySampleSnapshotTemplate
+ModifySchedule
+ModifySmartSubtitleTemplate
+ModifySnapshotByTimeOffsetTemplate
+ModifyTranscodeTemplate
+ModifyWatermarkTemplate
+ModifyWordSample
+ParseLiveStreamProcessNotification
+ParseNotification
+ProcessImage
+ProcessLiveStream
+ResetWorkflow
+
+**Deleted data structures:**
+
+AIAnalysisTemplateItem
+AIRecognitionTemplateItem
+Activity
+ActivityPara
+ActivityResItem
+ActivityResult
+AdaptiveDynamicStreamingInfoItem
+AdaptiveDynamicStreamingTemplate
+AdaptiveStreamTemplate
+AiAnalysisResult
+AiAnalysisTaskClassificationInput
+AiAnalysisTaskClassificationOutput
+AiAnalysisTaskClassificationResult
+AiAnalysisTaskCoverInput
+AiAnalysisTaskCoverOutput
+AiAnalysisTaskCoverResult
+AiAnalysisTaskDelLogoInput
+AiAnalysisTaskDelLogoOutput
+AiAnalysisTaskDelLogoResult
+AiAnalysisTaskDescriptionInput
+AiAnalysisTaskDescriptionOutput
+AiAnalysisTaskDescriptionResult
+AiAnalysisTaskFrameTagInput
+AiAnalysisTaskFrameTagOutput
+AiAnalysisTaskFrameTagResult
+AiAnalysisTaskHeadTailInput
+AiAnalysisTaskHeadTailOutput
+AiAnalysisTaskHeadTailResult
+AiAnalysisTaskHighlightInput
+AiAnalysisTaskHighlightOutput
+AiAnalysisTaskHighlightResult
+AiAnalysisTaskHorizontalToVerticalInput
+AiAnalysisTaskHorizontalToVerticalOutput
+AiAnalysisTaskHorizontalToVerticalResult
+AiAnalysisTaskSegmentInput
+AiAnalysisTaskSegmentOutput
+AiAnalysisTaskSegmentResult
+AiAnalysisTaskTagInput
+AiAnalysisTaskTagOutput
+AiAnalysisTaskTagResult
+AiContentReviewResult
+AiParagraphInfo
+AiRecognitionResult
+AiRecognitionTaskAsrFullTextResult
+AiRecognitionTaskAsrFullTextResultInput
+AiRecognitionTaskAsrFullTextResultOutput
+AiRecognitionTaskAsrFullTextSegmentItem
+AiRecognitionTaskAsrWordsResult
+AiRecognitionTaskAsrWordsResultInput
+AiRecognitionTaskAsrWordsResultItem
+AiRecognitionTaskAsrWordsResultOutput
+AiRecognitionTaskAsrWordsSegmentItem
+AiRecognitionTaskFaceResult
+AiRecognitionTaskFaceResultInput
+AiRecognitionTaskFaceResultItem
+AiRecognitionTaskFaceResultOutput
+AiRecognitionTaskFaceSegmentItem
+AiRecognitionTaskObjectResult
+AiRecognitionTaskObjectResultInput
+AiRecognitionTaskObjectResultItem
+AiRecognitionTaskObjectResultOutput
+AiRecognitionTaskObjectSeqmentItem
+AiRecognitionTaskOcrFullTextResult
+AiRecognitionTaskOcrFullTextResultInput
+AiRecognitionTaskOcrFullTextResultOutput
+AiRecognitionTaskOcrFullTextSegmentItem
+AiRecognitionTaskOcrFullTextSegmentTextItem
+AiRecognitionTaskOcrWordsResult
+AiRecognitionTaskOcrWordsResultInput
+AiRecognitionTaskOcrWordsResultItem
+AiRecognitionTaskOcrWordsResultOutput
+AiRecognitionTaskOcrWordsSegmentItem
+AiRecognitionTaskTransTextResult
+AiRecognitionTaskTransTextResultInput
+AiRecognitionTaskTransTextResultOutput
+AiRecognitionTaskTransTextSegmentItem
+AiReviewPoliticalAsrTaskInput
+AiReviewPoliticalAsrTaskOutput
+AiReviewPoliticalOcrTaskInput
+AiReviewPoliticalOcrTaskOutput
+AiReviewPoliticalTaskInput
+AiReviewPoliticalTaskOutput
+AiReviewPornAsrTaskInput
+AiReviewPornAsrTaskOutput
+AiReviewPornOcrTaskInput
+AiReviewPornOcrTaskOutput
+AiReviewPornTaskInput
+AiReviewPornTaskOutput
+AiReviewProhibitedAsrTaskInput
+AiReviewProhibitedAsrTaskOutput
+AiReviewProhibitedOcrTaskInput
+AiReviewProhibitedOcrTaskOutput
+AiReviewTaskPoliticalAsrResult
+AiReviewTaskPoliticalOcrResult
+AiReviewTaskPoliticalResult
+AiReviewTaskPornAsrResult
+AiReviewTaskPornOcrResult
+AiReviewTaskPornResult
+AiReviewTaskProhibitedAsrResult
+AiReviewTaskProhibitedOcrResult
+AiReviewTaskTerrorismOcrResult
+AiReviewTaskTerrorismResult
+AiReviewTerrorismOcrTaskInput
+AiReviewTerrorismOcrTaskOutput
+AiReviewTerrorismTaskInput
+AiReviewTerrorismTaskOutput
+AiSampleFaceInfo
+AiSampleFaceOperation
+AiSampleFailFaceInfo
+AiSamplePerson
+AiSampleTagOperation
+AiSampleWord
+AiSampleWordInfo
+AnimatedGraphicsTemplate
+ArtifactRepairConfig
+AsrFullTextConfigureInfo
+AsrFullTextConfigureInfoForUpdate
+AsrHotwordsSet
+AsrHotwordsSetItem
+AsrWordsConfigureInfo
+AsrWordsConfigureInfoForUpdate
+AudioBeautifyConfig
+AudioDenoiseConfig
+AudioEnhanceConfig
+AudioSeparateConfig
+AwsS3FileUploadTrigger
+ClassificationConfigureInfo
+ClassificationConfigureInfoForUpdate
+ColorEnhanceConfig
+ComposeAudioItem
+ComposeAudioOperation
+ComposeAudioStream
+ComposeCanvas
+ComposeEmptyItem
+ComposeImageItem
+ComposeImageOperation
+ComposeMediaConfig
+ComposeMediaItem
+ComposeMediaTrack
+ComposeSourceMedia
+ComposeStyles
+ComposeSubtitleItem
+ComposeSubtitleStyle
+ComposeTargetInfo
+ComposeTrackTime
+ComposeTransitionItem
+ComposeTransitionOperation
+ComposeVideoItem
+ComposeVideoStream
+ContainerDiagnoseResultItem
+ContentReviewTemplateItem
+CosFileUploadTrigger
+CoverConfigureInfo
+CoverConfigureInfoForUpdate
+DiagnoseResult
+EditMediaFileInfo
+EditMediaOutputConfig
+EditMediaTask
+EditMediaTaskInput
+EditMediaTaskOutput
+EnhanceConfig
+FaceConfigureInfo
+FaceConfigureInfoForUpdate
+FaceEnhanceConfig
+FrameRateConfig
+FrameTagConfigureInfo
+FrameTagConfigureInfoForUpdate
+HLSConfigureInfo
+HdrConfig
+HighlightSegmentItem
+ImageEncodeConfig
+ImageEnhanceConfig
+ImageQualityEnhanceConfig
+ImageSpriteTemplate
+ImageTaskInput
+ImageWatermarkInput
+ImageWatermarkInputForUpdate
+ImageWatermarkTemplate
+LiveActivityResItem
+LiveActivityResult
+LiveRecordFile
+LiveRecordResult
+LiveRecordTaskInput
+LiveRecordTemplate
+LiveScheduleLiveRecordTaskResult
+LiveScheduleTask
+LiveStreamAiAnalysisResultInfo
+LiveStreamAiAnalysisResultItem
+LiveStreamAiQualityControlResultInfo
+LiveStreamAiRecognitionResultInfo
+LiveStreamAiRecognitionResultItem
+LiveStreamAiReviewImagePoliticalResult
+LiveStreamAiReviewImagePornResult
+LiveStreamAiReviewImageTerrorismResult
+LiveStreamAiReviewResultInfo
+LiveStreamAiReviewResultItem
+LiveStreamAiReviewVoicePornResult
+LiveStreamAsrFullTextRecognitionResult
+LiveStreamAsrWordsRecognitionResult
+LiveStreamFaceRecognitionResult
+LiveStreamObjectRecognitionResult
+LiveStreamOcrFullTextRecognitionResult
+LiveStreamOcrWordsRecognitionResult
+LiveStreamProcessErrorInfo
+LiveStreamProcessTask
+LiveStreamRecordResultInfo
+LiveStreamTagRecognitionResult
+LiveStreamTaskNotifyConfig
+LiveStreamTransTextRecognitionResult
+LowLightEnhanceConfig
+MediaAiAnalysisClassificationItem
+MediaAiAnalysisCoverItem
+MediaAiAnalysisDescriptionItem
+MediaAiAnalysisFrameTagItem
+MediaAiAnalysisFrameTagSegmentItem
+MediaAiAnalysisHighlightItem
+MediaAiAnalysisTagItem
+MediaAnimatedGraphicsItem
+MediaAudioStreamItem
+MediaContentReviewAsrTextSegmentItem
+MediaContentReviewOcrTextSegmentItem
+MediaContentReviewPoliticalSegmentItem
+MediaContentReviewSegmentItem
+MediaImageSpriteItem
+MediaMetaData
+MediaProcessTaskAdaptiveDynamicStreamingResult
+MediaProcessTaskAnimatedGraphicResult
+MediaProcessTaskImageSpriteResult
+MediaProcessTaskResult
+MediaProcessTaskSampleSnapshotResult
+MediaProcessTaskSnapshotByTimeOffsetResult
+MediaProcessTaskTranscodeResult
+MediaSampleSnapshotItem
+MediaSnapshotByTimeOffsetItem
+MediaSnapshotByTimePicInfoItem
+MediaTranscodeItem
+MediaVideoStreamItem
+OcrFullTextConfigureInfo
+OcrFullTextConfigureInfoForUpdate
+OcrWordsConfigureInfo
+OcrWordsConfigureInfoForUpdate
+PoliticalAsrReviewTemplateInfo
+PoliticalAsrReviewTemplateInfoForUpdate
+PoliticalConfigureInfo
+PoliticalConfigureInfoForUpdate
+PoliticalImgReviewTemplateInfo
+PoliticalImgReviewTemplateInfoForUpdate
+PoliticalOcrReviewTemplateInfo
+PoliticalOcrReviewTemplateInfoForUpdate
+PornAsrReviewTemplateInfo
+PornAsrReviewTemplateInfoForUpdate
+PornConfigureInfo
+PornConfigureInfoForUpdate
+PornImgReviewTemplateInfo
+PornImgReviewTemplateInfoForUpdate
+PornOcrReviewTemplateInfo
+PornOcrReviewTemplateInfoForUpdate
+ProhibitedAsrReviewTemplateInfo
+ProhibitedAsrReviewTemplateInfoForUpdate
+ProhibitedConfigureInfo
+ProhibitedConfigureInfoForUpdate
+ProhibitedOcrReviewTemplateInfo
+ProhibitedOcrReviewTemplateInfoForUpdate
+QualityControlData
+QualityControlItem
+QualityControlItemConfig
+QualityControlResult
+QualityControlTemplate
+SampleSnapshotTemplate
+ScheduleAnalysisTaskResult
+ScheduleQualityControlTaskResult
+ScheduleRecognitionTaskResult
+ScheduleReviewTaskResult
+ScheduleSmartSubtitleTaskResult
+ScheduleTask
+SchedulesInfo
+ScratchRepairConfig
+SecurityGroupInfo
+SegmentRecognitionItem
+SharpEnhanceConfig
+SmartSubtitleTaskAsrFullTextResult
+SmartSubtitleTaskAsrFullTextResultOutput
+SmartSubtitleTaskAsrFullTextSegmentItem
+SmartSubtitleTaskResultInput
+SmartSubtitleTaskTransTextResult
+SmartSubtitleTaskTransTextResultOutput
+SmartSubtitleTaskTransTextSegmentItem
+SmartSubtitleTemplateItem
+SmartSubtitlesResult
+SnapshotByTimeOffsetTemplate
+SuperResolutionConfig
+SvgWatermarkInput
+SvgWatermarkInputForUpdate
+TagConfigureInfo
+TagConfigureInfoForUpdate
+TaskSimpleInfo
+TerrorismConfigureInfo
+TerrorismConfigureInfoForUpdate
+TerrorismImgReviewTemplateInfo
+TerrorismImgReviewTemplateInfoForUpdate
+TerrorismOcrReviewTemplateInfo
+TerrorismOcrReviewTemplateInfoForUpdate
+TextWatermarkTemplateInput
+TextWatermarkTemplateInputForUpdate
+TranscodeTemplate
+TranslateConfigureInfo
+UserDefineAsrTextReviewTemplateInfo
+UserDefineAsrTextReviewTemplateInfoForUpdate
+UserDefineConfigureInfo
+UserDefineConfigureInfoForUpdate
+UserDefineFaceReviewTemplateInfo
+UserDefineFaceReviewTemplateInfoForUpdate
+UserDefineOcrTextReviewTemplateInfo
+UserDefineOcrTextReviewTemplateInfoForUpdate
+VideoDenoiseConfig
+VideoEnhanceConfig
+VolumeBalanceConfig
+WatermarkTemplate
+WordResult
+WorkflowInfo
+WorkflowTask
+WorkflowTrigger
+
+## Release 36
+
+Release time: 2025-03-28 15:36:43
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateAsrHotwords
+CreateSmartSubtitleTemplate
+DeleteAsrHotwords
+DeleteSmartSubtitleTemplate
+DescribeAsrHotwords
+DescribeAsrHotwordsList
+DescribeSmartSubtitleTemplates
+ModifyAsrHotwords
+ModifySmartSubtitleTemplate
+
+Modified APIs:
+
+ProcessMedia
+New input parameters:ResourceId, SmartSubtitlesTask, SkipMateData
+
+New data structures:
+
+AsrHotWordsConfigure
+AsrHotwordsSet
+AsrHotwordsSetItem
+AudioTrackChannelInfo
+RawSmartSubtitleParameter
+ScheduleSmartSubtitleTaskResult
+SmartSubtitleTaskAsrFullTextResult
+SmartSubtitleTaskAsrFullTextResultOutput
+SmartSubtitleTaskAsrFullTextSegmentItem
+SmartSubtitleTaskResultInput
+SmartSubtitleTaskTransTextResult
+SmartSubtitleTaskTransTextResultOutput
+SmartSubtitleTaskTransTextSegmentItem
+SmartSubtitleTemplateItem
+SmartSubtitlesResult
+SmartSubtitlesTaskInput
+SpekeDrm
+TrackInfo
+
+Modified data structures:
+
+ActivityPara
+New members:SmartSubtitlesTask
+ActivityResItem
+New members:SmartSubtitlesTask
+AdaptiveStreamTemplate
+New members:AudioList
+AudioTemplateInfo
+New members:TrackChannelInfo
+DrmInfo
+New members:SpekeDrm
+HighlightSegmentItem
+New members:BeginTime, EndTime
+MediaTranscodeItem
+New members:CallBackExtInfo
+SegmentRecognitionItem
+New members:PersonId
+WorkflowTask
+New members:SmartSubtitlesTaskResult
+
+## Release 35
+
+Release time: 2025-02-19 14:54:41
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AiParagraphInfo
+New members:Title, Keywords
+MediaAiAnalysisDescriptionItem
+New members:Title, Keywords
+
+## Release 34
+
+Release time: 2025-02-05 10:32:43
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+DescribeStreamLinkSecurityGroup
+
+New data structures:
+
+SecurityGroupInfo
+
+## Release 33
+
+Release time: 2024-12-25 18:11:12
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateLiveRecordTemplate
+DeleteLiveRecordTemplate
+DescribeLiveRecordTemplates
+ModifyLiveRecordTemplate
+
+New data structures:
+
+HLSConfigureInfo
+LiveRecordTemplate
+
+## Release 32
+
+Release time: 2024-12-17 12:08:06
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+ParseLiveStreamProcessNotification
+New output parameters:Timestamp, Sign
+
+Modified data structures:
+
+AddOnSubtitle
+New members:SubtitleName
+
+## Release 31
+
+Release time: 2024-12-11 16:07:01
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+ProcessImage
+
+Modified APIs:
+
+DescribeTranscodeTemplates
+New input parameters:SceneType, CompressType
+
+New data structures:
+
+ImageEncodeConfig
+ImageEnhanceConfig
+ImageTaskInput
+WordResult
+
+Modified data structures:
+
+AiAnalysisTaskSegmentOutput
+New members:Abstract
+AiRecognitionTaskAsrFullTextSegmentItem
+New members:Wordlist
+AiRecognitionTaskInput
+New members:UserExtPara
+AiRecognitionTaskTransTextSegmentItem
+New members:Wordlist
+SegmentRecognitionItem
+New members:CovImgUrl, Keywords, BeginTime, EndTime
+TranscodeTemplate
+New members:AliasName
+VideoTemplateInfo
+New members:ScenarioBased, SceneType, CompressType
+VideoTemplateInfoForUpdate
+New members:ScenarioBased, SceneType, CompressType
+
+## Release 30
+
+Release time: 2024-11-07 11:23:14
+
+Release updates:
+
+Improvement to existing documentation.
+
+New data structures:
+
+SegmentSpecificInfo
+
+Modified data structures:
+
+AdaptiveStreamTemplate
+Modified members:
+Video
+AiRecognitionTaskAsrFullTextResultOutput
+Deprecate members:
+OutputStorage
+AiRecognitionTaskTransTextResultOutput
+Deleted members:
+OutputStorage
+TEHDConfig
+Modified members:
+MaxVideoBitrate
+TEHDConfigForUpdate
+Modified members:
+MaxVideoBitrate
+TerrorismConfigureInfo
+Modified members:
+OcrReviewInfo
+UserDefineOcrTextReviewTemplateInfoForUpdate
+Modified members:
+LabelSet
+VideoTemplateInfo
+New members:GopUnit, HlsTime, VideoProfile, VideoLevel, Bframes, Mode, Sar, NoScenecut, BitDepth, RawPts, Compress, SegmentSpecificInfo
+VideoTemplateInfoForUpdate
+New members:GopUnit, HlsTime, VideoProfile, VideoLevel, Bframes, Mode, Sar, NoScenecut, BitDepth, RawPts, Compress, SegmentSpecificInfo
+
+## Release 29
+
+Release time: 2024-09-30 14:46:08
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateQualityControlTemplate
+DeleteQualityControlTemplate
+DescribeQualityControlTemplates
+ModifyQualityControlTemplate
+
+Modified APIs:
+
+CreateAdaptiveDynamicStreamingTemplate
+New input parameters:PureAudio, SegmentType
+CreateSchedule
+New input parameters:ResourceId
+DescribeAIAnalysisTemplates
+New input parameters:Name
+DescribeAIRecognitionTemplates
+New input parameters:Name
+DescribeAdaptiveDynamicStreamingTemplates
+New input parameters:PureAudio, Name
+DescribeAnimatedGraphicsTemplates
+New input parameters:Name
+DescribeContentReviewTemplates
+New input parameters:Name
+DescribeImageSpriteTemplates
+New input parameters:Name
+DescribeSampleSnapshotTemplates
+New input parameters:Name
+DescribeSnapshotByTimeOffsetTemplates
+New input parameters:Name
+DescribeTranscodeTemplates
+New input parameters:Name
+DescribeWatermarkTemplates
+New input parameters:Name
+ModifyAdaptiveDynamicStreamingTemplate
+New input parameters:PureAudio, SegmentType
+ModifySchedule
+New input parameters:ResourceId
+ParseLiveStreamProcessNotification
+New output parameters:AiAnalysisResultInfo, AiQualityControlResultInfo, LiveRecordResultInfo
+
+New data structures:
+
+AiAnalysisTaskDelLogoInput
+AiAnalysisTaskDelLogoOutput
+AiAnalysisTaskDelLogoResult
+AiAnalysisTaskDescriptionInput
+AiAnalysisTaskDescriptionOutput
+AiAnalysisTaskDescriptionResult
+AiAnalysisTaskHeadTailInput
+AiAnalysisTaskHeadTailOutput
+AiAnalysisTaskHeadTailResult
+AiAnalysisTaskHorizontalToVerticalInput
+AiAnalysisTaskHorizontalToVerticalOutput
+AiAnalysisTaskHorizontalToVerticalResult
+AiAnalysisTaskSegmentInput
+AiAnalysisTaskSegmentOutput
+AiAnalysisTaskSegmentResult
+AiParagraphInfo
+AiRecognitionTaskObjectResult
+AiRecognitionTaskObjectResultInput
+AiRecognitionTaskObjectResultItem
+AiRecognitionTaskObjectResultOutput
+AiRecognitionTaskObjectSeqmentItem
+ContainerDiagnoseResultItem
+DiagnoseResult
+LiveStreamAiAnalysisResultInfo
+LiveStreamAiAnalysisResultItem
+LiveStreamAiQualityControlResultInfo
+LiveStreamObjectRecognitionResult
+LiveStreamRecordResultInfo
+LiveStreamTagRecognitionResult
+MediaAiAnalysisDescriptionItem
+QualityControlItemConfig
+QualityControlTemplate
+SegmentRecognitionItem
+TranslateConfigureInfo
+
+Modified data structures:
+
+AIRecognitionTemplateItem
+New members:TranslateConfigure
+ActivityPara
+New members:QualityControlTask
+ActivityResItem
+New members:QualityControlTask
+Modified members:
+SnapshotByTimeOffsetTask
+AdaptiveDynamicStreamingTaskInput
+New members:DefinitionType
+AdaptiveDynamicStreamingTemplate
+New members:PureAudio, SegmentType
+AiAnalysisResult
+New members:DeLogoTask, SegmentTask, HeadTailTask, DescriptionTask, HorizontalToVerticalTask
+AiRecognitionResult
+New members:ObjectTask
+AiRecognitionTaskAsrFullTextResult
+New members:Progress
+AiRecognitionTaskTransTextResult
+New members:Progress
+AudioTemplateInfo
+Modified members:
+Bitrate
+AudioTemplateInfoForUpdate
+Modified members:
+Bitrate
+ComposeAudioStream
+New members:Bitrate
+ComposeVideoStream
+New members:Bitrate
+HighlightSegmentItem
+New members:SegmentTags
+LiveActivityResItem
+New members:LiveQualityControlTask
+LiveStreamAiRecognitionResultItem
+New members:ObjectRecognitionResultSet, TagRecognitionResultSet
+LiveStreamTaskNotifyConfig
+New members:NotifyKey
+MediaVideoStreamItem
+New members:Codecs, FpsNumerator, FpsDenominator
+QualityControlData
+New members:ContainerDiagnoseResultSet
+SchedulesInfo
+New members:ResourceId
+TextWatermarkTemplateInput
+New members:TextContent
+TextWatermarkTemplateInputForUpdate
+New members:TextContent
+VideoTemplateInfo
+New members:SegmentType, FpsDenominator, Stereo3dType
+Modified members:
+Fps, Bitrate
+VideoTemplateInfoForUpdate
+New members:SegmentType, FpsDenominator, Stereo3dType
+Modified members:
+Fps, Bitrate
+
+## Release 28
+
+Release time: 2023-10-12 16:40:08
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+DescribeTaskDetail
+New output parameters:LiveScheduleTask
+EditMedia
+New input parameters:ComposeConfig
+ParseNotification
+New output parameters:Timestamp, Sign
+ProcessLiveStream
+New input parameters:AiAnalysisTask, AiQualityControlTask, ScheduleId
+
+New data structures:
+
+AudioBeautifyConfig
+AudioDenoiseConfig
+AudioEnhanceConfig
+AudioSeparateConfig
+ComposeAudioItem
+ComposeAudioOperation
+ComposeAudioStream
+ComposeCanvas
+ComposeEmptyItem
+ComposeImageItem
+ComposeImageOperation
+ComposeMediaConfig
+ComposeMediaItem
+ComposeMediaTrack
+ComposeSourceMedia
+ComposeStyles
+ComposeSubtitleItem
+ComposeSubtitleStyle
+ComposeTargetInfo
+ComposeTrackTime
+ComposeTransitionItem
+ComposeTransitionOperation
+ComposeVideoItem
+ComposeVideoStream
+LiveActivityResItem
+LiveActivityResult
+LiveRecordFile
+LiveRecordResult
+LiveRecordTaskInput
+LiveScheduleLiveRecordTaskResult
+LiveScheduleTask
+VolumeBalanceConfig
+
+Modified data structures:
+
+EditMediaFileInfo
+New members:Id
+EnhanceConfig
+New members:AudioEnhance
+SchedulesInfo
+New members:Type
+Modified members:
+Status
+TaskNotifyConfig
+New members:NotifyKey
+
+## Release 27
+
+Release time: 2023-09-05 17:58:35
+
+Release updates:
+
+Improvement to existing documentation.
+
+New data structures:
+
+DrmInfo
+SimpleAesDrm
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+New members:DrmInfo
+
+## Release 26
+
+Release time: 2023-08-23 18:03:26
+
+Release updates:
+
+Improvement to existing documentation.
+
+New data structures:
+
+AddOnSubtitle
+
+Modified data structures:
+
+AdaptiveDynamicStreamingTaskInput
+New members:AddOnSubtitles
+OverrideTranscodeParameter
+New members:StdExtInfo, AddOnSubtitles
+
+## Release 25
+
+Release time: 2023-04-23 16:54:15
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+DescribeSchedules
+New input parameters:TriggerType
+ProcessMedia
+New input parameters:AiQualityControlTask
+
+New data structures:
+
+AiAnalysisTaskHighlightInput
+AiAnalysisTaskHighlightOutput
+AiAnalysisTaskHighlightResult
+AiQualityControlTaskInput
+HighlightSegmentItem
+MediaAiAnalysisHighlightItem
+QualityControlData
+QualityControlItem
+QualityControlResult
+ScheduleQualityControlTaskResult
+
+Modified data structures:
+
+AiAnalysisResult
+New members:HighlightTask
+ScheduleTask
+New members:ErrCode, Message
+WorkflowTask
+New members:AiQualityControlTaskResult
+
+## Release 24
+
+Release time: 2023-04-23 14:35:29
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+OverrideTranscodeParameter
+New members:AddonAudioStream
+
+## Release 23
+
+Release time: 2023-03-13 12:10:59
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+CreateSchedule
+DeleteSchedule
+DescribeSchedules
+DisableSchedule
+EnableSchedule
+ModifySchedule
+
+New data structures:
+
+Activity
+ActivityPara
+AwsS3FileUploadTrigger
+AwsSQS
+S3InputInfo
+S3OutputStorage
+SchedulesInfo
+
+Modified data structures:
+
+MediaInputInfo
+New members:S3InputInfo
+TaskNotifyConfig
+New members:AwsSQS
+TaskOutputStorage
+New members:S3OutputStorage
+WorkflowTrigger
+New members:AwsS3FileUploadTrigger
+
+## Release 22
+
+Release time: 2023-02-15 11:30:19
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AiAnalysisTaskInput
+New members:ExtendedParameter
+
+## Release 21
+
+Release time: 2022-12-29 15:38:52
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+ProcessMedia
+New input parameters:TaskType
+
+Modified data structures:
+
+LiveStreamTaskNotifyConfig
+Modified members:
+CmqModel, CmqRegion
+TaskNotifyConfig
+Modified members:
+CmqModel, CmqRegion
+
+## Release 20
+
+Release time: 2022-11-18 14:58:38
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateImageSpriteTemplate
+New input parameters:Format
+ModifyImageSpriteTemplate
+New input parameters:Format
+
+New data structures:
+
+AiRecognitionTaskTransTextResult
+AiRecognitionTaskTransTextResultInput
+AiRecognitionTaskTransTextResultOutput
+AiRecognitionTaskTransTextSegmentItem
+LiveStreamTransTextRecognitionResult
+SubtitleTemplate
+
+Modified data structures:
+
+AiRecognitionResult
+New members:TransTextTask
+AudioTemplateInfoForUpdate
+New members:StreamSelects
+ImageSpriteTemplate
+New members:Format
+LiveStreamAiRecognitionResultItem
+New members:TransTextRecognitionResultSet
+OverrideTranscodeParameter
+New members:SubtitleTemplate
+
+## Release 19
+
+Release time: 2022-10-08 10:52:22
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+EditMediaOutputConfig
+New members:Type
+TaskSimpleInfo
+New members:SubTaskTypes
+
+## Release 18
+
+Release time: 2022-08-01 17:24:03
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+CreateTranscodeTemplate
+New input parameters:EnhanceConfig
+DescribeTaskDetail
+New output parameters:ScheduleTask
+DescribeTasks
+New output parameters:TotalCount
+DescribeTranscodeTemplates
+New input parameters:TranscodeType
+ModifyTranscodeTemplate
+New input parameters:EnhanceConfig
+ParseNotification
+New output parameters:ScheduleTaskEvent
+ProcessMedia
+New input parameters:ScheduleId
+
+New data structures:
+
+ActivityResItem
+ActivityResult
+ArtifactRepairConfig
+ColorEnhanceConfig
+EnhanceConfig
+FaceEnhanceConfig
+FrameRateConfig
+HdrConfig
+ImageQualityEnhanceConfig
+LowLightEnhanceConfig
+ScheduleAnalysisTaskResult
+ScheduleRecognitionTaskResult
+ScheduleReviewTaskResult
+ScheduleTask
+ScratchRepairConfig
+SharpEnhanceConfig
+SuperResolutionConfig
+VideoDenoiseConfig
+VideoEnhanceConfig
+
+Modified data structures:
+
+TranscodeTemplate
+New members:EnhanceConfig
+
+## Release 17
+
+Release time: 2022-06-20 10:20:43
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+AiRecognitionTaskFaceResultItem
+New members:Gender, Birthday, Profession, SchoolOfGraduation, Abstract, PlaceOfBirth, PersonType, Remark, Url
+
+## Release 16
+
+Release time: 2022-05-19 16:44:18
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+DescribeAIAnalysisTemplates
+New input parameters:Type
+DescribeAIRecognitionTemplates
+New input parameters:Type
+DescribeContentReviewTemplates
+New input parameters:Type
+
+Modified data structures:
+
+AIAnalysisTemplateItem
+New members:Type
+AIRecognitionTemplateItem
+New members:Type
+
+## Release 15
+
+Release time: 2022-05-11 16:12:35
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+ContentReviewTemplateItem
+New members:Type
+
+## Release 14
+
+Release time: 2022-05-09 11:28:21
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+VideoTemplateInfoForUpdate
+New members:ContentAdaptStream
+
+## Release 13
+
+Release time: 2021-12-03 10:13:05
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+MediaProcessTaskTranscodeResult
+New members:Progress
+
+## Release 12
+
+Release time: 2021-10-21 11:00:14
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+MediaVideoStreamItem
+New members:HdrType
+
+## Release 11
+
+Release time: 2021-10-13 15:53:24
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+LiveStreamTaskNotifyConfig
+New members:NotifyType, NotifyUrl
+
+## Release 10
+
+Release time: 2021-08-24 15:51:49
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+MediaAudioStreamItem
+New members:Channel
+MediaVideoStreamItem
+New members:ColorPrimaries, ColorSpace, ColorTransfer
+
+## Release 9
+
+Release time: 2021-08-06 14:45:15
+
+Release updates:
+
+Improvement to existing documentation.
+
+New data structures:
+
+HeadTailParameter
+
+Modified data structures:
+
+TaskNotifyConfig
+New members:NotifyType, NotifyUrl
+TranscodeTaskInput
+New members:HeadTailParameter
+
+## Release 8
+
+Release time: 2021-07-28 17:01:34
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+EditMedia
+New input parameters:OutputConfig
+
+New data structures:
+
+EditMediaOutputConfig
+
+## Release 7
+
+Release time: 2021-06-04 10:40:17
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+RawImageWatermarkInput
+New members:RepeatType
+
+## Release 6
+
+Release time: 2021-01-21 17:53:03
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+ImageWatermarkInput
+New members:RepeatType
+ImageWatermarkInputForUpdate
+New members:RepeatType
+ImageWatermarkTemplate
+New members:RepeatType
+TranscodeTaskInput
+New members:StartTimeOffset, EndTimeOffset
+
+## Release 5
+
+Release time: 2020-12-24 11:17:16
+
+Release updates:
+
+Improvement to existing documentation.
+
+New data structures:
+
+OverrideTranscodeParameter
+UrlInputInfo
+
+Modified data structures:
+
+AiAnalysisTaskClassificationResult
+New members:ErrCodeExt
+AiAnalysisTaskCoverResult
+New members:ErrCodeExt
+AiAnalysisTaskFrameTagResult
+New members:ErrCodeExt
+AiAnalysisTaskTagResult
+New members:ErrCodeExt
+AiRecognitionTaskAsrFullTextResult
+New members:ErrCodeExt
+AiRecognitionTaskAsrWordsResult
+New members:ErrCodeExt
+AiRecognitionTaskFaceResult
+New members:ErrCodeExt
+AiRecognitionTaskOcrFullTextResult
+New members:ErrCodeExt
+AiRecognitionTaskOcrWordsResult
+New members:ErrCodeExt
+AiReviewTaskPoliticalAsrResult
+New members:ErrCodeExt
+AiReviewTaskPoliticalOcrResult
+New members:ErrCodeExt
+AiReviewTaskPoliticalResult
+New members:ErrCodeExt
+AiReviewTaskPornAsrResult
+New members:ErrCodeExt
+AiReviewTaskPornOcrResult
+New members:ErrCodeExt
+AiReviewTaskPornResult
+New members:ErrCodeExt
+AiReviewTaskProhibitedAsrResult
+New members:ErrCodeExt
+AiReviewTaskProhibitedOcrResult
+New members:ErrCodeExt
+AiReviewTaskTerrorismOcrResult
+New members:ErrCodeExt
+AiReviewTaskTerrorismResult
+New members:ErrCodeExt
+MediaInputInfo
+New members:UrlInputInfo
+MediaProcessTaskAdaptiveDynamicStreamingResult
+New members:ErrCodeExt
+MediaProcessTaskAnimatedGraphicResult
+New members:ErrCodeExt
+MediaProcessTaskImageSpriteResult
+New members:ErrCodeExt
+MediaProcessTaskSampleSnapshotResult
+New members:ErrCodeExt
+MediaProcessTaskSnapshotByTimeOffsetResult
+New members:ErrCodeExt
+MediaProcessTaskTranscodeResult
+New members:ErrCodeExt
+TranscodeTaskInput
+New members:OverrideParameter
+VideoTemplateInfo
+New members:Vcrf
+VideoTemplateInfoForUpdate
+New members:Vcrf
+
+## Release 4
+
+Release time: 2020-10-16 18:33:05
+
+Release updates:
+
+Improvement to existing documentation.
+
+New APIs:
+
+ExecuteFunction
+
+## Release 3
+
+Release time: 2020-09-17 17:24:46
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified data structures:
+
+MediaAiAnalysisFrameTagItem
+New members:CategorySet
+
+## Release 2
+
+Release time: 2020-08-13 20:08:53
+
+Release updates:
+
+Improvement to existing documentation.
+
+Modified APIs:
+
+DescribeTaskDetail
+New output parameters:ExtInfo
+
+## Existing Release
+
+Release time: 2020-07-24 14:21:20
+
+Existing APIs/data structures are as follows:
+
+Improvement to existing documentation.
+
+Existing APIs:
+
+CreateAIAnalysisTemplate
+CreateAIRecognitionTemplate
+CreateAdaptiveDynamicStreamingTemplate
+CreateAnimatedGraphicsTemplate
+CreateContentReviewTemplate
+CreateImageSpriteTemplate
+CreatePersonSample
+CreateSampleSnapshotTemplate
+CreateSnapshotByTimeOffsetTemplate
+CreateTranscodeTemplate
+CreateWatermarkTemplate
+CreateWordSamples
+CreateWorkflow
+DeleteAIAnalysisTemplate
+DeleteAIRecognitionTemplate
+DeleteAdaptiveDynamicStreamingTemplate
+DeleteAnimatedGraphicsTemplate
+DeleteContentReviewTemplate
+DeleteImageSpriteTemplate
+DeletePersonSample
+DeleteSampleSnapshotTemplate
+DeleteSnapshotByTimeOffsetTemplate
+DeleteTranscodeTemplate
+DeleteWatermarkTemplate
+DeleteWordSamples
+DeleteWorkflow
+DescribeAIAnalysisTemplates
+DescribeAIRecognitionTemplates
+DescribeAdaptiveDynamicStreamingTemplates
+DescribeAnimatedGraphicsTemplates
+DescribeContentReviewTemplates
+DescribeImageSpriteTemplates
+DescribeMediaMetaData
+DescribePersonSamples
+DescribeSampleSnapshotTemplates
+DescribeSnapshotByTimeOffsetTemplates
+DescribeTaskDetail
+DescribeTasks
+DescribeTranscodeTemplates
+DescribeWatermarkTemplates
+DescribeWordSamples
+DescribeWorkflows
+DisableWorkflow
+EditMedia
+EnableWorkflow
+ManageTask
+ModifyAIAnalysisTemplate
+ModifyAIRecognitionTemplate
+ModifyAdaptiveDynamicStreamingTemplate
+ModifyAnimatedGraphicsTemplate
+ModifyContentReviewTemplate
+ModifyImageSpriteTemplate
+ModifyPersonSample
+ModifySampleSnapshotTemplate
+ModifySnapshotByTimeOffsetTemplate
+ModifyTranscodeTemplate
+ModifyWatermarkTemplate
+ModifyWordSample
+ParseLiveStreamProcessNotification
+ParseNotification
+ProcessLiveStream
+ProcessMedia
+ResetWorkflow
+
+Existing data structures:
+
+AIAnalysisTemplateItem
+AIRecognitionTemplateItem
+AdaptiveDynamicStreamingInfoItem
+AdaptiveDynamicStreamingTaskInput
+AdaptiveDynamicStreamingTemplate
+AdaptiveStreamTemplate
+AiAnalysisResult
+AiAnalysisTaskClassificationInput
+AiAnalysisTaskClassificationOutput
+AiAnalysisTaskClassificationResult
+AiAnalysisTaskCoverInput
+AiAnalysisTaskCoverOutput
+AiAnalysisTaskCoverResult
+AiAnalysisTaskFrameTagInput
+AiAnalysisTaskFrameTagOutput
+AiAnalysisTaskFrameTagResult
+AiAnalysisTaskInput
+AiAnalysisTaskTagInput
+AiAnalysisTaskTagOutput
+AiAnalysisTaskTagResult
+AiContentReviewResult
+AiContentReviewTaskInput
+AiRecognitionResult
+AiRecognitionTaskAsrFullTextResult
+AiRecognitionTaskAsrFullTextResultInput
+AiRecognitionTaskAsrFullTextResultOutput
+AiRecognitionTaskAsrFullTextSegmentItem
+AiRecognitionTaskAsrWordsResult
+AiRecognitionTaskAsrWordsResultInput
+AiRecognitionTaskAsrWordsResultItem
+AiRecognitionTaskAsrWordsResultOutput
+AiRecognitionTaskAsrWordsSegmentItem
+AiRecognitionTaskFaceResult
+AiRecognitionTaskFaceResultInput
+AiRecognitionTaskFaceResultItem
+AiRecognitionTaskFaceResultOutput
+AiRecognitionTaskFaceSegmentItem
+AiRecognitionTaskInput
+AiRecognitionTaskOcrFullTextResult
+AiRecognitionTaskOcrFullTextResultInput
+AiRecognitionTaskOcrFullTextResultOutput
+AiRecognitionTaskOcrFullTextSegmentItem
+AiRecognitionTaskOcrFullTextSegmentTextItem
+AiRecognitionTaskOcrWordsResult
+AiRecognitionTaskOcrWordsResultInput
+AiRecognitionTaskOcrWordsResultItem
+AiRecognitionTaskOcrWordsResultOutput
+AiRecognitionTaskOcrWordsSegmentItem
+AiReviewPoliticalAsrTaskInput
+AiReviewPoliticalAsrTaskOutput
+AiReviewPoliticalOcrTaskInput
+AiReviewPoliticalOcrTaskOutput
+AiReviewPoliticalTaskInput
+AiReviewPoliticalTaskOutput
+AiReviewPornAsrTaskInput
+AiReviewPornAsrTaskOutput
+AiReviewPornOcrTaskInput
+AiReviewPornOcrTaskOutput
+AiReviewPornTaskInput
+AiReviewPornTaskOutput
+AiReviewProhibitedAsrTaskInput
+AiReviewProhibitedAsrTaskOutput
+AiReviewProhibitedOcrTaskInput
+AiReviewProhibitedOcrTaskOutput
+AiReviewTaskPoliticalAsrResult
+AiReviewTaskPoliticalOcrResult
+AiReviewTaskPoliticalResult
+AiReviewTaskPornAsrResult
+AiReviewTaskPornOcrResult
+AiReviewTaskPornResult
+AiReviewTaskProhibitedAsrResult
+AiReviewTaskProhibitedOcrResult
+AiReviewTaskTerrorismOcrResult
+AiReviewTaskTerrorismResult
+AiReviewTerrorismOcrTaskInput
+AiReviewTerrorismOcrTaskOutput
+AiReviewTerrorismTaskInput
+AiReviewTerrorismTaskOutput
+AiSampleFaceInfo
+AiSampleFaceOperation
+AiSampleFailFaceInfo
+AiSamplePerson
+AiSampleTagOperation
+AiSampleWord
+AiSampleWordInfo
+AnimatedGraphicTaskInput
+AnimatedGraphicsTemplate
+AsrFullTextConfigureInfo
+AsrFullTextConfigureInfoForUpdate
+AsrWordsConfigureInfo
+AsrWordsConfigureInfoForUpdate
+AudioTemplateInfo
+AudioTemplateInfoForUpdate
+ClassificationConfigureInfo
+ClassificationConfigureInfoForUpdate
+ContentReviewTemplateItem
+CosFileUploadTrigger
+CosInputInfo
+CosOutputStorage
+CoverConfigureInfo
+CoverConfigureInfoForUpdate
+EditMediaFileInfo
+EditMediaTask
+EditMediaTaskInput
+EditMediaTaskOutput
+FaceConfigureInfo
+FaceConfigureInfoForUpdate
+FrameTagConfigureInfo
+FrameTagConfigureInfoForUpdate
+ImageSpriteTaskInput
+ImageSpriteTemplate
+ImageWatermarkInput
+ImageWatermarkInputForUpdate
+ImageWatermarkTemplate
+LiveStreamAiRecognitionResultInfo
+LiveStreamAiRecognitionResultItem
+LiveStreamAiReviewImagePoliticalResult
+LiveStreamAiReviewImagePornResult
+LiveStreamAiReviewImageTerrorismResult
+LiveStreamAiReviewResultInfo
+LiveStreamAiReviewResultItem
+LiveStreamAiReviewVoicePornResult
+LiveStreamAsrFullTextRecognitionResult
+LiveStreamAsrWordsRecognitionResult
+LiveStreamFaceRecognitionResult
+LiveStreamOcrFullTextRecognitionResult
+LiveStreamOcrWordsRecognitionResult
+LiveStreamProcessErrorInfo
+LiveStreamProcessTask
+LiveStreamTaskNotifyConfig
+MediaAiAnalysisClassificationItem
+MediaAiAnalysisCoverItem
+MediaAiAnalysisFrameTagItem
+MediaAiAnalysisFrameTagSegmentItem
+MediaAiAnalysisTagItem
+MediaAnimatedGraphicsItem
+MediaAudioStreamItem
+MediaContentReviewAsrTextSegmentItem
+MediaContentReviewOcrTextSegmentItem
+MediaContentReviewPoliticalSegmentItem
+MediaContentReviewSegmentItem
+MediaImageSpriteItem
+MediaInputInfo
+MediaMetaData
+MediaProcessTaskAdaptiveDynamicStreamingResult
+MediaProcessTaskAnimatedGraphicResult
+MediaProcessTaskImageSpriteResult
+MediaProcessTaskInput
+MediaProcessTaskResult
+MediaProcessTaskSampleSnapshotResult
+MediaProcessTaskSnapshotByTimeOffsetResult
+MediaProcessTaskTranscodeResult
+MediaSampleSnapshotItem
+MediaSnapshotByTimeOffsetItem
+MediaSnapshotByTimePicInfoItem
+MediaTranscodeItem
+MediaVideoStreamItem
+MosaicInput
+NumberFormat
+OcrFullTextConfigureInfo
+OcrFullTextConfigureInfoForUpdate
+OcrWordsConfigureInfo
+OcrWordsConfigureInfoForUpdate
+PoliticalAsrReviewTemplateInfo
+PoliticalAsrReviewTemplateInfoForUpdate
+PoliticalConfigureInfo
+PoliticalConfigureInfoForUpdate
+PoliticalImgReviewTemplateInfo
+PoliticalImgReviewTemplateInfoForUpdate
+PoliticalOcrReviewTemplateInfo
+PoliticalOcrReviewTemplateInfoForUpdate
+PornAsrReviewTemplateInfo
+PornAsrReviewTemplateInfoForUpdate
+PornConfigureInfo
+PornConfigureInfoForUpdate
+PornImgReviewTemplateInfo
+PornImgReviewTemplateInfoForUpdate
+PornOcrReviewTemplateInfo
+PornOcrReviewTemplateInfoForUpdate
+ProhibitedAsrReviewTemplateInfo
+ProhibitedAsrReviewTemplateInfoForUpdate
+ProhibitedConfigureInfo
+ProhibitedConfigureInfoForUpdate
+ProhibitedOcrReviewTemplateInfo
+ProhibitedOcrReviewTemplateInfoForUpdate
+RawImageWatermarkInput
+RawTranscodeParameter
+RawWatermarkParameter
+SampleSnapshotTaskInput
+SampleSnapshotTemplate
+SnapshotByTimeOffsetTaskInput
+SnapshotByTimeOffsetTemplate
+SvgWatermarkInput
+SvgWatermarkInputForUpdate
+TEHDConfig
+TEHDConfigForUpdate
+TagConfigureInfo
+TagConfigureInfoForUpdate
+TaskNotifyConfig
+TaskOutputStorage
+TaskSimpleInfo
+TerrorismConfigureInfo
+TerrorismConfigureInfoForUpdate
+TerrorismImgReviewTemplateInfo
+TerrorismImgReviewTemplateInfoForUpdate
+TerrorismOcrReviewTemplateInfo
+TerrorismOcrReviewTemplateInfoForUpdate
+TextWatermarkTemplateInput
+TextWatermarkTemplateInputForUpdate
+TranscodeTaskInput
+TranscodeTemplate
+UserDefineAsrTextReviewTemplateInfo
+UserDefineAsrTextReviewTemplateInfoForUpdate
+UserDefineConfigureInfo
+UserDefineConfigureInfoForUpdate
+UserDefineFaceReviewTemplateInfo
+UserDefineFaceReviewTemplateInfoForUpdate
+UserDefineOcrTextReviewTemplateInfo
+UserDefineOcrTextReviewTemplateInfoForUpdate
+VideoTemplateInfo
+VideoTemplateInfoForUpdate
+WatermarkInput
+WatermarkTemplate
+WorkflowInfo
+WorkflowTask
+WorkflowTrigger
+
+
+---
+*Source: [https://www.tencentcloud.com/document/product/1041/38311](https://www.tencentcloud.com/document/product/1041/38311)*

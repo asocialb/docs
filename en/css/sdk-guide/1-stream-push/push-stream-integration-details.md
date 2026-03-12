@@ -1,0 +1,35 @@
+# Push Stream Integration Details
+
+This document describes how to integrate the SDK or plugin into your program to implement the CSS stream push feature.
+
+## Prerequisites
+
+- You have activated the CSS service.
+- Select **Domain Management**, click **Add Domain**, and add a push domain name as instructed in [Adding Your Own Domain](https://www.tencentcloud.com/document/product/267/35970).
+- In the CSS console, generate a push address in **CSS Toolkit** > **Address Generator** as instructed in [Address Generator](https://www.tencentcloud.com/document/product/267/31084). Then, implement live push in your own business based on your business scenarios as follows:
+
+## Integration into the native application
+
+Download and integrate the MLVB SDK as instructed in the [iOS](https://www.tencentcloud.com/document/product/1071/38157) and [Android](https://www.tencentcloud.com/document/product/1071/38158) integration guides.
+
+> **Note** To enable RTMP stream push, you need to create the `TXLivePusher` object and set `V2TXLiveMode` to `_RTMP` when initializing the `V2TXLivePusher` component. Below is the configuration for iOS and Android:iOSV2TXLivePusher *pusher = [[V2TXLivePusher alloc] initWithLiveMode:V2TXLiveMode_RTMP];AndroidV2TXLivePusher mLivePusher = new V2TXLivePusherImpl(this, V2TXLiveDef.V2TXLiveMode.TXLiveMode_RTMP);
+
+## Integration on the web
+
+Integration on the web currently supports only the WebRTC protocol for stream push. You can integrate the SDK as instructed in [WebRTC](https://www.tencentcloud.com/document/product/267/41620).
+
+> **Note：**You can also directly perform web page live streaming in the [Web Push](https://console.tencentcloud.com/live/tools/webpush) section of the CSS Console.
+
+## Integration on PC
+
+For PC (Windows/macOS), you can directly use [OBS](https://obsproject.com/download) for stream push. It is a free open-source video shooting and streaming program that supports operating systems such as Windows, macOS, and Linux.
+
+If the stream push protocol is WebRTC, you need to configure the OBS plugin provided by Tencent Cloud as instructed in [OBS WebRTC live streaming](/document/product/267/57042).
+
+## More
+
+- Using the MLVB SDK will incur fees. For billing details, see [Billing Overview](https://www.tencentcloud.com/document/product/1071/55389?lang=en&pg=).
+
+
+---
+*Source: [https://www.tencentcloud.com/document/product/267/58160](https://www.tencentcloud.com/document/product/267/58160)*
