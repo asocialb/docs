@@ -8,13 +8,13 @@ Answers to common questions that may come up during registration and first login
 
 **I didn't receive an invitation email**
 
-Check your Spam or Junk folder. If it's not there — contact your account manager or open a ticket in [Support](https://console.cloud-native.kz/support).
+Check your Spam or Junk folder. If it's not there — contact your account manager or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).
 
 ---
 
 **The invitation link doesn't work or has expired**
 
-Invitation links are single-use and expire after a limited period. Contact your account manager or support to request a new invitation.
+Invitation links are single-use and expire after a limited period. Contact your account manager or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz) to request a new invitation.
 
 ---
 
@@ -40,13 +40,13 @@ Email [cns-support@fcd.kz](mailto:cns-support@fcd.kz) — the support team will 
 
 **After logging in I get redirected back to the login page**
 
-Try clearing your browser cache and cookies. If the issue persists — open a ticket in [Support](https://console.cloud-native.kz/support).
+Try clearing your browser cache and cookies. If the issue persists — email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).
 
 ---
 
 **I see an error after login even though my credentials are correct**
 
-Make sure you are using an up-to-date browser. Try opening the console in incognito mode. If that doesn't help — contact support.
+Make sure you are using an up-to-date browser. Try opening the console in incognito mode. If that doesn't help — email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).
 
 ---
 
@@ -60,7 +60,7 @@ There is a dropdown menu in the top-right corner of the console for switching be
 
 **I want to change my account email**
 
-Contact [Support](https://console.cloud-native.kz/support) — email changes are handled manually.
+Contact [Support](https://console.cloud-native.kz/support) or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz) — email changes are handled manually.
 
 ---
 
@@ -90,4 +90,4 @@ This feature is currently in development and will be available soon. For now, ba
 
 ---
 
-> Didn't find your answer? Open a ticket in the [Support](https://console.cloud-native.kz/support) section.
+> Didn't find your answer? Open a ticket in the [Support](https://console.cloud-native.kz/support) section or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).

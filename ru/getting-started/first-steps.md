@@ -51,4 +51,4 @@
 3. Используйте сгенерированный токен в заголовке `Authorization: Bearer <токен>` при API-запросах
 -->
 
-> **Нужна помощь?** Создайте тикет в разделе [Поддержка](https://console.cloud-native.kz/support).
+> **Нужна помощь?** Создайте тикет в разделе [Поддержка](https://console.cloud-native.kz/support) или напишите на [cns-support@fcd.kz](mailto:cns-support@fcd.kz).

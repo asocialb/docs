@@ -8,7 +8,7 @@ This section helps you navigate the console interface: what's where and how to m
 
 The console uses a **sidebar** on the left side of the screen for navigation.
 
-![img_5.png](../../ru/getting-started/img_5.png)
+![img_2.png](img_2.png)
 
 The sidebar is divided into two groups:
 
@@ -18,7 +18,7 @@ The sidebar is divided into two groups:
 |---|---|
 | **Projects** | List of organization projects, create new projects |
 
-**MANAGEMENT** *(section label, not clickable)*
+**MANAGEMENT**
 
 | Section | Description |
 |---|---|
@@ -40,7 +40,7 @@ At the top of the sidebar you will also find the **Create** button — use it to
 
 The **organization switcher**, **language switcher** (RU / EN), and **user avatar** are located in the top-right corner of the screen.
 
-![img_6.png](../../ru/getting-started/img_6.png)
+![img_4.png](img_4.png)
 
 ---
 
@@ -50,7 +50,7 @@ The **organization switcher**, **language switcher** (RU / EN), and **user avata
 
 Manage your cloud projects. A **Project** is a logical grouping of resources within your Organization. Each project has its own resources, access rules, and billing attribution.
 
-![img_7.png](../../ru/getting-started/img_7.png)
+![img_13.png](img_13.png)
 
 ### AWS
 
@@ -80,7 +80,7 @@ Integration with **Tencent Cloud**. The overview page shows the connection statu
 
 The Billing section is where you manage all financial aspects of your account.
 
-![img_8.png](../../ru/getting-started/img_8.png)
+![img_14.png](img_14.png)
 
 The section includes the following tabs:
 
@@ -108,13 +108,13 @@ The Support section provides access to:
   - **Corporate** — dedicated support for enterprise customers
 - Link to the platform status page
 
-![img_9.png](../../ru/getting-started/img_9.png)
+![img_15.png](img_15.png)
 
 ### Settings
 
 Manage your organization configuration.
 
-![img_10.png](../../ru/getting-started/img_10.png)
+![img_16.png](img_16.png)
 
 The Settings section has several tabs:
 
@@ -132,7 +132,7 @@ From the **Organization** tab you can see all members with their roles and invit
 
 Manage programmatic access to the platform.
 
-![img_11.png](../../ru/getting-started/img_11.png)
+![img_17.png](img_17.png)
 
 | Tab | Description |
 |---|---|
@@ -142,4 +142,4 @@ Manage programmatic access to the platform.
 
 ---
 
-> **Need help?** Open a ticket in the [Support](https://console.cloud-native.kz/support) section.
+> **Need help?** Open a ticket in the [Support](https://console.cloud-native.kz/support) section or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).

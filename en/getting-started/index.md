@@ -10,12 +10,12 @@ Cloud Native Solutions is a managed cloud platform for businesses and teams. Thi
 2. [Registration](#2-registration)
 3. [Logging In](#3-logging-in)
 4. [First Login to the Console](#4-first-login-to-the-console)
-5. [Glossary](#5-glossary)
 
 ---
 
-→ To explore the console interface, see [Console Overview](./console-overview.md).
-→ Recommended actions after your first login are described in [First Steps After Login](./first-steps.md).
+- [Console Overview](./console-overview.md) — navigate the console interface
+- [First Steps After Login](./first-steps.md) — recommended actions after your first login
+- [Glossary](./glossary.md) — terms and definitions
 
 ---
 
@@ -33,9 +33,9 @@ Each new account is tied to an **Organization** — a workspace that groups your
 2. You will receive an invitation email at the address you provided.
 3. Follow the link in the email to complete your registration.
 
-![img.png](../../ru/getting-started/img.png)
+![img.png](img.png)
 
-> **Note:** Invitation links are single-use and expire after a limited period. If your link has expired, contact support to request a new one.
+> **Note:** Invitation links are single-use and expire after a limited period. If your link has expired, email [cns-support@fcd.kz](mailto:cns-support@fcd.kz) to request a new one.
 
 ---
 
@@ -43,7 +43,7 @@ Each new account is tied to an **Organization** — a workspace that groups your
 
 When you follow the invitation link, you will be taken to the account creation page at `console.cloud-native.kz`.
 
-![img_2.png](../../ru/getting-started/img_2.png)
+![img_1.png](img_1.png)
 
 **Steps:**
 
@@ -67,7 +67,7 @@ https://console.cloud-native.kz
 
 You will be redirected to the authentication page at `auth.cloud-native.kz`.
 
-![img_3.png](../../ru/getting-started/img_3.png)
+![img_3.png](img_3.png)
 
 **Steps:**
 
@@ -93,24 +93,4 @@ Before using paid services, you need to **create a Billing Account** (see [Creat
 
 ---
 
-## 5. Glossary
-
-| Term | Definition |
-|---|---|
-| **Organization** | The top-level entity that groups all team members, projects, services, and billing. Each account belongs to one or more Organizations. |
-| **Project** | A logical grouping of cloud resources within an Organization. Used to separate environments (e.g., production, staging) or teams. |
-| **Owner** | An organization role with full administrative privileges. At least one Owner must exist in an organization. |
-| **Administrator** | An organization role that can manage billing, invite members, and configure projects. |
-| **Member** | An organization role with access to resources as configured by the Administrator. |
-| **Billing Account** | The financial profile attached to your Organization. Contains payer details, payment method, and transaction history. |
-| **Payment Method** | The method used to charge for platform usage. Available options: bank card and bank transfer (coming soon). |
-| **Individual** | A billing account type for private users. |
-| **Legal Entity** | A billing account type for companies (LLP, JSC, etc.). Required for issuing official invoices, acts of work, and access to corporate platform terms. |
-| **Personal Access Token** | A credential used for programmatic API access. Used instead of a username and password for API calls. |
-| **CDN** | Content Delivery Network — a distributed network of servers that delivers content to users from the nearest geographic node. |
-| **HCI** | Hyper-Converged Infrastructure — a unified compute, storage, and networking system. Used in Sangfor. |
-| **Invitation-based Registration** | An access model where new users can only register after receiving a personal invitation link. |
-
----
-
-> **Need help?** Open a ticket in the [Support](https://console.cloud-native.kz/support) section.
+> **Need help?** Open a ticket in the [Support](https://console.cloud-native.kz/support) section or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).

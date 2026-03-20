@@ -26,7 +26,7 @@ Available roles:
 | **Administrator** | Manages billing, projects, and member access. |
 | **Member** | Access to projects and services as configured by the Administrator. |
 
-![img_12.png](../../ru/getting-started/img_12.png)
+![img_18.png](img_18.png)
 
 ---
 
@@ -51,4 +51,4 @@ If you plan to use the platform programmatically or integrate it with CI/CD pipe
 3. Use the generated token in the `Authorization: Bearer <token>` header for API requests
 -->
 
-> **Need help?** Open a ticket in the [Support](https://console.cloud-native.kz/support) section.
+> **Need help?** Open a ticket in the [Support](https://console.cloud-native.kz/support) section or email [cns-support@fcd.kz](mailto:cns-support@fcd.kz).
