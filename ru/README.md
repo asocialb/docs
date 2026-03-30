@@ -2,20 +2,20 @@
 
 ## Облачные услуги потокового вещания (CSS)
 
-- [Глоссарий](css/glossary.md) | [RU](css/glossary-ru.md)
-- [Викторина по прямому вещанию](css/live-streaming-quiz.md) | [RU](css/live-streaming-quiz-ru.md)
-- [Руководство пользователя](css/user-guide.md) | [RU](css/user-guide-ru.md)
+- [Глоссарий](css/глоссарий.md) | [RU](css/glossary-ru.md)
+- [Викторина по прямому вещанию](css/викторина-по-прямому-вещанию.md) | [RU](css/live-streaming-quiz-ru.md)
+- [Руководство пользователя](css/руководство-пользователя.md) | [RU](css/user-guide-ru.md)
 
 ### О потоке вещания
 
 #### Генерация URL-адресов потока вещания
 
-- [Быстрое создание URL-адреса](css/about-pushing/generating-push-urls/quick-url-generation.md) | [RU](css/about-pushing/generating-push-urls/quick-url-generation-ru.md)
+- [Быстрое создание URL-адреса](css/о-потоковой-публикации/generating-push-urls/быстрое-создание-url-адреса.md) | [RU](css/about-pushing/generating-push-urls/quick-url-generation-ru.md)
 
 #### Потоковое вещание с ПК
 
-- [Подготовка CSS](css/about-pushing/pc-push/css-preparation.md) | [RU](css/about-pushing/pc-push/css-preparation-ru.md)
-- [Обзор](css/about-pushing/pc-push/overview.md) | [RU](css/about-pushing/pc-push/overview-ru.md)
+- [Подготовка CSS](css/о-потоковой-публикации/публикация-с-пк/подготовка-css.md) | [RU](css/about-pushing/pc-push/css-preparation-ru.md)
+- [Обзор](css/о-потоковой-публикации/публикация-с-пк/обзор.md) | [RU](css/about-pushing/pc-push/overview-ru.md)
 
 ### Документация API
 
@@ -187,40 +187,40 @@
 - [DescribeLiveTimeShiftTemplates](css/api-documentation/time-shifting-apis/describelivetimeshifttemplates.md) | [RU](css
 
 - [AI Cloud-based Effects](css/purchase-guide/value-added-service-fee/ai-cloud-based-effects.md) | [RU](css/purchase-guide/value-added-service-fee/ai-cloud-based-effects-ru.md)
-- [Delayed Playback](css/purchase-guide/value-added-service-fee/delayed-playback.md) | [RU](css/purchase-guide/value-added-service-fee/delayed-playback-ru.md)
-- [DRM Encryption](css/purchase-guide/value-added-service-fee/drm-encryption.md) | [RU](css/purchase-guide/value-added-service-fee/drm-encryption-ru.md)
-- [Horizontal-to-Vertical](css/purchase-guide/value-added-service-fee/horizontal-to-vertical.md) | [RU](css/purchase-guide/value-added-service-fee/horizontal-to-vertical-ru.md)
-- [Intelligent Porn Detection](css/purchase-guide/value-added-service-fee/intelligent-porn-detection.md) | [RU](css/purchase-guide/value-added-service-fee/intelligent-porn-detection-ru.md)
-- [Intelligent Summary](css/purchase-guide/value-added-service-fee/intelligent-summary.md) | [RU](css/purchase-guide/value-added-service-fee/intelligent-summary-ru.md)
-- [Live Audio and Video Enhancement](css/purchase-guide/value-added-service-fee/live-audio-and-video-enhancement.md) | [RU](css/purchase-guide/value-added-service-fee/live-audio-and-video-enhancement-ru.md)
-- [Live Quality Control and Live Assessment](css/purchase-guide/value-added-service-fee/live-quality-control-and-live-assessment.md) | [RU](css/purchase-guide/value-added-service-fee/live-quality-control-and-live-assessment-ru.md)
-- [Live Recording](css/purchase-guide/value-added-service-fee/live-recording.md) | [RU](css/purchase-guide/value-added-service-fee/live-recording-ru.md)
-- [Live Screencapture](css/purchase-guide/value-added-service-fee/live-screencapture.md) | [RU](css/purchase-guide/value-added-service-fee/live-screencapture-ru.md)
-- [Live Stream Moderation](css/purchase-guide/value-added-service-fee/live-stream-moderation.md) | [RU](css/purchase-guide/value-added-service-fee/live-stream-moderation-ru.md)
-- [Live Stream Package](css/purchase-guide/value-added-service-fee/live-stream-package.md) | [RU](css/purchase-guide/value-added-service-fee/live-stream-package-ru.md)
-- [Live Streaming Bandwidth Billing](css/purchase-guide/value-added-service-fee/live-streaming-bandwidth-billing.md) | [RU](css/purchase-guide/value-added-service-fee/live-streaming-bandwidth-billing-ru.md)
-- [Live Transcoding (Watermarking, Stream Mixing, Subtitles, Dynamic Overlays)](css/purchase-guide/value-added-service-fee/live-transcoding-watermarking-stream-mixing-subtitles-dynamic-overlays.md) | [RU](css/purchase-guide/value-added-service-fee/live-transcoding-watermarking-stream-mixing-subtitles-dynamic-overlays-ru.md)
-- [Live Video Caster](css/purchase-guide/value-added-service-fee/live-video-caster.md) | [RU](css/purchase-guide/value-added-service-fee/live-video-caster-ru.md)
-- [Overview of Basic Fees for Value-Added Features](css/purchase-guide/value-added-service-fee/overview-of-basic-fees-for-value-added-features.md) | [RU](css/purchase-guide/value-added-service-fee/overview-of-basic-fees-for-value-added-features-ru.md)
-- [Real-Time Log Shipping](css/purchase-guide/value-added-service-fee/real-time-log-shipping.md) | [RU](css/purchase-guide/value-added-service-fee/real-time-log-shipping-ru.md)
-- [Relay](css/purchase-guide/value-added-service-fee/relay.md) | [RU](css/purchase-guide/value-added-service-fee/relay-ru.md)
-- [Smart Highlight](css/purchase-guide/value-added-service-fee/smart-highlight.md) | [RU](css/purchase-guide/value-added-service-fee/smart-highlight-ru.md)
-- [Standby Streams](css/purchase-guide/value-added-service-fee/standby-streams.md) | [RU](css/purchase-guide/value-added-service-fee/standby-streams-ru.md)
-- [Time Shifting (New)](css/purchase-guide/value-added-service-fee/time-shifting-new.md) | [RU](css/purchase-guide/value-added-service-fee/time-shifting-new-ru.md)
+- [Delayed Playback](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/delayed-playback.md) | [RU](css/purchase-guide/value-added-service-fee/delayed-playback-ru.md)
+- [DRM Encryption](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/drm-encryption.md) | [RU](css/purchase-guide/value-added-service-fee/drm-encryption-ru.md)
+- [Horizontal-to-Vertical](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/horizontal-to-vertical.md) | [RU](css/purchase-guide/value-added-service-fee/horizontal-to-vertical-ru.md)
+- [Intelligent Porn Detection](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/intelligent-porn-detection.md) | [RU](css/purchase-guide/value-added-service-fee/intelligent-porn-detection-ru.md)
+- [Intelligent Summary](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/intelligent-summary.md) | [RU](css/purchase-guide/value-added-service-fee/intelligent-summary-ru.md)
+- [Live Audio and Video Enhancement](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-audio-and-video-enhancement.md) | [RU](css/purchase-guide/value-added-service-fee/live-audio-and-video-enhancement-ru.md)
+- [Live Quality Control and Live Assessment](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-quality-control-and-live-assessment.md) | [RU](css/purchase-guide/value-added-service-fee/live-quality-control-and-live-assessment-ru.md)
+- [Live Recording](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-recording.md) | [RU](css/purchase-guide/value-added-service-fee/live-recording-ru.md)
+- [Live Screencapture](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-screencapture.md) | [RU](css/purchase-guide/value-added-service-fee/live-screencapture-ru.md)
+- [Live Stream Moderation](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-stream-moderation.md) | [RU](css/purchase-guide/value-added-service-fee/live-stream-moderation-ru.md)
+- [Live Stream Package](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-stream-package.md) | [RU](css/purchase-guide/value-added-service-fee/live-stream-package-ru.md)
+- [Live Streaming Bandwidth Billing](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-streaming-bandwidth-billing.md) | [RU](css/purchase-guide/value-added-service-fee/live-streaming-bandwidth-billing-ru.md)
+- [Live Transcoding (Watermarking, Stream Mixing, Subtitles, Dynamic Overlays)](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-transcoding-watermarking-stream-mixing-subtitles-dynamic-overlays.md) | [RU](css/purchase-guide/value-added-service-fee/live-transcoding-watermarking-stream-mixing-subtitles-dynamic-overlays-ru.md)
+- [Live Video Caster](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/live-video-caster.md) | [RU](css/purchase-guide/value-added-service-fee/live-video-caster-ru.md)
+- [Overview of Basic Fees for Value-Added Features](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/overview-of-basic-fees-for-value-added-features.md) | [RU](css/purchase-guide/value-added-service-fee/overview-of-basic-fees-for-value-added-features-ru.md)
+- [Real-Time Log Shipping](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/real-time-log-shipping.md) | [RU](css/purchase-guide/value-added-service-fee/real-time-log-shipping-ru.md)
+- [Relay](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/relay.md) | [RU](css/purchase-guide/value-added-service-fee/relay-ru.md)
+- [Smart Highlight](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/smart-highlight.md) | [RU](css/purchase-guide/value-added-service-fee/smart-highlight-ru.md)
+- [Standby Streams](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/standby-streams.md) | [RU](css/purchase-guide/value-added-service-fee/standby-streams-ru.md)
+- [Time Shifting (New)](css/руководство-по-покупке/тарифы-на-дополнительные-услуги/time-shifting-new.md) | [RU](css/purchase-guide/value-added-service-fee/time-shifting-new-ru.md)
 
 ### Примечания к выпуску и объявления
 
 #### Объявления
 
-- [Announcement on Optimization of CSS Billing Method Following Policy](css/release-notes-and-announcements/announcements/announcement-on-optimization-of-css-billing-method-following-policy.md) | [RU](css/release-notes-and-announcements/announcements/announcement-on-optimization-of-css-billing-method-following-policy-ru.md)
-- [Announcement on the Official Billing for CSS Standby Streams Feature](css/release-notes-and-announcements/announcements/announcement-on-the-official-billing-for-css-standby-streams-feature.md) | [RU](css/release-notes-and-announcements/announcements/announcement-on-the-official-billing-for-css-standby-streams-feature-ru.md)
-- [Announcement on the Price Adjustment of CSS Audio/Video Enhancement Feature](css/release-notes-and-announcements/announcements/announcement-on-the-price-adjustment-of-css-audio-video-enhancement-feature.md) | [RU](css/release-notes-and-announcements/announcements/announcement-on-the-price-adjustment-of-css-audio-video-enhancement-feature-ru.md)
-- [Billing Content Adjustment for Cloud Streaming Services Standard Transcoding and Top Speed Codec Transcoding](css/release-notes-and-announcements/announcements/billing-content-adjustment-for-cloud-streaming-services-standard-transcoding-and-top-speed-codec-transcoding.md) | [RU](css/release-notes-and-announcements/announcements/billing-content-adjustment-for-cloud-streaming-services-standard-transcoding-and-top-speed-codec-transcoding-ru.md)
-- [CSS Adds Support for AV1 Codec and Audio/Video Enhancement](css/release-notes-and-announcements/announcements/css-adds-support-for-av1-codec-and-audio-video-enhancement.md) | [RU](css/release-notes-and-announcements/announcements/css-adds-support-for-av1-codec-and-audio-video-enhancement-ru.md)
-- [CSS to Adjust Pricing of Third-Party Relay](css/release-notes-and-announcements/announcements/css-to-adjust-pricing-of-third-party-relay.md) | [RU](css/release-notes-and-announcements/announcements/css-to-adjust-pricing-of-third-party-relay-ru.md)
-- [CSS to Support H.265 8K and AV1 8K Transcoding](css/release-notes-and-announcements/announcements/css-to-support-h265-8k-and-av1-8k-transcoding.md) | [RU](css/release-notes-and-announcements/announcements/css-to-support-h265-8k-and-av1-8k-transcoding-ru.md)
-- [Delayed Playback to Become Paid Feature](css/release-notes-and-announcements/announcements/delayed-playback-to-become-paid-feature.md) | [RU](css/release-notes-and-announcements/announcements/delayed-playback-to-become-paid-feature-ru.md)
-- [Notice: CSS to Adjust Prices of Basic Services](css/release-notes-and-announcements/announcements/notice-css-to-adjust-prices-of-basic-services.md) | [RU](css/release-notes-and-announcements/announcements/notice-css-to-adjust-prices-of-basic-services-ru.md)
+- [Announcement on Optimization of CSS Billing Method Following Policy](css/примечания-к-выпуску-и-объявления/объявления/announcement-on-optimization-of-css-billing-method-following-policy.md) | [RU](css/release-notes-and-announcements/announcements/announcement-on-optimization-of-css-billing-method-following-policy-ru.md)
+- [Announcement on the Official Billing for CSS Standby Streams Feature](css/примечания-к-выпуску-и-объявления/объявления/announcement-on-the-official-billing-for-css-standby-streams-feature.md) | [RU](css/release-notes-and-announcements/announcements/announcement-on-the-official-billing-for-css-standby-streams-feature-ru.md)
+- [Announcement on the Price Adjustment of CSS Audio/Video Enhancement Feature](css/примечания-к-выпуску-и-объявления/объявления/announcement-on-the-price-adjustment-of-css-audio-video-enhancement-feature.md) | [RU](css/release-notes-and-announcements/announcements/announcement-on-the-price-adjustment-of-css-audio-video-enhancement-feature-ru.md)
+- [Billing Content Adjustment for Cloud Streaming Services Standard Transcoding and Top Speed Codec Transcoding](css/примечания-к-выпуску-и-объявления/объявления/billing-content-adjustment-for-cloud-streaming-services-standard-transcoding-and-top-speed-codec-transcoding.md) | [RU](css/release-notes-and-announcements/announcements/billing-content-adjustment-for-cloud-streaming-services-standard-transcoding-and-top-speed-codec-transcoding-ru.md)
+- [CSS Adds Support for AV1 Codec and Audio/Video Enhancement](css/примечания-к-выпуску-и-объявления/объявления/css-adds-support-for-av1-codec-and-audio-video-enhancement.md) | [RU](css/release-notes-and-announcements/announcements/css-adds-support-for-av1-codec-and-audio-video-enhancement-ru.md)
+- [CSS to Adjust Pricing of Third-Party Relay](css/примечания-к-выпуску-и-объявления/объявления/css-to-adjust-pricing-of-third-party-relay.md) | [RU](css/release-notes-and-announcements/announcements/css-to-adjust-pricing-of-third-party-relay-ru.md)
+- [CSS to Support H.265 8K and AV1 8K Transcoding](css/примечания-к-выпуску-и-объявления/объявления/css-to-support-h-265-8k-and-av1-8k-transcoding.md) | [RU](css/release-notes-and-announcements/announcements/css-to-support-h265-8k-and-av1-8k-transcoding-ru.md)
+- [Delayed Playback to Become Paid Feature](css/примечания-к-выпуску-и-объявления/объявления/delayed-playback-to-become-paid-feature.md) | [RU](css/release-notes-and-announcements/announcements/delayed-playback-to-become-paid-feature-ru.md)
+- [Notice: CSS to Adjust Prices of Basic Services](css/примечания-к-выпуску-и-объявления/объявления/notice-css-to-adjust-prices-of-basic-services.md) | [RU](css/release-notes-and-announcements/announcements/notice-css-to-adjust-prices-of-basic-services-ru.md)
 
 ### Руководство SDK
 
@@ -246,13 +246,13 @@
 
 ### Устранение неполадок
 
-- [Live Stream Mixing Error `InvalidParameter.OtherError`](css/troubleshooting/live-stream-mixing-error-invalidparameterothererror.md) | [RU](css/troubleshooting/live-stream-mixing-error-invalidparameterothererror-ru.md)
+- [Live Stream Mixing Error `InvalidParameter.OtherError`](css/устранение-неполадок/live-stream-mixing-error-`invalidparameter-othererror`.md) | [RU](css/troubleshooting/live-stream-mixing-error-invalidparameterothererror-ru.md)
 
 ## Сервис обработки медиа (MPS)
 
-- [Связаться с нами](mps/contact-us.md) | [RU](mps/contact-us-ru.md)
-- [Начало работы](mps/getting-started.md) | [RU](mps/getting-started-ru.md)
-- [Глоссарий](mps/glossary.md) | [RU](mps/glossary-ru.md)
+- [Связаться с нами](mps/связаться-с-нами.md) | [RU](mps/contact-us-ru.md)
+- [Начало работы](mps/начало-работы.md) | [RU](mps/getting-started-ru.md)
+- [Глоссарий](mps/глоссарий.md) | [RU](mps/glossary-ru.md)
 
 ### Документация API
 
@@ -430,20 +430,20 @@
 
 ## Tencent Real-Time Communication (TRTC)
 
-- [Бесплатная демонстрация](trtc/free-demo.md) | [RU](trtc/free-demo-ru.md)
+- [Бесплатная демонстрация](trtc/бесплатная-демонстрация.md) | [RU](trtc/free-demo-ru.md)
 
 ### Объявления
 
-- [Объявление о начале бета-тестирования конференции с участием нескольких человек для аудио и видео](trtc/announcements/announcement-on-the-start-of-beta-testing-for-multi-person-audio-and-video-conference.md) | [RU](trtc/announcements/announcement-on-the-start-of-beta-testing-for-multi-person-audio-and-video-conference-ru.md)
-- [Объявление: переименование Chat Premium в Pro Edition](trtc/announcements/announcement-renaming-of-chat-premium-to-pro-edition.md) | [RU](trtc/announcements/announcement-renaming-of-chat-premium-to-pro-edition-ru.md)
-- [Лицензия требуется для воспроизведения видео в новой версии LiteAV SDK](trtc/announcements/license-required-for-video-playback-in-new-version-of-liteav-sdk.md) | [RU](trtc/announcements/license-required-for-video-playback-in-new-version-of-liteav-sdk-ru.md)
-- [Объявление о запуске продукта Live (TUILiveKit)](trtc/announcements/live-tuilivekit-product-launch-announcement.md) | [RU](trtc/announcements/live-tuilivekit-product-launch-announcement-ru.md)
-- [Примечания к выпуску](trtc/announcements/release-notes.md) | [RU](trtc/announcements/release-notes-ru.md)
-- [Коммерческая версия Conference скоро появится](trtc/announcements/the-commercial-version-of-conference-is-coming-soon.md) | [RU](trtc/announcements/the-commercial-version-of-conference-is-coming-soon-ru.md)
-- [Правила программы реферала TRTC](trtc/announcements/trtc-affiliate-program-rules.md) | [RU](trtc/announcements/trtc-affiliate-program-rules-ru.md)
-- [Условия программы реферала TRTC](trtc/announcements/trtc-affiliate-program-terms-and-conditions.md) | [RU](trtc/announcements/trtc-affiliate-program-terms-and-conditions-ru.md)
-- [Запущены официальные издания TRTC Call](trtc/announcements/trtc-call-official-editions-launched.md) | [RU](trtc/announcements/trtc-call-official-editions-launched-ru.md)
-- [TRTC предложит ежемесячные пакеты](trtc/announcements/trtc-to-offer-monthly-packages.md) | [RU](trtc/announcements/trtc-to-offer-monthly-packages-ru.md)
+- [Объявление о начале бета-тестирования конференции с участием нескольких человек для аудио и видео](trtc/объявления/объявление-о-начале-бета-тестирования-конференции-с-участием-нескольких-человек-для-аудио-и-видео.md) | [RU](trtc/announcements/announcement-on-the-start-of-beta-testing-for-multi-person-audio-and-video-conference-ru.md)
+- [Объявление: переименование Chat Premium в Pro Edition](trtc/объявления/объявление-переименование-chat-premium-в-pro-edition.md) | [RU](trtc/announcements/announcement-renaming-of-chat-premium-to-pro-edition-ru.md)
+- [Лицензия требуется для воспроизведения видео в новой версии LiteAV SDK](trtc/объявления/лицензия-требуется-для-воспроизведения-видео-в-новой-версии-liteav-sdk.md) | [RU](trtc/announcements/license-required-for-video-playback-in-new-version-of-liteav-sdk-ru.md)
+- [Объявление о запуске продукта Live (TUILiveKit)](trtc/объявления/объявление-о-запуске-продукта-live-tuilivekit.md) | [RU](trtc/announcements/live-tuilivekit-product-launch-announcement-ru.md)
+- [Примечания к выпуску](trtc/объявления/примечания-к-выпуску.md) | [RU](trtc/announcements/release-notes-ru.md)
+- [Коммерческая версия Conference скоро появится](trtc/объявления/коммерческая-версия-conference-скоро-появится.md) | [RU](trtc/announcements/the-commercial-version-of-conference-is-coming-soon-ru.md)
+- [Правила программы реферала TRTC](trtc/объявления/правила-программы-реферала-trtc.md) | [RU](trtc/announcements/trtc-affiliate-program-rules-ru.md)
+- [Условия программы реферала TRTC](trtc/объявления/условия-программы-реферала-trtc.md) | [RU](trtc/announcements/trtc-affiliate-program-terms-and-conditions-ru.md)
+- [Запущены официальные издания TRTC Call](trtc/объявления/запущены-официальные-издания-trtc-call.md) | [RU](trtc/announcements/trtc-call-official-editions-launched-ru.md)
+- [TRTC предложит ежемесячные пакеты](trtc/объявления/trtc-предложит-ежемесячные-пакеты.md) | [RU](trtc/announcements/trtc-to-offer-monthly-packages-ru.md)
 
 ### Beauty Ar
 
@@ -1224,16 +1224,16 @@
 - [Создать комнату](trtc/live/all-platform/server-apis/restful-api/room-related/create-room.md) | [RU](trtc/live/all-platform/server-apis/restful-api/
 
 - [Соглашение об уровне обслуживания чата](trtc/privacy-sla/service-level-agreement/chat-service-level-agreement.md) | [RU](trtc/privacy-sla/service-level-agreement/chat-service-level-agreement-ru.md)
-- [Соответствие требованиям](trtc/privacy-sla/service-level-agreement/compliance.md) | [RU](trtc/privacy-sla/service-level-agreement/compliance-ru.md)
-- [Соглашение об уровне обслуживания для прямой трансляции](trtc/privacy-sla/service-level-agreement/live-service-level-agreement.md) | [RU](trtc/privacy-sla/service-level-agreement/live-service-level-agreement-ru.md)
-- [Примечания по информационной безопасности](trtc/privacy-sla/service-level-agreement/notes-on-information-security.md) | [RU](trtc/privacy-sla/service-level-agreement/notes-on-information-security-ru.md)
-- [Техническое описание безопасности](trtc/privacy-sla/service-level-agreement/security-white-paper.md) | [RU](trtc/privacy-sla/service-level-agreement/security-white-paper-ru.md)
-- [Соглашение об уровне обслуживания TRTC](trtc/privacy-sla/service-level-agreement/trtc-service-level-agreement.md) | [RU](trtc/privacy-sla/service-level-agreement/trtc-service-level-agreement-ru.md)
+- [Соответствие требованиям](trtc/конфиденциальность-и-sla/соглашение-об-уровне-сервиса/соответствие-требованиям.md) | [RU](trtc/privacy-sla/service-level-agreement/compliance-ru.md)
+- [Соглашение об уровне обслуживания для прямой трансляции](trtc/конфиденциальность-и-sla/соглашение-об-уровне-сервиса/соглашение-об-уровне-обслуживания-для-прямой-трансляции.md) | [RU](trtc/privacy-sla/service-level-agreement/live-service-level-agreement-ru.md)
+- [Примечания по информационной безопасности](trtc/конфиденциальность-и-sla/соглашение-об-уровне-сервиса/примечания-по-информационной-безопасности.md) | [RU](trtc/privacy-sla/service-level-agreement/notes-on-information-security-ru.md)
+- [Техническое описание безопасности](trtc/конфиденциальность-и-sla/соглашение-об-уровне-сервиса/техническое-описание-безопасности.md) | [RU](trtc/privacy-sla/service-level-agreement/security-white-paper-ru.md)
+- [Соглашение об уровне обслуживания TRTC](trtc/конфиденциальность-и-sla/соглашение-об-уровне-сервиса/соглашение-об-уровне-обслуживания-trtc.md) | [RU](trtc/privacy-sla/service-level-agreement/trtc-service-level-agreement-ru.md)
 
 #### Политики Trtc
 
-- [Политика конфиденциальности Apple: PrivacyInfo.xcprivacy](trtc/privacy-sla/trtc-policies/apple-privacy-policy-privacyinfoxcprivacy.md) | [RU](trtc/privacy-sla/trtc-policies/apple-privacy-policy-privacyinfoxcprivacy-ru.md)
-- [Подтверждение выбора материкового Китая в качестве региона обслуживания](trtc/privacy-sla/trtc-policies/selection-of-chinese-mainland-as-the-service-region-acknowledgment.md) | [RU](trtc/privacy-sla/trtc-policies/selection-of-chinese-mainland-as-the-service-region-acknowledgment-ru.md)
+- [Политика конфиденциальности Apple: PrivacyInfo.xcprivacy](trtc/конфиденциальность-и-sla/политики-trtc/политика-конфиденциальности-apple-privacyinfo-xcprivacy.md) | [RU](trtc/privacy-sla/trtc-policies/apple-privacy-policy-privacyinfoxcprivacy-ru.md)
+- [Подтверждение выбора материкового Китая в качестве региона обслуживания](trtc/конфиденциальность-и-sla/политики-trtc/подтверждение-выбора-материкового-китая-в-качестве-региона-обслуживания.md) | [RU](trtc/privacy-sla/trtc-policies/selection-of-chinese-mainland-as-the-service-region-acknowledgment-ru.md)
 
 ### Модуль RTC Engine
 
